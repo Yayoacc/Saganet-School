@@ -12,4 +12,9 @@
         <phase-listener>org.springframework.web.jsf.DelegatingPhaseListenerMulticaster</phase-listener>
     </lifecycle>
 
+	<converter>
+		<converter-id>CalendarConverter</converter-id>
+		<converter-class>com.saganet.school.converters.CalendarConverter</converter-class>
+	</converter>
+
 </faces-config>

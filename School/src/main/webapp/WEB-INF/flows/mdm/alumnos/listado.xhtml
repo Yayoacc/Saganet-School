@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>School - Alumnos</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:panel header="Listado de Alumnos">
+			<p:dataTable value="${modelo.listado}" var="fila" rowKey="${fila.id}"
+				selection="${modelo.seleccionado}" selectionMode="single">
+				<p:column headerText="Id" width="50">
+					<p:outputLabel value="${fila.id}" />
+				</p:column>
+				<p:column headerText="Nombre" width="200">
+					<p:outputLabel value="${fila.nombre}" />
+				</p:column>
+				<p:column headerText="Primer Apellido" width="200">
+					<p:outputLabel value="${fila.primerApellido}" />
+				</p:column>
+				<p:column headerText="Segundo Apellido" width="200">
+					<p:outputLabel value="${fila.segundoApellido}" />
+				</p:column>
+			</p:dataTable>
+
+			<f:facet name="footer">
+				<p:commandButton value="Detalle" action="detalle" disabled="${modelo.seleccionado == null}" />
+				<p:commandButton value="Agregar" action="agregar" />
+				<p:commandButton value="Editar" action="editar" disabled="${modelo.seleccionado == null}" />
+			</f:facet>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>
