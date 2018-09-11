@@ -5,6 +5,8 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+
+import com.saganet.school.database.domains.GeneroDO;
 
 @Entity
 @Table(schema="mdm", name="alumnos")
@@ -35,6 +39,9 @@ public class AlumnoEO implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	private Calendar fechaNacimiento;
+	
+	@Enumerated(EnumType.STRING)
+	private GeneroDO genero;
 	
 	// ===== Funciones propias =====
 	public String getNombreCompleto() {
@@ -95,6 +102,14 @@ public class AlumnoEO implements Serializable {
 
 	public void setFechaNacimiento(Calendar fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public GeneroDO getGenero() {
+		return genero;
+	}
+
+	public void setGenero(GeneroDO genero) {
+		this.genero = genero;
 	}
 	
 }
