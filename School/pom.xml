@@ -24,7 +24,7 @@
 		<java.version>1.8</java.version>
 		<spring-faces-version>2.5.0.RELEASE</spring-faces-version>
 		<com.sun.faces-version>2.2.18</com.sun.faces-version>
-		<primefaces-version>6.1</primefaces-version>
+		<primefaces-version>6.2</primefaces-version>
 	</properties>
 
 	<dependencies>

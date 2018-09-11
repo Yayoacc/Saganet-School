@@ -13,14 +13,16 @@ public class Modelo<Entity> implements Serializable {
 	// ===== Constructores =====
 	public Modelo() {
 		super();
-		listado = new ArrayList<>();
+		listado = new ArrayList<Entity>();
 		seleccionado = null;
 	}
 
 	public Modelo(List<Entity> listado) {
 		super();
 		this.listado = listado;
-		seleccionado = null;
+		if(this.listado != null)
+			if(!this.listado.isEmpty())
+				this.seleccionado = this.listado.get(0);
 	}
 
 	public Modelo(List<Entity> listado, Entity seleccionado) {

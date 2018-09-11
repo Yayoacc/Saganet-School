@@ -4,32 +4,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
- 
+
 <h:head>
-	<title>School - Agregar Alumno</title>
+	<title>School - Detalle de Alumno</title>
 </h:head>
 
 <h:body>
 	<h:form>
-		<p:growl>
-			<p:autoUpdate />
-		</p:growl>
-		<p:focus />
-		<p:panel header="Agregar Alumno">
+		<p:panel header="${alumno.nombreCompleto}">
+			
 			<p:panelGrid columns="2">
+				<p:outputLabel value="Id" />
+				<p:outputLabel value="${alumno.id}" />
 				<p:outputLabel value="Nombre" />
-				<p:inputText value="${alumno.nombre}" />
+				<p:outputLabel value="${alumno.nombre}" />
 				<p:outputLabel value="Primer Apellido" />
-				<p:inputText value="${alumno.primerApellido}" />
+				<p:outputLabel value="${alumno.primerApellido}" />
 				<p:outputLabel value="Segundo Apellido" />
-				<p:inputText value="${alumno.segundoApellido}" />
+				<p:outputLabel value="${alumno.segundoApellido}" />
 				<p:outputLabel value="Fecha de Nacimiento" />
-				<p:calendar value="${alumno.fechaNacimiento}" converter="CalendarConverter" pattern="dd/MM/yyyy" navigator="true" />
+				<p:outputLabel value="${alumno.fechaNacimiento.time}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:outputLabel>
 			</p:panelGrid>
 			
 			<f:facet name="footer">
-				<p:commandButton value="Guardar" action="guardar" />
-				<p:commandButton value="Cancelar" action="cancelar" immediate="true" />
+				<p:commandButton value="Regresar" action="regresar" />
 			</f:facet>
 		</p:panel>
 	</h:form>

@@ -1,10 +1,10 @@
-package com.saganet.school.database.services;
+package com.saganet.school.database.services.mdm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.saganet.school.database.daos.AlumnoDao;
-import com.saganet.school.database.entities.AlumnoEO;
+import com.saganet.school.database.daos.mdm.AlumnoDao;
+import com.saganet.school.database.entities.mdm.AlumnoEO;
 import com.saganet.school.utils.Modelo;
 
 @Service("AlumnoServ")

@@ -1,4 +1,4 @@
-package com.saganet.school.database.entities;
+package com.saganet.school.database.entities.mdm;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -13,20 +13,20 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(schema="mdm", name="alumnos")
+@SuppressWarnings("serial")
 public class AlumnoEO implements Serializable {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	@NotBlank
+	@NotBlank(message = "Falta Nombre")
 	@Column(columnDefinition="text")
 	private String nombre;
 	
-	@NotBlank
+	@NotBlank(message = "Falta Primer Apellido")
 	@Column(columnDefinition="text")
 	private String primerApellido;
 	
@@ -35,6 +35,21 @@ public class AlumnoEO implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	private Calendar fechaNacimiento;
+	
+	// ===== Funciones propias =====
+	public String getNombreCompleto() {
+		StringBuilder builder;
+		
+		builder = new StringBuilder();
+		
+		builder.append(nombre)
+			.append(" ")
+			.append(primerApellido)
+			.append(" ")
+			.append(segundoApellido);
+		
+		return builder.toString();		
+	}
 
 	@Override
 	public String toString() {
@@ -81,4 +96,5 @@ public class AlumnoEO implements Serializable {
 	public void setFechaNacimiento(Calendar fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
 }
