@@ -1,4 +1,4 @@
-package com.saganet.school.audit;
+package com.saganet.school.auditory;
 
 import java.util.Optional;
 

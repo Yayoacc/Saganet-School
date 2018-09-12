@@ -1,11 +1,11 @@
-package com.saganet.school.config;
+package com.saganet.school.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import com.saganet.school.audit.AuditorAwareImpl;
+import com.saganet.school.auditory.AuditorAwareImpl;
 
 @Configuration
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")

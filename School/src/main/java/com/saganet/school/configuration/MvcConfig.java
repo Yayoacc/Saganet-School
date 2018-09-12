@@ -1,4 +1,4 @@
-package com.saganet.school.config;
+package com.saganet.school.configuration;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.Servlet;
