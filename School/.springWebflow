@@ -7,5 +7,13 @@
 			<file>src/main/webapp/WEB-INF/flows/mdm/alumnos/zflow-alumnos.xml</file>
 			<name><![CDATA[zflow-alumnos]]></name>
 		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/catalogos/generos/zflow-generos.xml</file>
+			<name><![CDATA[zflow-generos]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/catalogos/acciones/zflow-acciones.xml</file>
+			<name><![CDATA[zflow-acciones]]></name>
+		</config>
 	</configs>
 </webflow-project-description>
