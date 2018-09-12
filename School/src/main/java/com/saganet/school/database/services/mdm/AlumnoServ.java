@@ -7,7 +7,10 @@ import com.saganet.school.database.daos.mdm.AlumnoDao;
 import com.saganet.school.database.entities.mdm.AlumnoEO;
 import com.saganet.school.utils.Modelo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service("AlumnoServ")
+@Slf4j
 public class AlumnoServ {
 	
 	@Autowired
@@ -22,6 +25,7 @@ public class AlumnoServ {
 	}
 	
 	public void guardar(AlumnoEO alumno) {
+		log.debug("Se guarda/actualiza alumno: {}", alumno);
 		alumnoDao.save(alumno);
 	}
 }
