@@ -4,36 +4,30 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
+//import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PostLoad;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
-import org.apache.commons.lang3.SerializationUtils;
-
 import com.saganet.school.auditory.AuditObject;
-import com.saganet.school.auditory.entityListeners.mdm.AlumnoEL;
+//import com.saganet.school.auditory.entityListeners.mdm.AlumnoEL;
 import com.saganet.school.database.domains.GeneroDO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.extern.slf4j.Slf4j;
 
 @Entity
 @Table(schema = "mdm", name = "alumnos")
 @SuppressWarnings("serial")
 @Data
 @EqualsAndHashCode(callSuper = false)
-@EntityListeners(AlumnoEL.class)
-@Slf4j
+//@EntityListeners(AlumnoEL.class)
 public class AlumnoEO extends AuditObject {
 
 	@Id
@@ -57,9 +51,6 @@ public class AlumnoEO extends AuditObject {
 	@Enumerated(EnumType.STRING)
 	private GeneroDO genero;
 	
-	@Transient
-	private AlumnoEO savedState;
-
 	// ===== Funciones propias =====
 	public String getNombreCompleto() {
 		StringBuilder builder;
@@ -74,11 +65,4 @@ public class AlumnoEO extends AuditObject {
 
 		return builder.toString();
 	}
-	
-	@PostLoad
-	private void saveState() {
-		savedState = SerializationUtils.clone(this);
-		log.debug("Se guarda estado de alumno: {}", savedState);
-	}
-
 }

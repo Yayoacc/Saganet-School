@@ -27,7 +27,7 @@ public abstract class AuditObject implements Serializable {
 	
 	@CreatedDate
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Calendar creationDate;
+	protected Calendar createdDate;
 	
 	@LastModifiedBy
 	protected String lastModifiedBy;

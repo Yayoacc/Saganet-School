@@ -1,5 +1,8 @@
 package com.saganet.school.database.entities.auditoria;
 
+import java.io.Serializable;
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -9,22 +12,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.saganet.school.auditory.AuditObject;
 import com.saganet.school.database.domains.AccionDO;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(schema="auditoria", name="bitacora")
 @EntityListeners(AuditingEntityListener.class)
 @Data
-@EqualsAndHashCode(callSuper = false)
-@SuppressWarnings("serial")
-public class BitacoraEO extends AuditObject {
+public class BitacoraEO implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -35,11 +39,17 @@ public class BitacoraEO extends AuditObject {
 	
 	@Column(columnDefinition="text")
 	private String objeto;
+	
+	@CreatedBy
+	private String createdBy;
+	
+	@CreatedDate
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar createdDate;
 
 	public BitacoraEO(AccionDO accion, String objeto) {
 		super();
 		this.accion = accion;
 		this.objeto = objeto;
 	}
-	
 }
