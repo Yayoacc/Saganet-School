@@ -11,9 +11,6 @@ import com.saganet.school.database.domains.AccionDO;
 import com.saganet.school.database.entities.auditoria.BitacoraEO;
 import com.saganet.school.database.entities.mdm.AlumnoEO;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 public class AlumnoEL {
 	
 	@PrePersist
@@ -23,8 +20,7 @@ public class AlumnoEL {
 	
 	@PreUpdate
 	public void preUpdate(AlumnoEO alumno) {
-		log.debug("Bitácora, saveState: {}", alumno.getSavedState());
-		bitacora(AccionDO.UPDATE, alumno.getSavedState());
+		bitacora(AccionDO.UPDATE, alumno);
 	}
 	
 	@Transactional(value=TxType.MANDATORY)
