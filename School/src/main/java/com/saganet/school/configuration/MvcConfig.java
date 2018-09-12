@@ -1,8 +1,7 @@
-package com.saganet.school.config;
+package com.saganet.school.configuration;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.Servlet;
-import javax.servlet.http.HttpServlet;
 
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletRegistrationBean;

@@ -25,6 +25,7 @@
 	<view-state id="agregarEditar">
 		<on-entry>
 			<set name="viewScope.alumno" value="requestScope.alumno" />
+			<evaluate expression="DominiosServ.modeloGeneroDO()" result="viewScope.modeloGeneros" />
 		</on-entry>
 		
 		<transition on="guardar" to="agregarEditarExitoso">

@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
- 
+
 <h:head>
 	<title>School - Agregar Alumno</title>
 </h:head>
@@ -23,10 +23,16 @@
 				<p:inputText value="${alumno.primerApellido}" />
 				<p:outputLabel value="Segundo Apellido" />
 				<p:inputText value="${alumno.segundoApellido}" />
+				<p:outputLabel value="Género" />
+				<p:selectOneMenu value="${alumno.genero}">
+					<f:selectItems value="${modeloGeneros.listado}" var="item"
+						itemLabel="${item.nombre}" itemValue="${item}" />
+				</p:selectOneMenu>
 				<p:outputLabel value="Fecha de Nacimiento" />
-				<p:calendar value="${alumno.fechaNacimiento}" converter="CalendarConverter" pattern="dd/MM/yyyy" navigator="true" />
+				<p:calendar value="${alumno.fechaNacimiento}"
+					converter="CalendarConverter" pattern="dd/MM/yyyy" navigator="true" />
 			</p:panelGrid>
-			
+
 			<f:facet name="footer">
 				<p:commandButton value="Guardar" action="guardar" />
 				<p:commandButton value="Cancelar" action="cancelar" immediate="true" />
