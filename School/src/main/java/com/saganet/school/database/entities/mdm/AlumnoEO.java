@@ -1,6 +1,5 @@
 package com.saganet.school.database.entities.mdm;
 
-import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -15,12 +14,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import com.saganet.school.database.EntityObject;
 import com.saganet.school.database.domains.GeneroDO;
 
 @Entity
 @Table(schema="mdm", name="alumnos")
 @SuppressWarnings("serial")
-public class AlumnoEO implements Serializable {
+public class AlumnoEO extends EntityObject {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -61,7 +61,7 @@ public class AlumnoEO implements Serializable {
 	@Override
 	public String toString() {
 		return "AlumnoEO [id=" + id + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido="
-				+ segundoApellido + ", fechaNacimiento=" + fechaNacimiento + "]";
+				+ segundoApellido + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + "]";
 	}
 
 	public Integer getId() {
