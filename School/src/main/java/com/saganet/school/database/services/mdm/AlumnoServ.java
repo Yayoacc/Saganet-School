@@ -1,5 +1,7 @@
 package com.saganet.school.database.services.mdm;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,12 @@ public class AlumnoServ {
 	private AlumnoDao alumnoDao;
 	
 	public Modelo<AlumnoEO> modeloTodos(){
-		return new Modelo<>(alumnoDao.findAll());
+		List<AlumnoEO> listado;
+		
+		listado = alumnoDao.findByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
+		log.debug("Registros en listado: {}", listado.size());
+		
+		return new Modelo<>(listado);
 	}
 	
 	public AlumnoEO nuevo() {

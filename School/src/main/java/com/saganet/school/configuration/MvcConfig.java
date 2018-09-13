@@ -7,18 +7,15 @@ import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoC
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
 @Configuration
 @ImportResource({"classpath:/META-INF/servlet-config.xml"})
-@ComponentScan("com.saganet.school")
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfig {
 	
 	@Bean
 	public DispatcherServlet dispatcherServlet() {
