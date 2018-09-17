@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/faces http://www.springframework.org/schema/faces/spring-faces-2.4.xsd">
 
 	<!-- Mapeo de Carpeta /webapp => /resources/ -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="3600" />
 	
 	<!-- Generar las vistas usando JSF -->
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">

@@ -29,7 +29,7 @@ public class MvcConfig {
 		return dispatcherServletRB;
 	}
 	
-	@Bean
+//	@Bean
 	public ServletRegistrationBean<Servlet> facesServlet() {
 		ServletRegistrationBean<Servlet> register = new ServletRegistrationBean<Servlet>(new FacesServlet(), "*.faces");
 		register.setLoadOnStartup(1);
