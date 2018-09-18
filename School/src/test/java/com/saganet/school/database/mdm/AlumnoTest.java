@@ -31,9 +31,9 @@ public class AlumnoTest {
 		AlumnoEO alumno;
 		int i;
 
-		listado = alumnoDao.findFirst10ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
+		listado = alumnoDao.findFirst100ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
 		
-		assertEquals(10, listado.size());
+		assertEquals(100, listado.size());
 		
 		i = 1;
 		for(AlumnoEO objeto : listado) {

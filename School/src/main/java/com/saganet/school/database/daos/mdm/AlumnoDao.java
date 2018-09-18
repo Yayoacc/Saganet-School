@@ -11,8 +11,8 @@ public interface AlumnoDao extends JpaRepository<AlumnoEO, Integer> {
 //	Obten todos los registros ordenados por PrimerApellido, SegundoApellido y Nombre
 	public List<AlumnoEO> findByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
 
-//	Obten los primeros 10 registros ordenados por PrimerApellido, SegundoApellido y Nombre
-	public List<AlumnoEO> findFirst10ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
+//	Obten los primeros 100 registros ordenados por PrimerApellido, SegundoApellido y Nombre
+	public List<AlumnoEO> findFirst100ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
 	
 //	Obten todos los registros filtrando por Primer Apellido y Ordenando por PrimerApellido, SegundoApellido y Nombre
 	public List<AlumnoEO> findByPrimerApellidoOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc(String primeroApellido);

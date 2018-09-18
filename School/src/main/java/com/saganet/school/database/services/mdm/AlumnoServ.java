@@ -18,12 +18,14 @@ public class AlumnoServ {
 	@Autowired
 	private AlumnoDao alumnoDao;
 	
+	@Autowired
+	private DireccionServ direccionServ;
+	
 	public Modelo<AlumnoEO> modeloTodos(){
 		List<AlumnoEO> listado;
 		
-		listado = alumnoDao.findByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
-		log.debug("Registros en listado: {}", listado.size());
-		
+		listado = alumnoDao.findFirst100ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
+//		listado = alumnoDao.findAll();
 		return new Modelo<>(listado);
 	}
 	
@@ -33,6 +35,7 @@ public class AlumnoServ {
 	
 	public void guardar(AlumnoEO alumno) {
 		log.debug("Se guarda/actualiza alumno: {}", alumno);
+		direccionServ.guardar(alumno.getDireccion());
 		alumnoDao.save(alumno);
 	}
 	
