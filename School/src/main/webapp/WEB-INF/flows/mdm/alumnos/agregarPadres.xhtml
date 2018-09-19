@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>School - Agregar Alumno</title>
+	<title>School - Agregar Padre</title>
 </h:head>
 
 <h:body>
@@ -15,22 +15,22 @@
 			<p:autoUpdate />
 		</p:growl>
 		<p:focus />
-		<p:panel header="Agregar Alumno">
+		<p:panel header="Agregar Padre">
 			<p:panel header="Datos Generales">
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Nombre" />
-					<p:inputText value="${alumno.nombre}" />
+					<p:inputText value="${padre.nombre}" />
 					<p:outputLabel value="Primer Apellido" />
-					<p:inputText value="${alumno.primerApellido}" />
+					<p:inputText value="${padre.primerApellido}" />
 					<p:outputLabel value="Segundo Apellido" />
-					<p:inputText value="${alumno.segundoApellido}" />
+					<p:inputText value="${padre.segundoApellido}" />
 					<p:outputLabel value="Género" />
-					<p:selectOneMenu value="${alumno.genero}">
+					<p:selectOneMenu value="${padre.genero}">
 						<f:selectItems value="${modeloGeneros.listado}" var="item"
 							itemLabel="${item.nombre}" itemValue="${item}" />
 					</p:selectOneMenu>
 					<p:outputLabel value="Fecha de Nacimiento" />
-					<p:calendar value="${alumno.fechaNacimiento}"
+					<p:calendar value="${padre.fechaNacimiento}"
 						converter="CalendarConverter" pattern="dd/MM/yyyy"
 						navigator="true" />
 				</p:panelGrid>
@@ -39,20 +39,20 @@
 			<p:panel header="Dirección">
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Calle" />
-					<p:inputText value="${alumno.direccion.calle}" />
+					<p:inputText value="${padre.direccion.calle}" />
 					<p:outputLabel value="Número Exterior" />
-					<p:inputText value="${alumno.direccion.numeroExterior}" />
+					<p:inputText value="${padre.direccion.numeroExterior}" />
 					<p:outputLabel value="Número Interior" />
-					<p:inputText value="${alumno.direccion.numeroInterior}" />
+					<p:inputText value="${padre.direccion.numeroInterior}" />
 					<p:outputLabel value="Colonia" />
-					<p:inputText value="${alumno.direccion.colonia}" />
+					<p:inputText value="${padre.direccion.colonia}" />
 					<p:outputLabel value="Código Postal" />
-					<p:inputText value="${alumno.direccion.codigoPostal}" />
+					<p:inputText value="${padre.direccion.codigoPostal}" />
 				</p:panelGrid>
 			</p:panel>
 
 			<f:facet name="footer">
-				<p:commandButton value="Siguiente" action="siguiente" />
+				<p:commandButton value="Guardar" action="guardar" />
 				<p:commandButton value="Cancelar" action="cancelar" immediate="true" />
 			</f:facet>
 		</p:panel>

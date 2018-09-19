@@ -34,8 +34,8 @@
 		</on-entry>
 
 		<transition on="siguiente" to="agregarPadres">
-		 <set name="requestScope.alumno"
-				value="viewScope.modelo.seleccionad" />
+			<set name="requestScope.padre" value="viewScope.alumno.padre" />
+
 		</transition>
 
 
@@ -44,11 +44,13 @@
 
 	<view-state id="agregarPadres">
 		<on-entry>
-			<set name="viewScope.padre" value="requestScope.alumno" />
+			<set name="viewScope.padre" value="requestScope.padre" />
+			<evaluate expression="DominiosServ.modeloGeneroDO()"
+				result="viewScope.modeloGeneros" />
 		</on-entry>
-		
+
 		<transition on="guardar" to="agregarEditarExitoso">
-			
+
 			<evaluate expression="AlumnoServ.guardar(viewScope.padre)" />
 		</transition>
 	</view-state>
