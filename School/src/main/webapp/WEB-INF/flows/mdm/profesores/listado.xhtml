@@ -11,7 +11,7 @@
 
 <h:body>
 	<h:form>
-		<p:panel header="Listado de Alumnos PUTO YAELon">
+		<p:panel header="Listado de Profesores">
 			<p:dataTable value="${modelo.listado}" var="fila" rowKey="${fila.id}"
 				selection="${modelo.seleccionado}" selectionMode="single"
 				paginator="true" rows="20"
@@ -20,10 +20,10 @@
 				<p:column headerText="Id" width="50">
 					<p:outputLabel value="${fila.id}" />
 				</p:column>
-				<p:column headerText="Primer Apellido" width="200" filterable="true" filterBy="${fila.primerApellido}">
+				<p:column headerText="Primer Apellido" width="200">
 					<p:outputLabel value="${fila.primerApellido}" />
 				</p:column>
-				<p:column headerText="Segundo Apellido" width="200" sortable="true" sortBy="${fila.segundoApellido}">
+				<p:column headerText="Segundo Apellido" width="200">
 					<p:outputLabel value="${fila.segundoApellido}" />
 				</p:column>
 				<p:column headerText="Nombre" width="200">
