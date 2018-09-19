@@ -21,6 +21,9 @@ public class AlumnoServ {
 	@Autowired
 	private DireccionServ direccionServ;
 	
+	@Autowired
+	private PadreServ padreServ;
+	
 	public Modelo<AlumnoEO> modeloTodos(){
 		List<AlumnoEO> listado;
 		
@@ -36,6 +39,7 @@ public class AlumnoServ {
 	public void guardar(AlumnoEO alumno) {
 		log.debug("Se guarda/actualiza alumno: {}", alumno);
 		direccionServ.guardar(alumno.getDireccion());
+		padreServ.guardar(alumno.getPadre());
 		alumnoDao.save(alumno);
 	}
 	

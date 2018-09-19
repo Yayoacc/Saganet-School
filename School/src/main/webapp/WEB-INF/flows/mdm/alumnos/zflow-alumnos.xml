@@ -35,21 +35,18 @@
 
 		<transition on="siguiente" to="agregarPadres">
 		 <set name="requestScope.alumno"
-				value="viewScope.modelo.seleccionad" />
+				value="viewScope.alumno" />
 		</transition>
-
 
 		<transition on="cancelar" to="agregarEditarCancelado" />
 	</view-state>
 
 	<view-state id="agregarPadres">
 		<on-entry>
-			<set name="viewScope.padre" value="requestScope.alumno" />
+			<set name="viewScope.alumno" value="requestScope.alumno" />
 		</on-entry>
-		
 		<transition on="guardar" to="agregarEditarExitoso">
-			
-			<evaluate expression="AlumnoServ.guardar(viewScope.padre)" />
+			<evaluate expression="AlumnoServ.guardar(viewScope.alumno)" />
 		</transition>
 	</view-state>
 
