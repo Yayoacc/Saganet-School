@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="Lista">
+		<on-entry>
+			<evaluate expression="PadreServ.modeloTodos()"
+				result="viewScope.padres" />
+		</on-entry>
+		<transition on="agregar" to="agregarEditar">
+			<evaluate expression="PadreServ.nuevo()"
+				result="requestScope.padre" />
+		</transition>
+		<transition on="editar" to="agregarEditar">
+			<set name="requestScope.padre" value="viewScope.padres.seleccionado" />
+		</transition>
+		<transition on="detalle" to="detalle">
+			<set name="requestScope.padre" value="viewScope.padres.seleccionado" />
+		</transition>
+	</view-state>
+	<view-state id="agregarEditar">
+		<on-entry>
+			<set name="viewScope.padre" value="requestScope.padre" />
+			<evaluate expression="DominiosServ.modeloGeneroDO()" result="viewScope.modeloGeneros" />
+		</on-entry>
+		<transition on="guardar" to="agregarEditarExitoso">
+			<evaluate expression="PadreServ.guardar(viewScope.padre)" />
+		</transition>
+		<transition on="cancelar" to="agregarEditarCancelado" />
+	</view-state>
+	<view-state id="detalle">
+		<on-entry>
+			<set name="viewScope.padre" value="requestScope.padre" />
+		</on-entry>	
+		<transition on="regresar" to="Lista" />
+	</view-state>
+	<end-state id="agregarEditarCancelado" />
+	<end-state id="agregarEditarExitoso" />	
+</flow>
