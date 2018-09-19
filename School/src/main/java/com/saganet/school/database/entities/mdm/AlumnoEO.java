@@ -55,9 +55,13 @@ public class AlumnoEO extends AuditObject {
 	@ManyToOne
 	private DireccionEO direccion;
 	
+	@ManyToOne
+	private PadreEO padre;
+	
 	// ===== Funciones propias =====
 	public AlumnoEO() {
 		direccion = new DireccionEO();
+		padre = new PadreEO();
 	}
 	
 	public String getNombreCompleto() {

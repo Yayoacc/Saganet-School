@@ -6,43 +6,61 @@
 
 	<view-state id="listado">
 		<on-entry>
-			<evaluate expression="AlumnoServ.modeloTodos()" result="viewScope.modelo" />
+			<evaluate expression="AlumnoServ.modeloTodos()"
+				result="viewScope.modelo" />
 		</on-entry>
-		
+
 		<transition on="agregar" to="agregarEditar">
-			<evaluate expression="AlumnoServ.nuevo()" result="requestScope.alumno" />
+			<evaluate expression="AlumnoServ.nuevo()"
+				result="requestScope.alumno" />
 		</transition>
-		
+
 		<transition on="editar" to="agregarEditar">
-			<set name="requestScope.alumno" value="viewScope.modelo.seleccionado" />
+			<set name="requestScope.alumno"
+				value="viewScope.modelo.seleccionado" />
 		</transition>
-		
+
 		<transition on="detalle" to="detalle">
-			<set name="requestScope.alumno" value="viewScope.modelo.seleccionado" />
+			<set name="requestScope.alumno"
+				value="viewScope.modelo.seleccionado" />
 		</transition>
 	</view-state>
-	
+
 	<view-state id="agregarEditar">
 		<on-entry>
 			<set name="viewScope.alumno" value="requestScope.alumno" />
-			<evaluate expression="DominiosServ.modeloGeneroDO()" result="viewScope.modeloGeneros" />
+			<evaluate expression="DominiosServ.modeloGeneroDO()"
+				result="viewScope.modeloGeneros" />
+		</on-entry>
+
+		<transition on="siguiente" to="agregarPadres">
+		 <set name="requestScope.alumno"
+				value="viewScope.modelo.seleccionad" />
+		</transition>
+
+
+		<transition on="cancelar" to="agregarEditarCancelado" />
+	</view-state>
+
+	<view-state id="agregarPadres">
+		<on-entry>
+			<set name="viewScope.padre" value="requestScope.alumno" />
 		</on-entry>
 		
 		<transition on="guardar" to="agregarEditarExitoso">
-			<evaluate expression="AlumnoServ.guardar(viewScope.alumno)" />
+			
+			<evaluate expression="AlumnoServ.guardar(viewScope.padre)" />
 		</transition>
-		
-		<transition on="cancelar" to="agregarEditarCancelado" />
 	</view-state>
-	
+
 	<view-state id="detalle">
 		<on-entry>
 			<set name="viewScope.alumno" value="requestScope.alumno" />
 		</on-entry>
-		
+
 		<transition on="regresar" to="listado" />
 	</view-state>
-	
+
 	<end-state id="agregarEditarExitoso" />
 	<end-state id="agregarEditarCancelado" />
 
