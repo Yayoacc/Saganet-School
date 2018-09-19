@@ -36,4 +36,23 @@ public class DireccionEO extends AuditObject {
 	private String numeroInterior;
 	
 	private Integer codigoPostal;
+	public String getDireccionCompleta() {
+		StringBuilder builder;
+
+		builder = new StringBuilder();
+		builder.append("Calle: ")
+			.append(calle)
+			.append(" Colonia")
+			.append(colonia)
+			.append(" No. Ex.: ")
+			.append(numeroExterior)
+			.append(" No. In: ")
+			.append(" C. P.: ")
+			.append(codigoPostal);
+		
+
+		return builder.toString();
+	}
 }
+
+

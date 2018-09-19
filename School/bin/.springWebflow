@@ -15,9 +15,5 @@
 			<file>src/main/webapp/WEB-INF/flows/catalogos/acciones/zflow-acciones.xml</file>
 			<name><![CDATA[zflow-acciones]]></name>
 		</config>
-		<config>
-			<file>src/main/webapp/WEB-INF/flows/mdm/padres/zflow-padres.xml</file>
-			<name><![CDATA[zflow-padres]]></name>
-		</config>
 	</configs>
 </webflow-project-description>
