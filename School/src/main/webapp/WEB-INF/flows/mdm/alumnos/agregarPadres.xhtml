@@ -6,7 +6,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
 	<title>School - Agregar Padre Alumno</title>
 </h:head>
 
@@ -16,21 +15,16 @@
 			<p:autoUpdate />
 		</p:growl>
 		<p:focus />
-		<p:panel header="Agregar Padre">
 		<p:panel header="Agregar Padre de Alumno">
 			<p:panel header="Datos Generales">
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Nombre" />
-					<p:inputText value="${padre.nombre}" />
 					<p:inputText value="${alumno.padre.nombre}" />
 					<p:outputLabel value="Primer Apellido" />
-					<p:inputText value="${padre.primerApellido}" />
 					<p:inputText value="${alumno.padre.primerApellido}" />
 					<p:outputLabel value="Segundo Apellido" />
-					<p:inputText value="${padre.segundoApellido}" />
 					<p:inputText value="${alumno.padre.segundoApellido}" />
 					<p:outputLabel value="Género" />
-					<p:selectOneMenu value="${padre.genero}">
 					<p:selectOneMenu value="${alumno.padre.genero}">
 						<f:selectItems value="${modeloGeneros.listado}" var="item"
 							itemLabel="${item.nombre}" itemValue="${item}" />
@@ -45,19 +39,14 @@
 			<p:panel header="Dirección">
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Calle" />
-					<p:inputText value="${padre.direccion.calle}" />
 					<p:inputText value="${alumno.padre.direccion.calle}" />
 					<p:outputLabel value="Número Exterior" />
-					<p:inputText value="${padre.direccion.numeroExterior}" />
 					<p:inputText value="${alumno.padre.direccion.numeroExterior}" />
 					<p:outputLabel value="Número Interior" />
-					<p:inputText value="${padre.direccion.numeroInterior}" />
 					<p:inputText value="${alumno.padre.direccion.numeroInterior}" />
 					<p:outputLabel value="Colonia" />
-					<p:inputText value="${padre.direccion.colonia}" />
 					<p:inputText value="${alumno.padre.direccion.colonia}" />
 					<p:outputLabel value="Código Postal" />
-					<p:inputText value="${padre.direccion.codigoPostal}" />
 					<p:inputText value="${alumno.padre.direccion.codigoPostal}" />
 				</p:panelGrid>
 			</p:panel>
