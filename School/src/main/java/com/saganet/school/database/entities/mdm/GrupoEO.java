@@ -1,10 +1,14 @@
 package com.saganet.school.database.entities.mdm;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -29,4 +33,12 @@ public class GrupoEO extends AuditObject{
 	
 	@NotBlank(message = "Falta nombre de grupo")
 	private Integer Cupo;
+	
+	@ManyToMany
+	@JoinTable(schema="mdm")
+	private Collection<ProfesorEO> profesor;
+	
+	@ManyToMany
+	@JoinTable(schema="mdm")
+	private Collection<AlumnoEO> alumno;
 }

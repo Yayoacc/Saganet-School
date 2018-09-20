@@ -43,11 +43,14 @@
 
 	<view-state id="agregarPadres">
 		<on-entry>
+			<evaluate expression="DominiosServ.modeloGeneroDO()"
+				result="viewScope.modeloGeneros" />
 			<set name="viewScope.alumno" value="requestScope.alumno" />
 		</on-entry>
 		<transition on="guardar" to="agregarEditarExitoso">
 			<evaluate expression="AlumnoServ.guardar(viewScope.alumno)" />
 		</transition>
+		<transition on="cancelar" to="agregarEditarCancelado" />
 	</view-state>
 
 	<view-state id="detalle">
