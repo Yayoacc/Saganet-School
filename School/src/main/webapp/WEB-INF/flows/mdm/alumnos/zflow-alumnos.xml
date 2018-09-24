@@ -31,9 +31,10 @@
 			<set name="viewScope.alumno" value="requestScope.alumno" />
 			<evaluate expression="DominiosServ.modeloGeneroDO()"
 				result="viewScope.modeloGeneros" />
+			<evaluate expression="PadreServ.modeloTodos()" result="viewScope.modeloPadre" />
 		</on-entry>
 
-		<transition on="siguiente" to="agregarPadres">
+		<transition on="agregarPadre" to="agregarPadres">
 
 		 <set name="requestScope.alumno"
 				value="viewScope.alumno" />

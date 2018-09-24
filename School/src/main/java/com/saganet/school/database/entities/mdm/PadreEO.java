@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.saganet.school.auditory.AuditObject;
 import com.saganet.school.database.domains.GeneroDO;
 
@@ -58,7 +60,17 @@ public class PadreEO extends AuditObject {
 	private DireccionEO direccion;
 	
 	// ===== Funciones propias =====
-		public PadreEO() {
-			direccion = new DireccionEO();
-		}
+	public PadreEO() {
+		direccion = new DireccionEO();
+	}
+	
+	@JsonIgnore
+	public String getNombreCompleto() {
+		StringBuilder builder;
+
+		builder = new StringBuilder();
+		builder.append(nombre).append(" ").append(primerApellido).append(" ").append(segundoApellido);
+
+		return builder.toString();
+	}
 }

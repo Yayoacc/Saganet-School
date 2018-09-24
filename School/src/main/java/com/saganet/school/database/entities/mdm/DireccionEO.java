@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.saganet.school.auditory.AuditObject;
 
 import lombok.Data;
@@ -38,6 +39,7 @@ public class DireccionEO extends AuditObject {
 	private Integer codigoPostal;
 	
 	//===== FUNCIONES EXTRAS ==============0
+	@JsonIgnore
 	public String getDireccionCompleta() {
 		StringBuilder builder = new StringBuilder();
 		

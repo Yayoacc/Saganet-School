@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.saganet.school.auditory.AuditObject;
 //import com.saganet.school.auditory.entityListeners.mdm.AlumnoEL;
 import com.saganet.school.database.domains.GeneroDO;
@@ -69,6 +70,7 @@ public class AlumnoEO extends AuditObject {
 		padre = new PadreEO();
 	}
 	
+	@JsonIgnore
 	public String getNombreCompleto() {
 		StringBuilder builder;
 

@@ -14,6 +14,8 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @MappedSuperclass
@@ -23,16 +25,20 @@ import lombok.Data;
 public abstract class AuditObject implements Serializable {
 	
 	@CreatedBy
+	@JsonIgnore
 	protected String createdBy;
 	
 	@CreatedDate
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonIgnore
 	protected Calendar createdDate;
 	
 	@LastModifiedBy
+	@JsonIgnore
 	protected String lastModifiedBy;
 	
 	@LastModifiedDate
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonIgnore
 	protected Calendar lastModifiedDate;
 }
