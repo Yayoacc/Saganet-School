@@ -1,6 +1,6 @@
 package com.saganet.school.database.entities.mdm;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,14 +31,15 @@ public class GrupoEO extends AuditObject{
 	@NotBlank(message = "Falta nombre de grupo")
 	private String nombre;
 	
-	@NotBlank(message = "Falta nombre de grupo")
 	private Integer Cupo;
 	
 	@ManyToMany
 	@JoinTable(schema="mdm")
-	private Collection<ProfesorEO> profesor;
+	private List<ProfesorEO> profesor;
+	
 	
 	@ManyToMany
 	@JoinTable(schema="mdm")
-	private Collection<AlumnoEO> alumno;
+	private List<AlumnoEO> alumno;
+	
 }
