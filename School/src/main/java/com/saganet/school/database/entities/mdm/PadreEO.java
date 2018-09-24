@@ -45,6 +45,15 @@ public class PadreEO extends AuditObject {
 	@Enumerated(EnumType.STRING)
 	private GeneroDO genero;
 	
+	@Column(columnDefinition = "text")
+	private String numeroTelefono;
+	
+	@Column(columnDefinition = "text")
+	private String correoElectronico;
+	
+	@Column(columnDefinition = "text")
+	private String parentesco;
+	
 	@OneToOne
 	private DireccionEO direccion;
 	
