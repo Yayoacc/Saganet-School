@@ -15,7 +15,7 @@
 			<p:autoUpdate />
 		</p:growl>
 		<p:focus />
-		<p:panel header="Agregar Padre de Alumno">
+		<p:panel header="Agregar Padre">
 			<p:panel header="Datos Generales">
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Nombre" />
@@ -29,11 +29,16 @@
 						<f:selectItems value="${modeloGeneros.listado}" var="item"
 							itemLabel="${item.nombre}" itemValue="${item}" />
 					</p:selectOneMenu>
-					
 					<p:outputLabel value="Fecha de Nacimiento" />
 					<p:calendar value="${alumno.padre.fechaNacimiento}"
 						converter="CalendarConverter" pattern="dd/MM/yyyy"
 						navigator="true" />
+					<p:outputLabel value="Correo Electrónico" />
+					 <p:inputText value="${alumno.padre.correoElectronico}" />
+					 <p:outputLabel value="Número de teléfono" />
+					 <p:inputText value="${alumno.padre.numeroTelefono}" />
+					 <p:outputLabel value="Parentesco" />
+					 <p:inputText value="${alumno.padre.parentesco}" />
 				</p:panelGrid>
 			</p:panel>
 			<p:separator />

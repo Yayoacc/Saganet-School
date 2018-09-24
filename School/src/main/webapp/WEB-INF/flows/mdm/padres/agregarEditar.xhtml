@@ -33,6 +33,12 @@
 					<p:calendar value="${padre.fechaNacimiento}"
 						converter="CalendarConverter" pattern="dd/MM/yyyy"
 						navigator="true" />
+					<p:outputLabel value="Correo Electrónico" />
+					 <p:inputText value="${padre.correoElectronico}" />
+					 <p:outputLabel value="Número de teléfono" />
+					 <p:inputText value="${padre.numeroTelefono}" />
+					 <p:outputLabel value="Parentesco" />
+					 <p:inputText value="${padre.parentesco}" />
 				</p:panelGrid>
 			</p:panel>
 			<p:separator />
