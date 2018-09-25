@@ -67,14 +67,20 @@
 		</p:panel>
 	</h:form>
 	
+<!-- 	ESTE ES EL FORM DEL DIALOGO -->
+	
 	<h:form>
 		<p:dialog widgetVar="dialogoSeleccionarPadreWV" header="Seleccionar Padre" modal="true" closable="true" closeOnEscape="true" visible="false">
+
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Padre" />
-				<p:selectOneMenu value="${alumno.padre}" converter="ObjectConverter">
+				<p:selectOneMenu value="${alumno.padre}" converter="ObjectConverter" filter="true">
 					<f:selectItems value="${modeloPadre.listado}" var="padre" itemLabel="${padre.nombreCompleto}" itemValue="${padre}" /> 
 				</p:selectOneMenu>
 			</p:panelGrid>
+
+
+			
 			<f:facet name="footer">
 				<p:commandButton value="Seleccionar" onclick="PF('dialogoSeleccionarPadreWV').hide()" update="${p:component('botonGuardar')} ${p:component('labelPadreNombre')}" />
 			</f:facet>

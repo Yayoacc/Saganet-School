@@ -39,7 +39,7 @@ public class AlumnoServ {
 	public void guardar(AlumnoEO alumno) {
 		log.debug("Se guarda/actualiza alumno: {}", alumno);
 		direccionServ.guardar(alumno.getDireccion());
-		padreServ.guardar(alumno.getPadre());
+		//padreServ.guardar(alumno.getPadre());
 		alumnoDao.save(alumno);
 	}
 	

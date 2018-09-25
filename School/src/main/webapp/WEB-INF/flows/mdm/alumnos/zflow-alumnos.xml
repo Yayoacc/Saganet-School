@@ -33,12 +33,16 @@
 				result="viewScope.modeloGeneros" />
 			<evaluate expression="PadreServ.modeloTodos()" result="viewScope.modeloPadre" />
 		</on-entry>
-
-		<transition on="agregarPadre" to="agregarPadres">
-
-		 <set name="requestScope.alumno"
-				value="viewScope.alumno" />
+		
+		<transition on="guardar" to="agregarEditarExitoso">
+			<evaluate expression="AlumnoServ.guardar(viewScope.alumno)" />
 		</transition>
+
+<!-- 		<transition on="agregarPadre" to="agregarPadres"> -->
+
+<!-- 		 <set name="requestScope.alumno" -->
+<!-- 				value="viewScope.alumno" /> -->
+<!-- 		</transition> -->
 
 		<transition on="cancelar" to="agregarEditarCancelado" />
 	</view-state>

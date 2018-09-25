@@ -67,7 +67,7 @@ public class AlumnoEO extends AuditObject {
 	// ===== Funciones propias =====
 	public AlumnoEO() {
 		direccion = new DireccionEO();
-		padre = new PadreEO();
+		//padre = new PadreEO();
 	}
 	
 	@JsonIgnore
@@ -83,4 +83,5 @@ public class AlumnoEO extends AuditObject {
 
 		return builder.toString();
 	}
+	
 }
