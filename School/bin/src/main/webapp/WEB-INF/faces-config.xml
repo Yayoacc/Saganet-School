@@ -16,5 +16,10 @@
 		<converter-id>CalendarConverter</converter-id>
 		<converter-class>com.saganet.school.converters.CalendarConverter</converter-class>
 	</converter>
+	
+	<converter>
+		<converter-id>ObjectConverter</converter-id>
+		<converter-class>com.saganet.school.converters.ObjectConverter</converter-class>
+	</converter>
 
 </faces-config>

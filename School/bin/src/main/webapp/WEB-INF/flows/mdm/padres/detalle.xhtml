@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>School - Detalle de Padre</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:panel header="${alumno.nombreCompleto}">
+			
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Id" />
+				<p:outputLabel value="${padre.id}" />
+				<p:outputLabel value="Nombre" />
+				<p:outputLabel value="${padre.nombre}" />
+				<p:outputLabel value="Primer Apellido" />
+				<p:outputLabel value="${padre.primerApellido}" />
+				<p:outputLabel value="Segundo Apellido" />
+				<p:outputLabel value="${padre.segundoApellido}" />
+				<p:outputLabel value="Género" />
+				<p:outputLabel value="${padre.genero.nombre}" />
+				<p:outputLabel value="Fecha de Nacimiento" />
+				<p:outputLabel value="${padre.fechaNacimiento.time}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:outputLabel>
+				<p:outputLabel value="Correo electrónico" />
+				<p:outputLabel value="${padre.correoElectronico}"/>
+				<p:outputLabel value="Número de teléfono" />
+				<p:outputLabel value="${padre.numeroTelefono}"/>
+				<p:outputLabel value="Parentesco" />
+				<p:outputLabel value="${padre.parentesco}"/>
+				<p:outputLabel value="Dirección"/>
+				<p:outputLabel value="${padre.direccion.direccionCompleta}"/>
+			</p:panelGrid>
+			<f:facet name="footer">
+				<p:commandButton value="Regresar" action="regresar" />
+			</f:facet>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>

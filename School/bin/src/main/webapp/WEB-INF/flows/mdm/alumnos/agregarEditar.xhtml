@@ -50,12 +50,41 @@
 					<p:inputText value="${alumno.direccion.codigoPostal}" />
 				</p:panelGrid>
 			</p:panel>
+			<p:separator />
+			<p:panel header="Padre">
+				<p:panelGrid columns="2">
+					<p:outputLabel id="labelPadreNombre" value="${alumno.padre.id == null ? 'No especificado' : alumno.padre.nombreCompleto}" />
+				</p:panelGrid>
+				<f:facet name="footer">
+					<p:commandButton value="Seleccionar" onclick="PF('dialogoSeleccionarPadreWV').show()" />
+				</f:facet>
+			</p:panel>
 
 			<f:facet name="footer">
-				<p:commandButton value="Siguiente" action="siguiente" />
+				<p:commandButton id="botonGuardar" value="Guardar" action="guardar" disabled="${alumno.padre.id == null}" />
 				<p:commandButton value="Cancelar" action="cancelar" immediate="true" />
 			</f:facet>
 		</p:panel>
+	</h:form>
+	
+<!-- 	ESTE ES EL FORM DEL DIALOGO -->
+	
+	<h:form>
+		<p:dialog widgetVar="dialogoSeleccionarPadreWV" header="Seleccionar Padre" modal="true" closable="true" closeOnEscape="true" visible="false">
+
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Padre" />
+				<p:selectOneMenu value="${alumno.padre}" converter="ObjectConverter" filter="true">
+					<f:selectItems value="${modeloPadre.listado}" var="padre" itemLabel="${padre.nombreCompleto}" itemValue="${padre}" /> 
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+
+			
+			<f:facet name="footer">
+				<p:commandButton value="Seleccionar" onclick="PF('dialogoSeleccionarPadreWV').hide()" update="${p:component('botonGuardar')} ${p:component('labelPadreNombre')}" />
+			</f:facet>
+		</p:dialog>
 	</h:form>
 </h:body>
 

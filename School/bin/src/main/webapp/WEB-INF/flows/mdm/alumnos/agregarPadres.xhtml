@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>School - Agregar Padre Alumno</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:growl>
+			<p:autoUpdate />
+		</p:growl>
+		<p:focus />
+		<p:panel header="Agregar Padre">
+			<p:panel header="Datos Generales">
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Nombre" />
+					<p:inputText value="${alumno.padre.nombre}" />
+					<p:outputLabel value="Primer Apellido" />
+					<p:inputText value="${alumno.padre.primerApellido}" />
+					<p:outputLabel value="Segundo Apellido" />
+					<p:inputText value="${alumno.padre.segundoApellido}" />
+					<p:outputLabel value="Género" />
+					<p:selectOneMenu value="${alumno.padre.genero}">
+						<f:selectItems value="${modeloGeneros.listado}" var="item"
+							itemLabel="${item.nombre}" itemValue="${item}" />
+					</p:selectOneMenu>
+					<p:outputLabel value="Fecha de Nacimiento" />
+					<p:calendar value="${alumno.padre.fechaNacimiento}"
+						converter="CalendarConverter" pattern="dd/MM/yyyy"
+						navigator="true" />
+					<p:outputLabel value="Correo Electrónico" />
+					 <p:inputText value="${alumno.padre.correoElectronico}" />
+					 <p:outputLabel value="Número de teléfono" />
+					 <p:inputText value="${alumno.padre.numeroTelefono}" />
+					 <p:outputLabel value="Parentesco" />
+					 <p:inputText value="${alumno.padre.parentesco}" />
+				</p:panelGrid>
+			</p:panel>
+			<p:separator />
+			<p:panel header="Dirección">
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Calle" />
+					<p:inputText value="${alumno.padre.direccion.calle}" />
+					<p:outputLabel value="Número Exterior" />
+					<p:inputText value="${alumno.padre.direccion.numeroExterior}" />
+					<p:outputLabel value="Número Interior" />
+					<p:inputText value="${alumno.padre.direccion.numeroInterior}" />
+					<p:outputLabel value="Colonia" />
+					<p:inputText value="${alumno.padre.direccion.colonia}" />
+					<p:outputLabel value="Código Postal" />
+					<p:inputText value="${alumno.padre.direccion.codigoPostal}" />
+				</p:panelGrid>
+			</p:panel>
+
+			<f:facet name="footer">
+				<p:commandButton value="Guardar" action="guardar" />
+				<p:commandButton value="Cancelar" action="cancelar" immediate="true" />
+			</f:facet>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>
