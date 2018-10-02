@@ -38,11 +38,13 @@
 		<on-entry>
 			<set name="viewScope.grupo" value="requestScope.grupo" />
 			<evaluate expression="AlumnoServ.modeloTodos()" result="viewScope.modeloAlumno" />
+			<evaluate expression="GrupoServ.AlumnosGrupo(viewScope.grupo)" result="viewScope.modeloAlumnos" />
 		</on-entry>
 		<transition on="regresar" to="listado" />
 		<transition on="agregarAlumnos" to="detalle">
 			<set name="viewScope.alumno" value="viewScope.modeloAlumno.seleccionado" />
 			<evaluate expression="GrupoServ.addAlumnos(viewScope.alumno, viewScope.grupo)" />
+			<set name="requestScope.grupo" value="viewScope.grupo" />
 		</transition>
 	</view-state>	
 	

@@ -19,42 +19,68 @@
 					<p:outputLabel value="Nombre" />
 					<p:outputLabel value="${grupo.nombre}" />
 					<p:outputLabel value="Cupo" />
-					<p:outputLabel value="${grupo.cupo}" />		
+					<p:outputLabel value="${grupo.cupo}" />
 				</p:panelGrid>
 			</center>
 		</p:panel>
 		<p:separator />
-			<p:panel header="Alumnos">
-				<f:facet name="footer">
-					<p:commandButton value="Agregar" onclick="PF('dialogoSeleccionarAlumnoWV').show()" />
-					<p:commandButton value="Regresar" action="regresar" />
-				</f:facet>
-			</p:panel>
-	</h:form>
-	<h:form>
-		<p:dialog widgetVar="dialogoSeleccionarAlumnoWV" header="Seleccionar Alumno" modal="true" closable="true" closeOnEscape="true" visible="false">
-			<p:dataTable value="${modeloAlumno.listado}" var="fila" rowKey="${fila.id}" filteredValue="${fila.nombre}"
-				selection="${modeloAlumno.seleccionado}" selectionMode="single" scrollable="true" crollHeight="150"
-				paginator="true" rows="15" paginatorAlwaysVisible="false" paginatorPosition="bottom" >
-				<p:column headerText="Id" width="50" rowSelectMode="checkbox" stickyHeader="true">
+		<p:panel header="Alumnos">
+			<p:dataTable value="${modeloAlumnos.listado}" var="fila"
+				rowKey="${fila.id}" filteredValue="${fila.nombre}"
+				scrollable="true" crollHeight="150" paginator="true" rows="15"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<p:column headerText="Id" width="50" rowSelectMode="checkbox"
+					stickyHeader="true">
 					<p:outputLabel value="${fila.id}" />
 				</p:column>
-				
+				<p:column headerText="Nombre" width="200">
+					<p:outputLabel value="${fila.nombre}" />
+				</p:column>
+				<p:column headerText="Apellido Paterno" width="200">
+					<p:outputLabel value="${fila.primerApellido}" />
+				</p:column>
+				<p:column headerText="Apellido materno" width="200">
+					<p:outputLabel value="${fila.segundoApellido}" />
+				</p:column>
+			</p:dataTable>
+			<f:facet name="footer">
+				<p:commandButton value="Agregar"
+					onclick="PF('dialogoSeleccionarAlumnoWV').show()" />
+				<p:commandButton value="Regresar" action="regresar" />
+			</f:facet>
+		</p:panel>
+	</h:form>
+	<h:form>
+		<p:dialog widgetVar="dialogoSeleccionarAlumnoWV"
+			header="Seleccionar Alumno" modal="true" closable="true"
+			closeOnEscape="true" visible="false">
+			<p:dataTable value="${modeloAlumno.listado}" var="fila"
+				rowKey="${fila.id}" filteredValue="${fila.nombre}"
+				selection="${modeloAlumno.seleccionado}" selectionMode="single"
+				scrollable="true" crollHeight="150" paginator="true" rows="15"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<p:column headerText="Id" width="50" rowSelectMode="checkbox"
+					stickyHeader="true">
+					<p:outputLabel value="${fila.id}" />
+				</p:column>
+
 				<p:column headerText="Primer Apellido" width="200">
 					<p:outputLabel value="${fila.primerApellido}" />
 				</p:column>
 				<p:column headerText="Segundo Apellido" width="200">
 					<p:outputLabel value="${fila.segundoApellido}" />
 				</p:column>
-				
+
 				<p:column headerText="Nombre" width="200">
 					<p:outputLabel value="${fila.nombre}" />
 				</p:column>
 			</p:dataTable>
 
-			
+
 			<f:facet name="footer">
-				<p:commandButton value="Agregar alumno(s)" onclick="PF('dialogoSeleccionarAlumnoWV').hide()" action="agregarAlumnos" />
+				<p:commandButton value="Agregar alumno(s)"
+					onclick="PF('dialogoSeleccionarAlumnoWV').hide()"
+					action="agregarAlumnos" />
 			</f:facet>
 		</p:dialog>
 	</h:form>
