@@ -54,9 +54,6 @@ public class ProfesorEO extends AuditObject{
 	
 	@OneToOne
 	private DireccionEO direccion;
-
-	@ManyToMany(mappedBy="profesor")
-	private Collection<GrupoEO> grupo;
 	
 	public ProfesorEO() {
 		direccion = new DireccionEO();

@@ -27,8 +27,8 @@ public class AlumnoServ {
 	public Modelo<AlumnoEO> modeloTodos(){
 		List<AlumnoEO> listado;
 		
-		listado = alumnoDao.findFirst100ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
-//		listado = alumnoDao.findAll();
+		//listado = alumnoDao.findFirst100ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
+    	listado = alumnoDao.findAll();
 		return new Modelo<>(listado);
 	}
 	

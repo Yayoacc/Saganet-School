@@ -37,10 +37,14 @@
 	<view-state id="detalle">
 		<on-entry>
 			<set name="viewScope.grupo" value="requestScope.grupo" />
+			<evaluate expression="AlumnoServ.modeloTodos()" result="viewScope.modeloAlumno" />
 		</on-entry>
-		
 		<transition on="regresar" to="listado" />
-	</view-state>
+		<transition on="agregarAlumnos" to="detalle">
+			<set name="viewScope.alumno" value="viewScope.modeloAlumno.seleccionado" />
+			<evaluate expression="GrupoServ.addAlumnos(viewScope.alumno, viewScope.grupo)" />
+		</transition>
+	</view-state>	
 	
 	<end-state id="agregarEditarExitoso" />
 	<end-state id="agregarEditarCancelado" />
