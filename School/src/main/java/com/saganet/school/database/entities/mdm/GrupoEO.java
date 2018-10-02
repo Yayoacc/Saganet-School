@@ -1,14 +1,10 @@
 package com.saganet.school.database.entities.mdm;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -33,13 +29,15 @@ public class GrupoEO extends AuditObject{
 	
 	private Integer Cupo;
 	
-	@ManyToMany
-	@JoinTable(schema="mdm")
-	private List<ProfesorEO> profesor;
+//	@ManyToMany
+//	@JoinTable(schema="mdm")
+//	private List<ProfesorEO> profesor = new ArrayList<>();
+//	
+//	@ManyToMany
+//	@JoinTable(schema="mdm")
+//	private List<AlumnoEO> alumno;
 	
-	
-	@ManyToMany
-	@JoinTable(schema="mdm")
-	private List<AlumnoEO> alumno;
-	
+//	public void nuevoProfesor(ProfesorEO p) {
+//		profesor.add(p);
+//	}
 }

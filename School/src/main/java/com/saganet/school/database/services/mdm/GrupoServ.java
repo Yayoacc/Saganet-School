@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.saganet.school.database.daos.mdm.GrupoDao;
+import com.saganet.school.database.daos.mdm.ProfesorDao;
 import com.saganet.school.database.entities.mdm.GrupoEO;
 import com.saganet.school.utils.Modelo;
 
 @Service("GrupoServ")
 public class GrupoServ {
 	@Autowired GrupoDao grupoDao;
+	@Autowired ProfesorDao profesorDao;
 	public Modelo<GrupoEO> modeloTodos(){
 		List<GrupoEO> listado;
 		listado = grupoDao.findAll();
@@ -23,5 +25,9 @@ public class GrupoServ {
 	public void guardar(GrupoEO grupo) {
 		grupoDao.save(grupo);
 	}
+	
+//	public void nuevoProfesor(GrupoEO g, ProfesorEO p) {
+//		g.nuevoProfesor(p);
+//	}
 
 }

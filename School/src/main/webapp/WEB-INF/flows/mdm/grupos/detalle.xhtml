@@ -25,10 +25,40 @@
 			</center>
 			<f:facet name="footer">
 				<p:commandButton value="Regresar" action="regresar" />
-				<p:commandButton value="Agregar profesor" action="" />
+				<p:commandButton value="Asignar profesor" action="asignarProfesor" onclick="PF('dialogoAsignarProfesorWV').show()"  />
 			</f:facet>
 		</p:panel>
 	</h:form>
+	
+	<h:form>
+		<p:dialog widgetVar="dialogoAsignarProfesorWV" header="Asignar Profesor" modal="true" closable="true" closeOnEscape="true" visible="false">
+
+			<p:dataTable value="${modeloProfesor.listado}" var="fila" rowKey="${fila.id}"
+				selection="${modeloProfesor.seleccionado}" selectionMode="single"
+				paginator="true" rows="10" paginatorAlwaysVisible="false" paginatorPosition="bottom" >
+				<p:column headerText="Id" width="50">
+					<p:outputLabel value="${fila.id}" />
+				</p:column>
+				
+				<p:column headerText="Primer Apellido" width="200">
+					<p:outputLabel value="${fila.primerApellido}" />
+				</p:column>
+				<p:column headerText="Segundo Apellido" width="200">
+					<p:outputLabel value="${fila.segundoApellido}" />
+				</p:column>
+				
+				<p:column headerText="Nombre" width="200">
+					<p:outputLabel value="${fila.nombre}" />
+				</p:column>
+			</p:dataTable>
+
+			
+			<f:facet name="footer">
+				<p:commandButton value="Asignar" onclick="PF('dialogoAsignarProfesorWV').hide()" action="asignar" /> 
+			</f:facet>
+		</p:dialog>
+	</h:form>
+	
 </h:body>
 
 </html>
