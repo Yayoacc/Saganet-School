@@ -45,15 +45,9 @@
 		
 		<transition on="regresar" to="listado" />
 		
-		<transition on="asignarProfesor">
-			<evaluate expression="GrupoProfesorServ.nuevo()" result="viewScope.grupoProfesor"></evaluate>
-		</transition>
-		
-		<transition on="asignar" to="detalle">
+		<transition on="asignarProfesor" to="detalle">
 			<set name="requestScope.grupo" value="viewScope.grupo" />
-			<set name="viewScope.grupoProfesor.grupo" value="viewScope.grupo"/>
-			<set name="viewScope.grupoProfesor.profesor" value="viewScope.modeloProfesor.seleccionado"/>
-			<evaluate expression="GrupoProfesorServ.guardar(viewScope.grupoProfesor)"/>
+			<evaluate expression="GrupoServ.addProfesores(viewScope.modeloProfesor.seleccionado, viewScope.grupo)" />
 		</transition>
 	</view-state>
 	

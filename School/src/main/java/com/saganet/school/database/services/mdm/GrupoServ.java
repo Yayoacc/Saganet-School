@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.saganet.school.database.daos.mdm.GrupoDao;
 import com.saganet.school.database.daos.mdm.ProfesorDao;
 import com.saganet.school.database.entities.mdm.GrupoEO;
+import com.saganet.school.database.entities.mdm.ProfesorEO;
 import com.saganet.school.utils.Modelo;
 
 @Service("GrupoServ")
@@ -23,6 +24,12 @@ public class GrupoServ {
 		return new GrupoEO();
 	}
 	public void guardar(GrupoEO grupo) {
+		grupoDao.save(grupo);
+	}
+	
+	public void addProfesores(ProfesorEO profesor, GrupoEO grupo) {
+		List<ProfesorEO>profesores = grupo.addProfesor(profesor);
+		grupo.setProfesores(profesores);
 		grupoDao.save(grupo);
 	}
 	
