@@ -27,8 +27,8 @@
 		<p:separator />
 		<p:panel header="Alumnos">
 			<p:dataTable value="${modeloAlumnos.listado}" var="fila"
-				rowKey="${fila.id}" filteredValue="${fila.nombre}"
-				scrollable="true" crollHeight="150" paginator="true" rows="15"
+				rowKey="${fila.id}" filteredValue="${fila.nombre}" scrollable="true"
+				crollHeight="150" paginator="true" rows="15"
 				paginatorAlwaysVisible="false" paginatorPosition="bottom">
 				<p:column headerText="Id" width="50" rowSelectMode="checkbox"
 					stickyHeader="true">
@@ -44,6 +44,11 @@
 					<p:outputLabel value="${fila.segundoApellido}" />
 				</p:column>
 			</p:dataTable>
+			<f:facet name="footer">
+
+				<p:commandButton value="Agregar"
+					onclick="PF('dialogoSeleccionarAlumnoWV').show()" />
+			</f:facet>
 		</p:panel>
 		<p:separator />
 		<p:panel header="Profesores">
@@ -66,9 +71,6 @@
 				</p:column>
 			</p:dataTable>
 			<f:facet name="footer">
-
-				<p:commandButton value="Agregar"
-					onclick="PF('dialogoSeleccionarAlumnoWV').show()" />
 				<p:commandButton value="Asignar profesor"
 					onclick="PF('dialogoAsignarProfesorWV').show()" />
 				<p:commandButton value="Regresar" action="regresar" />

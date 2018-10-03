@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.saganet.school.auditory.AuditObject;
 
@@ -37,10 +39,12 @@ public class GrupoEO extends AuditObject{
 	private Integer Cupo;	
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	@JoinTable(schema="mdm", name = "grupos_alumnos")
 	private List<AlumnoEO> alumnos = new ArrayList<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	@JoinTable(schema="mdm", name = "grupos_profesores")
 	private List<ProfesorEO> profesores = new ArrayList<>();
 
