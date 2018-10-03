@@ -39,7 +39,7 @@
 	<view-state id="detalle">
 		<on-entry>
 			<set name="viewScope.grupo" value="requestScope.grupo" />
-<!-- 			<set name="viewScope.profesor" value="requestScope.profesor"></set> -->
+			<evaluate expression="GrupoServ.ProfesoresGrupo(viewScope.grupo)" result="viewScope.modeloProfesores"/>
 			<evaluate expression="ProfesorServ.modeloProf()" result="viewScope.modeloProfesor"/>
 		</on-entry>
 		

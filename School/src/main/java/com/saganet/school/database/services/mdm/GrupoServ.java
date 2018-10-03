@@ -33,8 +33,10 @@ public class GrupoServ {
 		grupoDao.save(grupo);
 	}
 	
-//	public void nuevoProfesor(GrupoEO g, ProfesorEO p) {
-//		g.nuevoProfesor(p);
-//	}
+	public Modelo<ProfesorEO> ProfesoresGrupo(GrupoEO grupo){
+		List<ProfesorEO> listado;
+		listado = grupo.getProfesores();
+		return new Modelo<>(listado);
+	}
 
 }
