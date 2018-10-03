@@ -38,4 +38,8 @@ public class ProfesorServ {
 		direccionServ.guardar(profesor.getDireccion());
 		profesorDao.save(profesor);
 	}
+	
+//	public void asignarGrupo(ProfesorEO p, GrupoEO g) {
+//		p.asignarGrupo(g);
+//	}
 }
