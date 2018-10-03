@@ -31,9 +31,12 @@ public class GrupoServ {
 		grupoDao.save(grupo);
 	}
 	
-	public void addAlumnos(AlumnoEO alumno, GrupoEO grupo) {
-		List<AlumnoEO>alumnos = grupo.addAlumno(alumno);
-		grupo.setAlumnos(alumnos);
+	public void addAlumnos(List<AlumnoEO> alumno, GrupoEO grupo) {
+		grupo.addAlumno(alumno);
+		grupoDao.save(grupo);
+	}
+	public void borrarAlumnos(AlumnoEO alumno, GrupoEO grupo) {
+		grupo.borrarAlumno(alumno);
 		grupoDao.save(grupo);
 	}
 	public Modelo<AlumnoEO> AlumnosGrupo(GrupoEO grupo){
@@ -47,7 +50,6 @@ public class GrupoServ {
 		grupo.setProfesores(profesores);
 		grupoDao.save(grupo);
 	}
-	
 	public Modelo<ProfesorEO> ProfesoresGrupo(GrupoEO grupo){
 		List<ProfesorEO> listado;
 		listado = grupo.getProfesores();

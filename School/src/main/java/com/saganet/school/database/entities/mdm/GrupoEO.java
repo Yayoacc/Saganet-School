@@ -48,8 +48,8 @@ public class GrupoEO extends AuditObject{
 	@JoinTable(schema="mdm", name = "grupos_profesores")
 	private List<ProfesorEO> profesores = new ArrayList<>();
 
-	public List<AlumnoEO> addAlumno(AlumnoEO alumno) {
-	        alumnos.add(alumno);
+	public List<AlumnoEO> addAlumno(List<AlumnoEO> alumno) {
+	        alumnos.addAll(alumno);
 	        return alumnos;
 	}
 
@@ -58,7 +58,8 @@ public class GrupoEO extends AuditObject{
 	        return profesores;
 	}
 	
-//	public void removeAlumno(AlumnoEO alumno) {
-//  alumnos.remove(alumno);
-//}
+	public List<AlumnoEO> borrarAlumno(AlumnoEO alumno) {
+		alumnos.remove(alumno);
+		return alumnos;
+    }
 }

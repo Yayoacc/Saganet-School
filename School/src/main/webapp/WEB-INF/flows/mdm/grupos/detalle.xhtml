@@ -25,13 +25,14 @@
 
 		</p:panel>
 		<p:separator />
-		<p:panel header="Alumnos">
+		<p:panel header="Alumnos" widgetVar="panelAlumnosWV">
 			<p:dataTable value="${modeloAlumnos.listado}" var="fila"
 				rowKey="${fila.id}" filteredValue="${fila.nombre}" scrollable="true"
 				crollHeight="150" paginator="true" rows="15"
-				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				selection="${modeloAlumnos.seleccionado}" selectionMode="single"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom" id="tablaAlumnos">
 				<p:column headerText="Id" width="50" rowSelectMode="checkbox"
-					stickyHeader="true">
+					stickyHeader="true" >
 					<p:outputLabel value="${fila.id}" />
 				</p:column>
 				<p:column headerText="Nombre" width="200">
@@ -46,8 +47,9 @@
 			</p:dataTable>
 			<f:facet name="footer">
 
-				<p:commandButton value="Agregar"
+				<p:commandButton value="Agregar Alumno(s)"
 					onclick="PF('dialogoSeleccionarAlumnoWV').show()" />
+   			    <p:commandButton value="Borrar Alumno" icon="ui-icon-trash" action="borrarAlumno" update="${p:component('tablaAlumnos')}" />
 			</f:facet>
 		</p:panel>
 		<p:separator />
@@ -83,10 +85,10 @@
 			closeOnEscape="true" visible="false">
 			<p:dataTable value="${modeloAlumno.listado}" var="fila"
 				rowKey="${fila.id}" filteredValue="${fila.nombre}"
-				selection="${modeloAlumno.seleccionado}" selectionMode="single"
+				selection="${modeloAlumno.listado}" selectionMode="multiple"
 				scrollable="true" crollHeight="150" paginator="true" rows="15"
-				paginatorAlwaysVisible="false" paginatorPosition="bottom">
-				<p:column headerText="Id" width="50" rowSelectMode="checkbox"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom" rowHover="true">
+				<p:column headerText="Id" width="50"
 					stickyHeader="true">
 					<p:outputLabel value="${fila.id}" />
 				</p:column>
@@ -107,7 +109,7 @@
 			<f:facet name="footer">
 				<p:commandButton value="Agregar alumno(s)"
 					onclick="PF('dialogoSeleccionarAlumnoWV').hide()"
-					action="agregarAlumnos" />
+					action="agregarAlumnos" update="${p:component('tablaAlumnos')}" />
 			</f:facet>
 		</p:dialog>
 	</h:form>

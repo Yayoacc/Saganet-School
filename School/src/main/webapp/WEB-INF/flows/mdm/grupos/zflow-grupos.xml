@@ -46,14 +46,19 @@
 		</on-entry>
 		<transition on="regresar" to="listado" />
 		
-		<transition on="agregarAlumnos" to="detalle">
-			<set name="viewScope.alumno" value="viewScope.modeloAlumno.seleccionado" />
-			<evaluate expression="GrupoServ.addAlumnos(viewScope.alumno, viewScope.grupo)" />
-			<set name="requestScope.grupo" value="viewScope.grupo" />
+		<transition on="agregarAlumnos">
+			<evaluate expression="GrupoServ.addAlumnos(viewScope.modeloAlumno.listado, viewScope.grupo)" />
+			<evaluate expression="GrupoServ.AlumnosGrupo(viewScope.grupo)" result="viewScope.modeloAlumnos" />
 		</transition>	
 		<transition on="asignarProfesor" to="detalle">
 			<set name="requestScope.grupo" value="viewScope.grupo" />
 			<evaluate expression="GrupoServ.addProfesores(viewScope.modeloProfesor.seleccionado, viewScope.grupo)" />
+		</transition>
+		<transition on="borrarAlumno">
+			<evaluate expression="GrupoServ.borrarAlumnos(modeloAlumnos.seleccionado, viewScope.grupo)"></evaluate>
+		</transition>
+		<transition on="mensaje">
+			<evaluate expression="GrupoServ.mensaje()"></evaluate>
 		</transition>
 	</view-state>
 	
