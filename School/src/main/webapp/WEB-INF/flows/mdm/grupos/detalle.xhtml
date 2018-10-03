@@ -48,6 +48,31 @@
 
 				<p:commandButton value="Agregar"
 					onclick="PF('dialogoSeleccionarAlumnoWV').show()" />
+			</f:facet>
+		</p:panel>
+		<p:separator />
+		<p:panel header="Profesores">
+			<p:dataTable value="${modeloProfesores.listado}" var="fila"
+				rowKey="${fila.id}" filteredValue="${fila.nombre}" scrollable="true"
+				crollHeight="150" paginator="true" rows="15"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<p:column headerText="Id" width="50" rowSelectMode="checkbox"
+					stickyHeader="true">
+					<p:outputLabel value="${fila.id}" />
+				</p:column>
+				<p:column headerText="Nombre" width="200">
+					<p:outputLabel value="${fila.nombre}" />
+				</p:column>
+				<p:column headerText="Apellido Paterno" width="200">
+					<p:outputLabel value="${fila.primerApellido}" />
+				</p:column>
+				<p:column headerText="Apellido materno" width="200">
+					<p:outputLabel value="${fila.segundoApellido}" />
+				</p:column>
+			</p:dataTable>
+			<f:facet name="footer">
+				<p:commandButton value="Asignar profesor"
+					onclick="PF('dialogoAsignarProfesorWV').show()" />
 				<p:commandButton value="Regresar" action="regresar" />
 			</f:facet>
 		</p:panel>
