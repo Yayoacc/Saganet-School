@@ -1,8 +1,6 @@
 package com.saganet.school.database.entities.mdm;
 
 import java.util.Calendar;
-import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 //import javax.persistence.EntityListeners;
@@ -60,6 +58,7 @@ public class AlumnoEO extends AuditObject {
 	@ManyToOne
 	private PadreEO padre;
 	
+
 	// ===== Funciones propias =====
 	public AlumnoEO() {
 		direccion = new DireccionEO();

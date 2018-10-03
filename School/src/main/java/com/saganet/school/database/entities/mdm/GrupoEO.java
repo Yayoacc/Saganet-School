@@ -40,21 +40,21 @@ public class GrupoEO extends AuditObject{
 	@JoinTable(schema="mdm", name = "grupos_alumnos")
 	private List<AlumnoEO> alumnos = new ArrayList<>();
 	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(schema="mdm", name = "grupos_profesores")
+	private List<ProfesorEO> profesores = new ArrayList<>();
+
 	public List<AlumnoEO> addAlumno(AlumnoEO alumno) {
 	        alumnos.add(alumno);
 	        return alumnos;
 	}
+
+	public List<ProfesorEO> addProfesor(ProfesorEO profesor) {
+		profesores.add(profesor);
+	        return profesores;
+	}
+	
 //	public void removeAlumno(AlumnoEO alumno) {
-//        alumnos.remove(alumno);
-//    }
-//	@Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof GrupoEO)) return false;
-//        return id != null && id.equals(((GrupoEO) o).id);
-//    }
-//	@Override
-//    public int hashCode() {
-//        return 31;
-//    }	
+//  alumnos.remove(alumno);
+//}
 }

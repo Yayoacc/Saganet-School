@@ -7,6 +7,7 @@
 	<view-state id="listado">
 		<on-entry>
 			<evaluate expression="GrupoServ.modeloTodos()" result="viewScope.modelo" />
+			
 		</on-entry>
 		
 		<transition on="agregar" to="agregarEditar">
@@ -19,6 +20,7 @@
 		
 		<transition on="detalle" to="detalle">
 			<set name="requestScope.grupo" value="viewScope.modelo.seleccionado" />
+<!-- 			<set name="requestScope.profesor" value="viewScope.profesor"/> -->
 		</transition>
 	</view-state>
 	
@@ -39,14 +41,21 @@
 			<set name="viewScope.grupo" value="requestScope.grupo" />
 			<evaluate expression="AlumnoServ.modeloTodos()" result="viewScope.modeloAlumno" />
 			<evaluate expression="GrupoServ.AlumnosGrupo(viewScope.grupo)" result="viewScope.modeloAlumnos" />
+			<evaluate expression="GrupoServ.ProfesoresGrupo(viewScope.grupo)" result="viewScope.modeloProfesores"/>
+			<evaluate expression="ProfesorServ.modeloProf()" result="viewScope.modeloProfesor"/>
 		</on-entry>
 		<transition on="regresar" to="listado" />
+		
 		<transition on="agregarAlumnos" to="detalle">
 			<set name="viewScope.alumno" value="viewScope.modeloAlumno.seleccionado" />
 			<evaluate expression="GrupoServ.addAlumnos(viewScope.alumno, viewScope.grupo)" />
 			<set name="requestScope.grupo" value="viewScope.grupo" />
+		</transition>	
+		<transition on="asignarProfesor" to="detalle">
+			<set name="requestScope.grupo" value="viewScope.grupo" />
+			<evaluate expression="GrupoServ.addProfesores(viewScope.modeloProfesor.seleccionado, viewScope.grupo)" />
 		</transition>
-	</view-state>	
+	</view-state>
 	
 	<end-state id="agregarEditarExitoso" />
 	<end-state id="agregarEditarCancelado" />
