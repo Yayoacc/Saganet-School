@@ -23,42 +23,50 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(schema="mdm", name = "grupos")
+@Table(schema = "mdm", name = "grupos")
 @SuppressWarnings("serial")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class GrupoEO extends AuditObject{
+public class GrupoEO extends AuditObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@Column(columnDefinition = "text")
 	@NotBlank(message = "Falta nombre de grupo")
 	private String nombre;
-	
-	private Integer Cupo;	
-	
+
+	private Integer Cupo;
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
-	@JoinTable(schema="mdm", name = "grupos_alumnos")
+	@JoinTable(schema = "mdm", name = "grupos_alumnos")
 	private List<AlumnoEO> alumnos = new ArrayList<>();
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
-	@JoinTable(schema="mdm", name = "grupos_profesores")
+	@JoinTable(schema = "mdm", name = "grupos_profesores")
 	private List<ProfesorEO> profesores = new ArrayList<>();
 
 	public List<AlumnoEO> addAlumno(AlumnoEO alumno) {
-	        alumnos.add(alumno);
-	        return alumnos;
+		alumnos.add(alumno);
+		return alumnos;
 	}
 
 	public List<ProfesorEO> addProfesor(ProfesorEO profesor) {
 		profesores.add(profesor);
-	        return profesores;
+		return profesores;
+	}
+
+	public void borrarProfesor(ProfesorEO profesor) {
+		profesores.remove(profesor);
 	}
 	
-//	public void removeAlumno(AlumnoEO alumno) {
-//  alumnos.remove(alumno);
-//}
+	public boolean existeProfesor(ProfesorEO profesor) {
+		boolean existe=false;
+		if(profesores.indexOf(profesor)!=-1) {
+			existe=true;
+		}
+		return existe;
+	}
 }

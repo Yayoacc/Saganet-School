@@ -56,13 +56,13 @@
 					<p:outputLabel id="labelPadreNombre" value="${alumno.padre.id == null ? 'No especificado' : alumno.padre.nombreCompleto}" />
 				</p:panelGrid>
 				<f:facet name="footer">
-					<p:commandButton value="Seleccionar" onclick="PF('dialogoSeleccionarPadreWV').show()" />
+					<p:commandButton value="Seleccionar" onclick="PF('dialogoSeleccionarPadreWV').show()" icon="ui-icon-person" />
 				</f:facet>
 			</p:panel>
 
 			<f:facet name="footer">
-				<p:commandButton id="botonGuardar" value="Guardar" action="guardar" disabled="${alumno.padre.id == null}" />
-				<p:commandButton value="Cancelar" action="cancelar" immediate="true" />
+				<p:commandButton id="botonGuardar" value="Guardar" action="guardar" disabled="${alumno.padre.id == null}" icon="ui-icon-disk" />
+				<p:commandButton value="Cancelar" action="cancelar" immediate="true" icon="ui-icon-close"/>
 			</f:facet>
 		</p:panel>
 	</h:form>

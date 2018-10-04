@@ -27,8 +27,8 @@ public class AlumnoTest {
 	@Test
 	public void query01() {
 		List<AlumnoEO> listado;
-		Optional<AlumnoEO> optionalAlumno;
-		AlumnoEO alumno;
+//		Optional<AlumnoEO> optionalAlumno;
+//		AlumnoEO alumno;
 		int i;
 
 		listado = alumnoDao.findFirst100ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();

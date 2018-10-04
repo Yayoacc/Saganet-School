@@ -11,6 +11,7 @@
 
 <h:body>
 	<h:form>
+	<p:growl id="growl" showDetail="true" sticky="true" /> 
 		<p:panel header="${grupo.nombre}">
 			<center>
 				<p:panelGrid columns="2">
@@ -52,8 +53,8 @@
 		</p:panel>
 		<p:separator />
 		<p:panel header="Profesores">
-			<p:dataTable value="${modeloProfesores.listado}" var="fila"
-				rowKey="${fila.id}" filteredValue="${fila.nombre}" scrollable="true"
+			<p:dataTable id="tablaProfesores" value="${modeloProfesores.listado}" var="fila"
+				rowKey="${fila.id}" selection="${modeloProfesores.seleccionado}" selectionMode="single" filteredValue="${fila.nombre}" scrollable="true"
 				crollHeight="150" paginator="true" rows="15"
 				paginatorAlwaysVisible="false" paginatorPosition="bottom">
 				<p:column headerText="Id" width="50" rowSelectMode="checkbox"
@@ -72,8 +73,9 @@
 			</p:dataTable>
 			<f:facet name="footer">
 				<p:commandButton value="Asignar profesor"
-					onclick="PF('dialogoAsignarProfesorWV').show()" />
-				<p:commandButton value="Regresar" action="regresar" />
+					onclick="PF('dialogoAsignarProfesorWV').show()" icon="ui-icon-person"/>
+				<p:commandButton value="Quitar profesor" action="quitarProfesor" icon="ui-icon-trash" update="${p:component('tablaProfesores')}"/>
+				<p:commandButton value="Regresar" action="regresar" icon="ui-icon-circle-arrow-w"/>
 			</f:facet>
 		</p:panel>
 	</h:form>
@@ -116,7 +118,6 @@
 		<p:dialog widgetVar="dialogoAsignarProfesorWV"
 			header="Asignar Profesor" modal="true" closable="true"
 			closeOnEscape="true" visible="false">
-
 			<p:dataTable value="${modeloProfesor.listado}" var="fila"
 				rowKey="${fila.id}" selection="${modeloProfesor.seleccionado}"
 				selectionMode="single" paginator="true" rows="10"
@@ -140,8 +141,8 @@
 
 			<f:facet name="footer">
 				<p:commandButton value="Asignar"
-					onclick="PF('dialogoAsignarProfesorWV').hide()"
-					action="asignarProfesor" />
+					onclick="PF('dialogoAsignarProfesorWV').hide()" actionListener="#{GrupoServ.mensaje}"
+					action="asignarProfesor" update="${p:component('tablaProfesores')} ${p:component('growl')}"/>
 			</f:facet>
 		</p:dialog>
 	</h:form>
