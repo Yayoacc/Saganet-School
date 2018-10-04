@@ -27,7 +27,6 @@
 		</p:panel>
 		<p:separator />
 		<p:panel header="Alumnos" widgetVar="panelAlumnosWV">
-			<p:growl id="growl" showDetail="true" sticky="true" />  
 			<p:dataTable value="${modeloAlumnos.listado}" var="fila"
 				rowKey="${fila.id}" filteredValue="${fila.nombre}" scrollable="true"
 				crollHeight="150" paginator="true" rows="15"
@@ -50,7 +49,7 @@
 			<f:facet name="footer">
 
 				<p:commandButton value="Agregar Alumno(s)"
-					onclick="PF('dialogoSeleccionarAlumnoWV').show()" />
+					onclick="PF('dialogoSeleccionarAlumnoWV').show()" icon="ui-icon-person"/>
    			    <p:commandButton value="Borrar Alumno" icon="ui-icon-trash" action="borrarAlumno" update="${p:component('tablaAlumnos')}" />
 			</f:facet>
 		</p:panel>
@@ -77,10 +76,12 @@
 			<f:facet name="footer">
 				<p:commandButton value="Asignar profesor"
 					onclick="PF('dialogoAsignarProfesorWV').show()" icon="ui-icon-person"/>
-				<p:commandButton value="Quitar profesor" action="quitarProfesor" icon="ui-icon-trash" update="${p:component('tablaProfesores')}"/>
-				<p:commandButton value="Regresar" action="regresar" icon="ui-icon-circle-arrow-w"/>
+				<p:commandButton value="Borrar profesor" action="quitarProfesor" icon="ui-icon-trash" update="${p:component('tablaProfesores')}"/>
+				
 			</f:facet>
 		</p:panel>
+		<p:separator/>
+		<center><p:commandButton value="Regresar" action="regresar" icon="ui-icon-circle-arrow-w"/></center>
 	</h:form>
 	<h:form>
 		<p:dialog widgetVar="dialogoSeleccionarAlumnoWV"
