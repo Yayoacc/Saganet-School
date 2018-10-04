@@ -48,9 +48,10 @@ public class GrupoEO extends AuditObject {
 	@JoinTable(schema = "mdm", name = "grupos_profesores")
 	private List<ProfesorEO> profesores = new ArrayList<>();
 
-	public List<AlumnoEO> addAlumno(AlumnoEO alumno) {
-		alumnos.add(alumno);
-		return alumnos;
+	
+	public List<AlumnoEO> addAlumno(List<AlumnoEO> alumno) {
+	        alumnos.addAll(alumno);
+	        return alumnos;
 	}
 
 	public List<ProfesorEO> addProfesor(ProfesorEO profesor) {
@@ -61,6 +62,17 @@ public class GrupoEO extends AuditObject {
 	public void borrarProfesor(ProfesorEO profesor) {
 		profesores.remove(profesor);
 	}
+	public String existeAlumno(List<AlumnoEO> alumno) {
+		String nombreC = "";
+		for (int i = 0; i < alumno.size(); i++) {
+			if (alumnos.indexOf(alumno.get(i)) != -1) {
+				nombreC = alumnos.get(i).getNombreCompleto();
+				i = alumno.size();
+				return nombreC;
+			}
+		}
+		return nombreC;
+	}
 	
 	public boolean existeProfesor(ProfesorEO profesor) {
 		boolean existe=false;
@@ -69,4 +81,8 @@ public class GrupoEO extends AuditObject {
 		}
 		return existe;
 	}
+	public List<AlumnoEO> borrarAlumno(AlumnoEO alumno) {
+		alumnos.remove(alumno);
+		return alumnos;
+    }
 }
