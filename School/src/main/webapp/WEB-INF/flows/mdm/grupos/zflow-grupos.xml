@@ -57,9 +57,6 @@
 		<transition on="borrarAlumno">
 			<evaluate expression="GrupoServ.borrarAlumnos(modeloAlumnos.seleccionado, viewScope.grupo)"></evaluate>
 		</transition>
-		<transition on="mensaje">
-			<evaluate expression="GrupoServ.mensaje()"></evaluate>
-		</transition>
 	</view-state>
 	
 	<end-state id="agregarEditarExitoso" />

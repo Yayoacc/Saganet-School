@@ -26,6 +26,7 @@
 		</p:panel>
 		<p:separator />
 		<p:panel header="Alumnos" widgetVar="panelAlumnosWV">
+			<p:growl id="growl" showDetail="true" sticky="true" />  
 			<p:dataTable value="${modeloAlumnos.listado}" var="fila"
 				rowKey="${fila.id}" filteredValue="${fila.nombre}" scrollable="true"
 				crollHeight="150" paginator="true" rows="15"
@@ -109,7 +110,7 @@
 			<f:facet name="footer">
 				<p:commandButton value="Agregar alumno(s)"
 					onclick="PF('dialogoSeleccionarAlumnoWV').hide()"
-					action="agregarAlumnos" update="${p:component('tablaAlumnos')}" />
+					action="agregarAlumnos"  actionListener="#{GrupoServ.mensaje}" update="${p:component('tablaAlumnos')} ${p:component('growl')}" />
 			</f:facet>
 		</p:dialog>
 	</h:form>
