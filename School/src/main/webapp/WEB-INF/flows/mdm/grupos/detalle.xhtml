@@ -89,7 +89,7 @@
 			closeOnEscape="true" visible="false">
 			<p:dataTable value="${modeloAlumno.listado}" var="fila"
 				rowKey="${fila.id}" filteredValue="${fila.nombre}"
-				selection="${modeloAlumno.listado}" selectionMode="multiple"
+				selection="${modeloAlumno.seleccionados}" selectionMode="multiple" 
 				scrollable="true" crollHeight="150" paginator="true" rows="15"
 				paginatorAlwaysVisible="false" paginatorPosition="bottom" rowHover="true">
 				<p:column headerText="Id" width="50"

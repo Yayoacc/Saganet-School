@@ -9,11 +9,12 @@ public class Modelo<Entity> implements Serializable {
 
 	private List<Entity> listado;
 	private Entity seleccionado;
-
+	private List<Entity> seleccionados;
 	// ===== Constructores =====
 	public Modelo() {
 		super();
 		listado = new ArrayList<Entity>();
+		seleccionados = new ArrayList<Entity>();
 		seleccionado = null;
 	}
 
@@ -24,11 +25,15 @@ public class Modelo<Entity> implements Serializable {
 			if(!this.listado.isEmpty())
 				this.seleccionado = this.listado.get(0);
 	}
-
 	public Modelo(List<Entity> listado, Entity seleccionado) {
 		super();
 		this.listado = listado;
 		this.seleccionado = seleccionado;
+	}
+	public Modelo(List<Entity> listado, List<Entity> seleccionados) {
+		super();
+		this.listado = listado;
+		this.seleccionados = seleccionados;
 	}
 	
 	// ===== Getters & Setters =====
@@ -44,9 +49,16 @@ public class Modelo<Entity> implements Serializable {
 	public Entity getSeleccionado() {
 		return seleccionado;
 	}
+	public List<Entity> getSeleccionados() {
+		return seleccionados;
+	}
 
 	public void setSeleccionado(Entity seleccionado) {
 		this.seleccionado = seleccionado;
+	}
+
+	public void setSeleccionados(List<Entity> seleccionados) {
+		this.seleccionados = seleccionados;
 	}
 
 }

@@ -37,12 +37,19 @@ public class GrupoServ {
 	}
 
 	public void addAlumnos(List<AlumnoEO> alumno, GrupoEO grupo) {
-		String result = grupo.existeAlumno(alumno);
-		if (result.equals("")) {
-			grupo.addAlumno(alumno);
-			grupoDao.save(grupo);
-		} else {
-			mensaje(result);
+		String nombre = "";
+		List<AlumnoEO> repetidos = grupo.addAlumno(alumno);
+		grupoDao.save(grupo);
+		if (!repetidos.isEmpty()) {
+			for(AlumnoEO al : repetidos) {
+					if(repetidos.indexOf(al)  == repetidos.size()-1) {
+						nombre = nombre + al.getNombreCompleto()+".";
+					}
+					else {
+					nombre = nombre + al.getNombreCompleto()+", ";
+					}
+			}	
+			mensaje(nombre);
 		}
 	}
 	
@@ -71,7 +78,7 @@ public class GrupoServ {
 	public void mensaje(String nombre) {
 		if(!nombre.substring(0, 5).equals("javax")) {
 			FacesContext context = FacesContext.getCurrentInstance();
-	        context.addMessage(null, new FacesMessage("Ya existe", nombre+" ya esta asignado al grupo"));
+	        context.addMessage(null, new FacesMessage("Ya existe(n)", nombre+" ya esta(n) asignado al grupo"));
 		}
 	}
 

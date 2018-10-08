@@ -47,7 +47,7 @@
 				result="viewScope.modeloAlumno" />
 			<evaluate
 				expression="GrupoServ.AlumnosGrupo(viewScope.grupo)"
-				result="viewScope.modeloAlumnos" />
+				result="viewScope.modeloAlumnos"/>
 			<evaluate
 				expression="GrupoServ.ProfesoresGrupo(viewScope.grupo)"
 				result="viewScope.modeloProfesores" />
@@ -58,7 +58,7 @@
 		<transition on="regresar" to="listado" />
 
 		<transition on="agregarAlumnos">
-			<evaluate expression="GrupoServ.addAlumnos(viewScope.modeloAlumno.listado, viewScope.grupo)" />
+			<evaluate expression="GrupoServ.addAlumnos(viewScope.modeloAlumno.seleccionados, viewScope.grupo)" />
 			<evaluate expression="GrupoServ.AlumnosGrupo(viewScope.grupo)" result="viewScope.modeloAlumnos" />
 		</transition>
 		<transition on="borrarAlumno">
