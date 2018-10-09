@@ -24,17 +24,21 @@
 					<p:outputLabel value="${profesor.segundoApellido}" />
 					<p:outputLabel value="Género" />
 					<p:outputLabel value="${profesor.genero.nombre}" />
+					<p:outputLabel value="Fecha de Nacimiento" />
+					<p:outputLabel value="${profesor.fechaNacimiento.time}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:outputLabel>
 					<p:outputLabel value="RFC" />
 					<p:outputLabel value="${profesor.rfc}" />
 					<p:outputLabel value="Telefono" />
 					<p:outputLabel value="${profesor.telefono}" />
 					<p:outputLabel value="Dirección" />
 					<p:outputLabel value="${profesor.direccion.direccionCompleta}" />
-					
 				</p:panelGrid>
 			</center>
 			<f:facet name="footer">
-				<p:commandButton value="Regresar" action="regresar" icon="ui-icon-circle-arrow-w"/>
+				<p:commandButton value="Regresar" action="regresar"
+					icon="ui-icon-circle-arrow-w" />
 			</f:facet>
 		</p:panel>
 	</h:form>

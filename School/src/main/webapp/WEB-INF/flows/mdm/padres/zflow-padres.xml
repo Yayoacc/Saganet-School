@@ -7,7 +7,7 @@
 	<view-state id="Lista">
 		<on-entry>
 			<evaluate expression="PadreServ.modeloTodos()"
-				result="viewScope.padres" />
+				result="viewScope.modelo" />
 		</on-entry>
 		<transition on="agregar" to="agregarEditar">
 			<evaluate expression="PadreServ.nuevo()"
@@ -18,6 +18,11 @@
 		</transition>
 		<transition on="detalle" to="detalle">
 			<set name="requestScope.padre" value="viewScope.padres.seleccionado" />
+		</transition>
+		<transition on="eliminar">
+			<evaluate expression="PadreServ.eliminarPadre(viewScope.modelo.seleccionado)"/>
+			<evaluate expression="PadreServ.modeloTodos()"
+				result="viewScope.modelo" />
 		</transition>
 	</view-state>
 	<view-state id="agregarEditar">

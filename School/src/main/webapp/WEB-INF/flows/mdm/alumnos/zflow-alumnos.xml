@@ -24,6 +24,12 @@
 			<set name="requestScope.alumno"
 				value="viewScope.modelo.seleccionado" />
 		</transition>
+		
+		<transition on="eliminar">
+			<evaluate expression="AlumnoServ.eliminarAlumno(viewScope.modelo.seleccionado)"/>
+			<evaluate expression="AlumnoServ.modeloTodos()"
+				result="viewScope.modelo" />
+		</transition>
 	</view-state>
 
 	<view-state id="agregarEditar">
