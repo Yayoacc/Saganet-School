@@ -20,6 +20,12 @@
 		<transition on="detalle" to="detalle">
 			<set name="requestScope.profesor" value="viewScope.modelo.seleccionado" />
 		</transition>
+		
+		<transition on="eliminar">
+			<evaluate expression="ProfesorServ.eliminarProfesor(viewScope.modelo.seleccionado)"/>
+			<evaluate expression="ProfesorServ.modeloProf()"
+				result="viewScope.modelo" />
+		</transition>
 	</view-state>
 	
 	<view-state id="agregarEditar">

@@ -36,6 +36,7 @@ public class Modelo<Entity> implements Serializable {
 		this.seleccionados = seleccionados;
 	}
 	
+	
 	// ===== Getters & Setters =====
 	
 	public List<Entity> getListado() {

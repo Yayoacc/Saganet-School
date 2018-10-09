@@ -29,6 +29,10 @@
 						<f:selectItems value="${modeloGeneros.listado}" var="item"
 							itemLabel="${item.nombre}" itemValue="${item}" />
 					</p:selectOneMenu>
+					<p:outputLabel value="Fecha de Nacimiento" />
+					<p:calendar value="${profesor.fechaNacimiento}"
+						converter="CalendarConverter" pattern="dd/MM/yyyy"
+						navigator="true" />
 					<p:outputLabel value="RFC" />
 					<p:inputText value="${profesor.rfc}"/>
 					<p:outputLabel value="Telefono" />

@@ -87,7 +87,7 @@
 		<p:dialog widgetVar="dialogoSeleccionarAlumnoWV"
 			header="Seleccionar Alumno" modal="true" closable="true"
 			closeOnEscape="true" visible="false">
-			<p:dataTable value="${modeloAlumno.listado}" var="fila"
+			<p:dataTable value="${modeloAlumno.listado}" var="fila" 
 				rowKey="${fila.id}" filteredValue="${fila.nombre}"
 				selection="${modeloAlumno.seleccionados}" selectionMode="multiple" 
 				scrollable="true" crollHeight="150" paginator="true" rows="15"
