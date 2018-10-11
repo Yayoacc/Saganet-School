@@ -26,10 +26,12 @@
 		<transition on="editar" to="agregarEditar">
 			<set name="requestScope.padre"
 				value="viewScope.modelo.seleccionado" />
+			<set name="requestScope.padre" value="viewScope.modelo.seleccionado" />
 		</transition>
 		<transition on="detalle" to="detalle">
 			<set name="requestScope.padre"
 				value="viewScope.modelo.seleccionado" />
+			<set name="requestScope.padre" value="viewScope.modelo.seleccionado" />
 		</transition>
 		<transition on="eliminar">
 			<evaluate
