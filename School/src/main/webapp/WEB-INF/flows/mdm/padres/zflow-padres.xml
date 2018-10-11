@@ -3,7 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
-
+        
+	<input name="id" />
+	<decision-state id="agregarPadre">
+		<if test="id == 'nuevo'" then="nuevoPadre" else="Lista" />
+		
+	</decision-state>
+	<action-state id="nuevoPadre">
+		<evaluate expression="PadreServ.nuevo()" result="requestScope.padre" />
+        <transition to="agregarEditar" />
+    </action-state>
+    
 	<view-state id="Lista">
 		<on-entry>
 			<evaluate expression="PadreServ.modeloTodos()"
@@ -14,21 +24,25 @@
 				result="requestScope.padre" />
 		</transition>
 		<transition on="editar" to="agregarEditar">
-			<set name="requestScope.padre" value="viewScope.padres.seleccionado" />
+			<set name="requestScope.padre"
+				value="viewScope.modelo.seleccionado" />
 		</transition>
 		<transition on="detalle" to="detalle">
-			<set name="requestScope.padre" value="viewScope.padres.seleccionado" />
+			<set name="requestScope.padre"
+				value="viewScope.modelo.seleccionado" />
 		</transition>
 		<transition on="eliminar">
-			<evaluate expression="PadreServ.eliminarPadre(viewScope.modelo.seleccionado)"/>
+			<evaluate
+				expression="PadreServ.eliminarPadre(viewScope.modelo.seleccionado)" />
 			<evaluate expression="PadreServ.modeloTodos()"
 				result="viewScope.modelo" />
 		</transition>
 	</view-state>
 	<view-state id="agregarEditar">
-		<on-entry>
+		<on-entry>	
 			<set name="viewScope.padre" value="requestScope.padre" />
-			<evaluate expression="DominiosServ.modeloGeneroDO()" result="viewScope.modeloGeneros" />
+			<evaluate expression="DominiosServ.modeloGeneroDO()"
+				result="viewScope.modeloGeneros" />
 		</on-entry>
 		<transition on="guardar" to="agregarEditarExitoso">
 			<evaluate expression="PadreServ.guardar(viewScope.padre)" />
@@ -38,9 +52,9 @@
 	<view-state id="detalle">
 		<on-entry>
 			<set name="viewScope.padre" value="requestScope.padre" />
-		</on-entry>	
+		</on-entry>
 		<transition on="regresar" to="Lista" />
 	</view-state>
 	<end-state id="agregarEditarCancelado" />
-	<end-state id="agregarEditarExitoso" />	
+	<end-state id="agregarEditarExitoso" />
 </flow>

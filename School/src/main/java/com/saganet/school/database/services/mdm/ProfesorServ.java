@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.saganet.school.database.daos.mdm.ProfesorDao;
-import com.saganet.school.database.entities.mdm.AlumnoEO;
 import com.saganet.school.database.entities.mdm.ProfesorEO;
 import com.saganet.school.utils.Modelo;
 

@@ -24,9 +24,10 @@
 			<set name="requestScope.alumno"
 				value="viewScope.modelo.seleccionado" />
 		</transition>
-		
+
 		<transition on="eliminar">
-			<evaluate expression="AlumnoServ.eliminarAlumno(viewScope.modelo.seleccionado)"/>
+			<evaluate
+				expression="AlumnoServ.eliminarAlumno(viewScope.modelo.seleccionado)" />
 			<evaluate expression="AlumnoServ.modeloTodos()"
 				result="viewScope.modelo" />
 		</transition>
@@ -37,21 +38,37 @@
 			<set name="viewScope.alumno" value="requestScope.alumno" />
 			<evaluate expression="DominiosServ.modeloGeneroDO()"
 				result="viewScope.modeloGeneros" />
-			<evaluate expression="PadreServ.modeloTodos()" result="viewScope.modeloPadre" />
+			<evaluate expression="PadreServ.modeloTodos()"
+				result="viewScope.modeloPadre" />
 		</on-entry>
-		
+
 		<transition on="guardar" to="agregarEditarExitoso">
 			<evaluate expression="AlumnoServ.guardar(viewScope.alumno)" />
 		</transition>
+		<transition on="agregarPadre" to="flujoPadre">
+			 <set name="flashScope.accion" value="'nuevo'" />
+			  <set name="flowScope.alumno" value="viewScope.alumno" />
+		</transition>
 
-<!-- 		<transition on="agregarPadre" to="agregarPadres"> -->
 
-<!-- 		 <set name="requestScope.alumno" -->
-<!-- 				value="viewScope.alumno" /> -->
-<!-- 		</transition> -->
+		<!-- <transition on="agregarPadre" to="agregarPadres"> -->
+
+		<!-- <set name="requestScope.alumno" -->
+		<!-- value="viewScope.alumno" /> -->
+<!-- </transition> -->
 
 		<transition on="cancelar" to="agregarEditarCancelado" />
 	</view-state>
+
+	<subflow-state id="flujoPadre" subflow="mdm/padres">
+		<input name="id" value="accion"/>
+		<transition on="agregarEditarExitoso" to="agregarEditar">
+			<set name="requestScope.alumno" value="flowScope.alumno" />
+		</transition>
+		<transition on="agregarEditarCancelado" to="agregarEditar">
+		 	<set name="requestScope.alumno" value="flowScope.alumno" />
+		</transition>
+	</subflow-state>
 
 	<view-state id="agregarPadres">
 		<on-entry>
@@ -76,5 +93,6 @@
 
 	<end-state id="agregarEditarExitoso" />
 	<end-state id="agregarEditarCancelado" />
+
 
 </flow>

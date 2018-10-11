@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <webflow-project-description>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.9.5.201807030714-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[3.9.6.201809180658-RELEASE]]></pluginVersion>
 	<configs>
 		<config>
 			<file>src/main/webapp/WEB-INF/flows/mdm/alumnos/zflow-alumnos.xml</file>
@@ -18,6 +18,10 @@
 		<config>
 			<file>src/main/webapp/WEB-INF/flows/mdm/padres/zflow-padres.xml</file>
 			<name><![CDATA[zflow-padres]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/mdm/padres/zflow-agregarPadres.xml</file>
+			<name><![CDATA[zflow-agregarPadres]]></name>
 		</config>
 	</configs>
 </webflow-project-description>
