@@ -14,10 +14,10 @@
 				result="requestScope.padre" />
 		</transition>
 		<transition on="editar" to="agregarEditar">
-			<set name="requestScope.padre" value="viewScope.padres.seleccionado" />
+			<set name="requestScope.padre" value="viewScope.modelo.seleccionado" />
 		</transition>
 		<transition on="detalle" to="detalle">
-			<set name="requestScope.padre" value="viewScope.padres.seleccionado" />
+			<set name="requestScope.padre" value="viewScope.modelo.seleccionado" />
 		</transition>
 		<transition on="eliminar">
 			<evaluate expression="PadreServ.eliminarPadre(viewScope.modelo.seleccionado)"/>
