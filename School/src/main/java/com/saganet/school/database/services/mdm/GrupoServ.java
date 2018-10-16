@@ -38,7 +38,7 @@ public class GrupoServ {
 
 	public void addAlumnos(List<AlumnoEO> alumno, GrupoEO grupo) {
 		List<AlumnoEO> repetidos = grupo.addAlumno(alumno);
-		grupoDao.save(grupo);
+		//grupoDao.flush();
 		StringBuilder builder;
 		builder = new StringBuilder();
 		if (!repetidos.isEmpty()) {
@@ -54,11 +54,16 @@ public class GrupoServ {
 			}	
 			mensaje(builder.toString());
 		}
+		
 	}
+	public void save(GrupoEO grupo) {
+		grupoDao.save(grupo);
+	}
+	
 	
 	public void borrarAlumnos(AlumnoEO alumno, GrupoEO grupo) {
 		grupo.borrarAlumno(alumno);
-		grupoDao.save(grupo);
+		//grupoDao.save(grupo);
 	}
 
 	public Modelo<AlumnoEO> AlumnosGrupo(GrupoEO grupo) {
