@@ -60,9 +60,8 @@ public class GrupoEO extends AuditObject {
 		return repetidos;
 	}
 
-	public List<ProfesorEO> addProfesor(ProfesorEO profesor) {
+	public void addProfesor(ProfesorEO profesor) {
 		profesores.add(profesor);
-		return profesores;
 	}
 
 	public void borrarProfesor(ProfesorEO profesor) {

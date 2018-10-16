@@ -54,7 +54,9 @@
 				result="viewScope.modeloProfesor" />
 		</on-entry>
 
-		<transition on="regresar" to="listado" />
+		<transition on="regresar" to="listado">
+			<evaluate expression="GrupoServ.guardar(viewScope.grupo)"></evaluate>
+		</transition>
 
 		<transition on="agregarAlumnos">
 			<evaluate
