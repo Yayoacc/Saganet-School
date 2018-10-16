@@ -74,9 +74,8 @@ public class GrupoServ {
 
 	public void addProfesores(ProfesorEO profesor, GrupoEO grupo) {
 		if(!grupo.existeProfesor(profesor)) {
-			List<ProfesorEO> profesores = grupo.addProfesor(profesor);
-			grupo.setProfesores(profesores);
-			grupoDao.save(grupo);
+			grupo.addProfesor(profesor);
+//			grupoDao.save(grupo);
 		}
 		else {
 			mensaje(profesor.getNombreCompleto());
@@ -92,8 +91,10 @@ public class GrupoServ {
 
 	public void borrarProfesor(ProfesorEO profesor, GrupoEO grupo) {
 		grupo.borrarProfesor(profesor);
-		grupoDao.save(grupo);
+//		grupoDao.save(grupo);
+//		grupoDao.flush();
 	}
+	
 
 	public Modelo<ProfesorEO> ProfesoresGrupo(GrupoEO grupo) {
 		List<ProfesorEO> listado;
