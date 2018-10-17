@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+		<link rel="stylesheet"
+			href="${request.contextPath}/app/resources/css/estilos.css"
+			type="text/css"></link>
+		<link rel="stylesheet"
+			href="${request.contextPath}/app/resources/icon/css/fontello.css"
+			type="text/css"></link>
+
+	</h:head>
+
+	<h:body>
+		<div>
+		<div class="content-all">
+			<header></header>
+			<input type="checkbox" id="check"></input>
+			<label for="check"
+				class="icon-menu">Menu</label>
+			<h2>Magtimus</h2>
+
+
+			<nav class="menu">
+			<ul>
+				<li>Inicio</li>
+				<li>Productos</li>
+				<li>Tutoriales</li>
+				<li>Programacion</li>
+				<li>Desarrollo Web</li>
+				<li>Cursos</li>
+				<li>Nosotros</li>
+				<li>Diseño Web</li>
+				<li>Contactos</li>
+			</ul>
+			</nav>
+
+			
+			
+				<div>
+<!-- 				<ui:insert name="content">Main Content</ui:insert> -->
+				</div>
+			
+		</div>
+		<TABLE border="0" cellspacing="0">
+				<TR>
+					<TD>
+						<ui:insert name="content">Main Content</ui:insert>
+					</TD>
+				</TR>
+			</TABLE>
+		</div>
+	</h:body>
+
+</f:view>
+
+
+</html>
