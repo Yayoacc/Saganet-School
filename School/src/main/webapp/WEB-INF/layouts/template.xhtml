@@ -6,130 +6,35 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet"
-		href="${request.contextPath}/app/resources/css/style.css"
-		type="text/css" />
+		href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <h:outputStylesheet library="css" name="style.css"/>
 	<title><ui:insert name="title"></ui:insert></title>
 </h:head>
 
 <h:body>
 	<div id="top" class="top">
-		<p:megaMenu orientation="#{megaMenuView.orientation}" style="margin-top:20px">
-    <p:submenu label="Alumnos" icon="ui-icon-check">
-        <p:column>
-            <p:submenu label="TV.1">
-                <p:menuitem value="TV.1.1" url="#" />
-                <p:menuitem value="TV.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="TV.2">
-                <p:menuitem value="TV.2.1" url="#" />
-                <p:menuitem value="TV.2.2" url="#" />
-                <p:menuitem value="TV.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="TV.4">
-                <p:menuitem value="TV.4.1" url="#" />
-                <p:menuitem value="TV.4.2" url="#" />
-            </p:submenu>
-            <p:submenu label="TV.5">
-                <p:menuitem value="TV.5.1" url="#" />
-                <p:menuitem value="TV.5.2" url="#" />
-                <p:menuitem value="TV.5.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <strong>Image</strong>
-            <p:graphicImage name="/demo/images/nature/nature1.jpg" width="200"/>
-        </p:column>
-    </p:submenu>
- 
-    <p:submenu label="Padres" icon="ui-icon-document">
- 
-        <p:column>
-            <p:submenu label="Sports.1">
-                <p:menuitem value="Sports.1.1" url="#" />
-                <p:menuitem value="Sports.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Sports.2">
-                <p:menuitem value="Sports.2.1" url="#" />
-                <p:menuitem value="Sports.2.2" url="#" />
-                <p:menuitem value="Sports.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="Sports.4">
-                <p:menuitem value="Sports.4.1" url="#" />
-                <p:menuitem value="Sports.4.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Sports.5">
-                <p:menuitem value="Sports.5.1" url="#" />
-                <p:menuitem value="Sports.5.2" url="#" />
-                <p:menuitem value="Sports.5.3" url="#" />
-            </p:submenu>
-        </p:column>
-        <p:column>
-            <p:submenu label="Sports.7">
-                <p:menuitem value="Sports.7.1" url="#" />
-                <p:menuitem value="Sports.7.2" url="#" />
-            </p:submenu>
-        </p:column>
-    </p:submenu>
- 
-    <p:submenu label="Profesores" icon="ui-icon-pencil">
-        <p:column>
-            <p:submenu label="Entertainment.1">
-                <p:menuitem value="Entertainment.1.1" url="#" />
-                <p:menuitem value="Entertainment.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Entertainment.2">
-                <p:menuitem value="Entertainment.2.1" url="#" />
-                <p:menuitem value="Entertainment.2.2" url="#" />
-                <p:menuitem value="Entertainment.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="Entertainment.4" icon="ui-icon-help">
-                <p:menuitem value="Entertainment.4.1" url="#" />
-                <p:menuitem value="Entertainment.4.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Entertainment.5">
-                <p:menuitem value="Entertainment.5.1" url="#" />
-                <p:menuitem value="Entertainment.5.2" url="#" />
-                <p:menuitem value="Entertainment.5.3" url="#" />
-            </p:submenu>
-        </p:column>
-    </p:submenu>
- 
-    <p:submenu label="Grupos" icon="ui-icon-contact">
-        <p:column>
-            <p:submenu label="Tech.1">
-                <p:menuitem value="Tech.1.1" url="#" />
-                <p:menuitem value="Tech.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Tech.2">
-                <p:menuitem value="Tech.2.1" url="#" />
-                <p:menuitem value="Tech.2.2" url="#" />
-                <p:menuitem value="Tech.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="Tech.4">
-                <p:menuitem value="Tech.4.1" url="#" />
-                <p:menuitem value="Tech.4.2" url="#" />
-            </p:submenu>
-        </p:column>
-    </p:submenu>
- 
-    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
-</p:megaMenu>
-		<!-- 		<p:link>kskosk</p:link> -->
+		<div id="header">
+				<p:graphicImage
+					value="${request.contextPath}/app/resources/images/logo.jpg"  styleClass="logo"/>
+			<ul class="nav">
+				<li><a href="">Usuario<p:spacer width="20" height="25" /><img
+						src="${request.contextPath}/app/resources/images/user.png"
+						alt="Usuario" id="user" /> <p:spacer width="20" height="25" /><i
+						class="fas fa-angle-down"></i></a>
+					<ul>
+						<li><a href=""><i class="far fa-user-circle"></i>
+							<p:spacer width="5" height="25" />Perfil</a></li>
+						<li><a href=""><i class="fas fa-wrench"></i>
+							<p:spacer width="5" height="25" />Configuración</a></li>
+						<li><a href=""><i class="far fa-envelope"></i>
+							<p:spacer width="5" height="25" />Mensajes</a></li>
+						<li><a href=""><i class="far fa-bell"></i>
+							<p:spacer width="5" height="25" />Notificaciones</a></li>
+					</ul></li>
+			</ul>
+		</div>
 		<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
 	</div>
 	<div>
