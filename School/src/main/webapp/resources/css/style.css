@@ -16,185 +16,78 @@ box-shadow:         6px 5px 10px 0px rgba(50, 50, 50, 0.22);
 -o-box-shadow:      0px 0px 10px 0px rgba(50, 50, 50, 0.75);
 box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.75);
 
-}
-.transition05{
--webkit-transition: all 0.5s ease;
--moz-transition: all 0.5s ease;
--ms-transition: all 0.5s ease;
--o-transition: all 0.5s ease;
-transition: all 0.5s ease;
-}
-
-@ancho_menu_cont:250px;
-@ancho_menu: @ancho_menu_cont - 50;
-
-
-@color_2__lighten: lighten(hsl(200, 0%, 37%), 30%);
-         
-html,body{
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
-    font-family:'Open Sans',helvetica, calibri, arial;
-    height: 100%;
-    
-}
-
-a{
-    color:@color_3;
-    &:hover{
-        color:@color_2__lighten;
-    }
-}
-ul li{
-list-style: none;
-}
-
-
-.contenedor--div{
-    padding: 0px !important;
-    margin: 0px;
-
-    
-}
-.contenedor--menu{
-    
-    background-color: @color_1; 
-    z-index: 300;
-    //height: 100vh;
-    height:100%;
-    width: @ancho_menu_cont;
-    
-    .box-shadow;
-    overflow-y: auto;
-    position: fixed;
-
-}
-
-.menu{
-    
-    font-size: 1.1em;
-    z-index: 500;
-    padding: 80px 10px 50px 10px;
-    
-    li, & a{
-        padding: 15px 5px;
-        color:@color_2;
-        width: @ancho_menu;
-    }
-    a{  
-       
-        text-decoration: none;
-        &:hover{
-            color:@color_2__lighten;
-        }
-    }
-    li{
-        border-bottom:1px solid @color_2;
-
-        display: block;
-            
-        
-        
-    }
-
-
-}
-
-.submenu{
-    padding-left: 15px;
-    
-    font-size: 0.9em;
-    li, & a{
-        padding: 8px 5px;
-        // background:@color_1a;
-        // color:@color_2;
-
-    }
-    li{
-    //margin: 5px 0px;
-        border-bottom: 0px;
-    }
-}
-
-
-
-
-.icono--div{
-
-    z-index: 600;
-    padding: 5px;
-
-    
-    position: fixed;
-   
-}
-
-.icono{
-    position: absolute;
-    z-index: 1000;
-    display: inline-block;
-   
-    a{
-        padding: 10px 15px;
-        background-color: @color_3;
-        display: inline-block;
-        
-        color:@color_3;
-        .transition05;
-         &:hover{
-            background-color:@color_2__lighten;
-            color:@color_1;
-             .transition05;
-        }
-    }
-
-}
-
-.span__raya{
-    display: block;
-    height: 3px;
-    padding: 2px;
-    width: 20px;
-    background-color:@color_4;
-    margin: 3px 0px;
-}
-
-.contenido__div{
-    margin-bottom: 70px;
-    //margin-top:  60px;
-    .box-shadow2;
-    p{
-     padding: 10px 5px 30px 5px;
-    
-    }
-    .contenido{
-        padding-top: 30px;
-        max-width: 800px;
-        padding-bottom: 30px;
-        
-        & .tag__usando, & .tag{
-            display: inline-block;
-            padding: 5px;
-            margin: 5px;
-        }
-        .tag__usando{
-
-        }
-        .tag{
-            display: inline-block;
-            background-color: @color_1;
-            color:@color_3;
-
-        }
-        .contenido__info{
-            display: block;
-            padding: 30px 0px;
-        
-        }
-    }
-}
-
-.marca_submenu::before{
-content:-final de cnitedo ;
-    
-
-}
+	#bottom {
+		position:fixed;
+		margin-left: 165px;
+		padding:5px;
+		bottom:0;
+	}
+	* {
+				margin:0px;
+				padding:0px;
+			}
+			
+			#header {
+				margin:auto;
+				width:100%;
+				height: 50px;
+				font-family:Arial, Helvetica, sans-serif;
+				background-color: black;
+				-webkit-box-shadow: -1px 5px 37px -5px rgba(0,0,0,0.75);
+				-moz-box-shadow: -1px 5px 37px -5px rgba(0,0,0,0.75);
+				box-shadow: -1px 5px 37px -5px rgba(0,0,0,0.75);
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:right;
+			}
+			
+			.nav li a {
+				background-color:#000;
+				color:#fff;
+				text-decoration:none;
+				padding:10px 12px;
+				display:block;
+			}
+			
+			.nav li a:hover {
+				background-color:#434343;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:absolute;
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:relative;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+			#user {
+				border-radius: 128px 128px 128px 128px;
+				-moz-border-radius: 128px 128px 128px 128px;
+				-webkit-border-radius: 128px 128px 128px 128px;
+				border: 0px dotted #7a2b7a;
+				width: 25px;
+				height: 25px;
+				background-color: white;
+			}
+			.logo {
+				width: 100px;
+				height: auto;
+				float: left;		
+			}
+>>>>>>> refs/heads/YaccDevelop
