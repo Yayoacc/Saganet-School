@@ -10,38 +10,43 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:panel header="${profesor.nombreCompleto}">
-			<center>
-				<p:panelGrid columns="2">
-					<p:outputLabel value="Id" />
-					<p:outputLabel value="${profesor.id}" />
-					<p:outputLabel value="Nombre" />
-					<p:outputLabel value="${profesor.nombre}" />
-					<p:outputLabel value="Primer Apellido" />
-					<p:outputLabel value="${profesor.primerApellido}" />
-					<p:outputLabel value="Segundo Apellido" />
-					<p:outputLabel value="${profesor.segundoApellido}" />
-					<p:outputLabel value="Género" />
-					<p:outputLabel value="${profesor.genero.nombre}" />
-					<p:outputLabel value="Fecha de Nacimiento" />
-					<p:outputLabel value="${profesor.fechaNacimiento.time}" >
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-					</p:outputLabel>
-					<p:outputLabel value="RFC" />
-					<p:outputLabel value="${profesor.rfc}" />
-					<p:outputLabel value="Telefono" />
-					<p:outputLabel value="${profesor.telefono}" />
-					<p:outputLabel value="Dirección" />
-					<p:outputLabel value="${profesor.direccion.direccionCompleta}" />
-				</p:panelGrid>
-			</center>
-			<f:facet name="footer">
-				<p:commandButton value="Regresar" action="regresar"
-					icon="ui-icon-circle-arrow-w" />
-			</f:facet>
-		</p:panel>
-	</h:form>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
+
+		<ui:define name="content">
+			<h:form>
+				<p:panel header="${profesor.nombreCompleto}">
+					<center>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Id" />
+							<p:outputLabel value="${profesor.id}" />
+							<p:outputLabel value="Nombre" />
+							<p:outputLabel value="${profesor.nombre}" />
+							<p:outputLabel value="Primer Apellido" />
+							<p:outputLabel value="${profesor.primerApellido}" />
+							<p:outputLabel value="Segundo Apellido" />
+							<p:outputLabel value="${profesor.segundoApellido}" />
+							<p:outputLabel value="Género" />
+							<p:outputLabel value="${profesor.genero.nombre}" />
+							<p:outputLabel value="Fecha de Nacimiento" />
+							<p:outputLabel value="${profesor.fechaNacimiento.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:outputLabel>
+							<p:outputLabel value="RFC" />
+							<p:outputLabel value="${profesor.rfc}" />
+							<p:outputLabel value="Telefono" />
+							<p:outputLabel value="${profesor.telefono}" />
+							<p:outputLabel value="Dirección" />
+							<p:outputLabel value="${profesor.direccion.direccionCompleta}" />
+						</p:panelGrid>
+					</center>
+					<f:facet name="footer">
+						<p:commandButton value="Regresar" action="regresar"
+							icon="ui-icon-circle-arrow-w" />
+					</f:facet>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

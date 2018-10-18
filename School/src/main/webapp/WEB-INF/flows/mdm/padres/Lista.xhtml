@@ -6,38 +6,44 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>Padres</h:head>
 <h:body>
-	<h:form>
-		<p:panel header="Listado de Padres">
-		<p:growl id="growlError" showDetail="true" sticky="true" />
-			<p:dataTable id="tablaPadres" value="${modelo.listado}" var="fila" rowKey="${fila.id}"
-				selection="${modelo.seleccionado}" selectionMode="single"
-				paginator="true" rows="15" paginatorAlwaysVisible="false"
-				paginatorPosition="bottom">
-				<p:column headerText="Id" width="50">
-					<p:outputLabel value="${fila.id}" />
-				</p:column>
-				<p:column headerText="Nombre" width="150">
-					<p:outputLabel value="${fila.nombre}" />
-				</p:column>
-				<p:column headerText="Primer Apellido" width="150">
-					<p:outputLabel value="${fila.primerApellido}" />
-				</p:column>
-				<p:column headerText="Segundo Apellido" width="150">
-					<p:outputLabel value="${fila.segundoApellido}" />
-				</p:column>
-			</p:dataTable>
-			<f:facet name="footer">
-				<p:commandButton value="Detalle" action="detalle"
-					disabled="${modelo.seleccionado == null}" icon="ui-icon-document"/>
-				<p:commandButton value="Agregar" action="agregar" icon="ui-icon-person" />
-				<p:commandButton value="Editar" action="editar"
-					disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil"/>
-				<p:commandButton value="Eliminar"
-					update="${p:component('tablaPadres')} ${p:component('growlError')}"
-					actionListener="#{PadreServ.mensaje}" action="eliminar"
-					icon="ui-icon-trash" />
-			</f:facet>
-		</p:panel>
-	</h:form>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
+
+		<ui:define name="content">
+			<h:form>
+				<p:panel header="Listado de Padres">
+					<p:growl id="growlError" showDetail="true" sticky="true" />
+					<p:dataTable id="tablaPadres" value="${modelo.listado}" var="fila"
+						rowKey="${fila.id}" selection="${modelo.seleccionado}"
+						selectionMode="single" paginator="true" rows="15"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom">
+						<p:column headerText="Id" width="50">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+						<p:column headerText="Nombre" width="150">
+							<p:outputLabel value="${fila.nombre}" />
+						</p:column>
+						<p:column headerText="Primer Apellido" width="150">
+							<p:outputLabel value="${fila.primerApellido}" />
+						</p:column>
+						<p:column headerText="Segundo Apellido" width="150">
+							<p:outputLabel value="${fila.segundoApellido}" />
+						</p:column>
+					</p:dataTable>
+					<f:facet name="footer">
+						<p:commandButton value="Detalle" action="detalle"
+							disabled="${modelo.seleccionado == null}" icon="ui-icon-document" />
+						<p:commandButton value="Agregar" action="agregar"
+							icon="ui-icon-person" />
+						<p:commandButton value="Editar" action="editar"
+							disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil" />
+						<p:commandButton value="Eliminar"
+							update="${p:component('tablaPadres')} ${p:component('growlError')}"
+							actionListener="#{PadreServ.mensaje}" action="eliminar"
+							icon="ui-icon-trash" />
+					</f:facet>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

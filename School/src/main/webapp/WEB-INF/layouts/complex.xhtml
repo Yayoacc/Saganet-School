@@ -7,56 +7,142 @@
 
 <f:view contentType="text/html">
 
-	<h:head>
-		<link rel="stylesheet"
-			href="${request.contextPath}/app/resources/css/estilos.css"
-			type="text/css"></link>
-		<link rel="stylesheet"
-			href="${request.contextPath}/app/resources/icon/css/fontello.css"
-			type="text/css"></link>
+	<head>
+<title>Menú lateral escamoteable</title>
+<style>
+body {
+	font-family: "Segoe UI", sans-serif;
+	font-size: 100%;
+}
 
-	</h:head>
+.sidebar {
+	position: fixed;
+	height: 100%;
+	width: 0;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: #00324b;
+	overflow-x: hidden;
+	transition: 0.4s;
+	padding: 1rem 0;
+	box-sizing: border-box;
+}
 
-	<h:body>
-		<div>
-		<div class="content-all">
-			<header></header>
-			<input type="checkbox" id="check"></input>
-			<label for="check"
-				class="icon-menu">Menu</label>
-			<h2>Magtimus</h2>
+.head{
+	height: 10%;
+	width: 100%;
+	background: blue;
+	
+}
 
+.sidebar .boton-cerrar {
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	font-size: 2rem;
+	display: block;
+	padding: 0;
+	line-height: 1.5rem;
+	margin: 0;
+	height: 32px;
+	width: 32px;
+	text-align: center;
+	vertical-align: top;
+}
 
-			<nav class="menu">
-			<ul>
-				<li>Inicio</li>
-				<li>Productos</li>
-				<li>Tutoriales</li>
-				<li>Programacion</li>
-				<li>Desarrollo Web</li>
-				<li>Cursos</li>
-				<li>Nosotros</li>
-				<li>Diseño Web</li>
-				<li>Contactos</li>
+.sidebar ul, .sidebar li {
+	margin: 0;
+	padding: 0;
+	list-style: none inside;
+}
+
+.sidebar ul {
+	margin: 4rem auto;
+	display: block;
+	width: 80%;
+	min-width: 200px;
+}
+
+.sidebar a {
+	display: block;
+	font-size: 120%;
+	color: #eee;
+	text-decoration: none;
+}
+
+.sidebar a:hover {
+	color: #fff;
+	background-color: #f90;
+}
+
+h1 {
+	color: #f90;
+	font-size: 180%;
+	font-weight: normal;
+}
+
+#contenido {
+	transition: margin-left .4s;
+	padding: 1rem;
+}
+
+.abrir-cerrar {
+	color: #2E88C7;
+	font-size: 1rem;
+}
+
+#abrir {
+	
+}
+
+#cerrar {
+	display: none;
+}
+</style>
+	</head>
+	<body>
+		
+		<div id="sidebar" class="sidebar" style="width: 0px;">
+			<a href="#" class="boton-cerrar" onclick="ocultar()">×</a>
+			<ul class="menu">
+				<li><a href="#">Opción 1</a></li>
+				<li><a href="#">Opción 2</a></li>
+				<li><a href="#">Opción 3</a></li>
+				<li><a href="#">Opción 4</a></li>
+				<li><a href="#">Opción 5</a></li>
 			</ul>
-			</nav>
+		</div>
+		<div id="contenido" style="margin-left: 0px;">
+			<h1>Un menú lateral</h1>
+			<a id="abrir" class="abrir-cerrar" href="javascript:void(0)"
+				onclick="mostrar()" style="display: inline;">Abrir menu</a><a
+				id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()"
+				style="display: none;">Cerrar menu</a>
+				
+		</div>
+		<div>
+			<ui:insert name="content">Main Content</ui:insert>
+		</div>
+		
+		<script>
+			function mostrar() {
+				document.getElementById("sidebar").style.width = "300px";
+				document.getElementById("contenido").style.marginLeft = "300px";
+				document.getElementById("abrir").style.display = "none";
+				document.getElementById("cerrar").style.display = "inline";
+			}
 
-			
-			
-				<div>
-<!-- 				<ui:insert name="content">Main Content</ui:insert> -->
-				</div>
-			
-		</div>
-		<TABLE border="0" cellspacing="0">
-				<TR>
-					<TD>
-						<ui:insert name="content">Main Content</ui:insert>
-					</TD>
-				</TR>
-			</TABLE>
-		</div>
-	</h:body>
+			function ocultar() {
+				document.getElementById("sidebar").style.width = "0";
+				document.getElementById("contenido").style.marginLeft = "0";
+				document.getElementById("abrir").style.display = "inline";
+				document.getElementById("cerrar").style.display = "none";
+			}
+		</script>
+
+
+	</body>
 
 </f:view>
 

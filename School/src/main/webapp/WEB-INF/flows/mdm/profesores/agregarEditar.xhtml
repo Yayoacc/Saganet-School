@@ -10,57 +10,64 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:growl>
-			<p:autoUpdate />
-		</p:growl>
-		<p:focus />
-		<p:panel header="Agregar Profesor">
-			<p:panel header="Datos Generales">
-				<p:panelGrid columns="2">
-					<p:outputLabel value="Nombre" />
-					<p:inputText value="${profesor.nombre}" />
-					<p:outputLabel value="Primer Apellido" />
-					<p:inputText value="${profesor.primerApellido}" />
-					<p:outputLabel value="Segundo Apellido" />
-					<p:inputText value="${profesor.segundoApellido}" />
-					<p:outputLabel value="Género" />
-					<p:selectOneMenu value="${profesor.genero}">
-						<f:selectItems value="${modeloGeneros.listado}" var="item"
-							itemLabel="${item.nombre}" itemValue="${item}" />
-					</p:selectOneMenu>
-					<p:outputLabel value="Fecha de Nacimiento" />
-					<p:calendar value="${profesor.fechaNacimiento}"
-						converter="CalendarConverter" pattern="dd/MM/yyyy"
-						navigator="true" />
-					<p:outputLabel value="RFC" />
-					<p:inputText value="${profesor.rfc}"/>
-					<p:outputLabel value="Telefono" />
-					<p:inputText value="${profesor.telefono}"/>
-				</p:panelGrid>
-			</p:panel>
-			<p:separator />
-			<p:panel header="Dirección">
-				<p:panelGrid columns="2">
-					<p:outputLabel value="Calle" />
-					<p:inputText value="${profesor.direccion.calle}" />
-					<p:outputLabel value="Número Exterior" />
-					<p:inputText value="${profesor.direccion.numeroExterior}" />
-					<p:outputLabel value="Número Interior" />
-					<p:inputText value="${profesor.direccion.numeroInterior}" />
-					<p:outputLabel value="Colonia" />
-					<p:inputText value="${profesor.direccion.colonia}" />
-					<p:outputLabel value="Código Postal" />
-					<p:inputText value="${profesor.direccion.codigoPostal}" />
-				</p:panelGrid>
-			</p:panel>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
 
-			<f:facet name="footer">
-				<p:commandButton value="Guardar" action="guardar" icon="ui-icon-disk"/>
-				<p:commandButton value="Cancelar" action="cancelar" immediate="true" icon="ui-icon-close"/>
-			</f:facet>
-		</p:panel>
-	</h:form>
+		<ui:define name="content">
+			<h:form>
+				<p:growl>
+					<p:autoUpdate />
+				</p:growl>
+				<p:focus />
+				<p:panel header="Agregar Profesor">
+					<p:panel header="Datos Generales">
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Nombre" />
+							<p:inputText value="${profesor.nombre}" />
+							<p:outputLabel value="Primer Apellido" />
+							<p:inputText value="${profesor.primerApellido}" />
+							<p:outputLabel value="Segundo Apellido" />
+							<p:inputText value="${profesor.segundoApellido}" />
+							<p:outputLabel value="Género" />
+							<p:selectOneMenu value="${profesor.genero}">
+								<f:selectItems value="${modeloGeneros.listado}" var="item"
+									itemLabel="${item.nombre}" itemValue="${item}" />
+							</p:selectOneMenu>
+							<p:outputLabel value="Fecha de Nacimiento" />
+							<p:calendar value="${profesor.fechaNacimiento}"
+								converter="CalendarConverter" pattern="dd/MM/yyyy"
+								navigator="true" />
+							<p:outputLabel value="RFC" />
+							<p:inputText value="${profesor.rfc}" />
+							<p:outputLabel value="Telefono" />
+							<p:inputText value="${profesor.telefono}" />
+						</p:panelGrid>
+					</p:panel>
+					<p:separator />
+					<p:panel header="Dirección">
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Calle" />
+							<p:inputText value="${profesor.direccion.calle}" />
+							<p:outputLabel value="Número Exterior" />
+							<p:inputText value="${profesor.direccion.numeroExterior}" />
+							<p:outputLabel value="Número Interior" />
+							<p:inputText value="${profesor.direccion.numeroInterior}" />
+							<p:outputLabel value="Colonia" />
+							<p:inputText value="${profesor.direccion.colonia}" />
+							<p:outputLabel value="Código Postal" />
+							<p:inputText value="${profesor.direccion.codigoPostal}" />
+						</p:panelGrid>
+					</p:panel>
+
+					<f:facet name="footer">
+						<p:commandButton value="Guardar" action="guardar"
+							icon="ui-icon-disk" />
+						<p:commandButton value="Cancelar" action="cancelar"
+							immediate="true" icon="ui-icon-close" />
+					</f:facet>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

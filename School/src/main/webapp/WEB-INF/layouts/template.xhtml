@@ -9,45 +9,78 @@
 	<link rel="stylesheet"
 		href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <h:outputStylesheet library="css" name="style.css"/>
-	<title><ui:insert name="title"></ui:insert></title>
+	<h:outputStylesheet library="css" name="style.css" />
+<!-- 	<title><ui:insert name="title"></ui:insert></title> -->
 </h:head>
 
 <h:body>
-	<div id="top" class="top">
-		<div id="header">
-				<p:graphicImage
-					value="${request.contextPath}/app/resources/images/logo.jpg"  styleClass="logo"/>
-			<ul class="nav">
-				<li><a href="">Usuario<p:spacer width="20" height="25" /><img
-						src="${request.contextPath}/app/resources/images/user.png"
-						alt="Usuario" id="user" /> <p:spacer width="20" height="25" /><i
-						class="fas fa-angle-down"></i></a>
-					<ul>
-						<li><a href=""><i class="far fa-user-circle"></i>
-							<p:spacer width="5" height="25" />Perfil</a></li>
-						<li><a href=""><i class="fas fa-wrench"></i>
-							<p:spacer width="5" height="25" />Configuración</a></li>
-						<li><a href=""><i class="far fa-envelope"></i>
-							<p:spacer width="5" height="25" />Mensajes</a></li>
-						<li><a href=""><i class="far fa-bell"></i>
-							<p:spacer width="5" height="25" />Notificaciones</a></li>
-					</ul></li>
-			</ul>
-		</div>
-		<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
+	<div id="sidebar" class="sidebar" style="width: 0px;">
+		<a href="#" class="boton-cerrar" onclick="ocultar()">×</a>
+		<ul id="menu">
+			<li><a href="${request.contextPath}/app/mdm/alumnos">Alumnos</a></li>
+			<h:outputText value="&lt;br/&gt;" escape="false" />
+			<li><a href="${request.contextPath}/app/mdm/padres">Padres</a></li>
+			<h:outputText value="&lt;br/&gt;" escape="false" />
+			<li><a href="${request.contextPath}/app/mdm/profesores">Profesores</a></li>
+			<h:outputText value="&lt;br/&gt;" escape="false" />
+			<li><a href="${request.contextPath}/app/mdm/grupos">Grupos</a></li>
+		</ul>
 	</div>
-	<div>
-		<div id="left">
-			<!-- 			<ui:insert name="left">Left Section</ui:insert> -->
-		</div>
-		<div id="content" class="left_content">
+	<div id="contenido" style="margin-left: 0px;">
+		<div id="top" class="top">
+			<div id="header">
+				<a id="abrir" class="abrir-cerrar" href="javascript:void(0)"
+					onclick="mostrar()" style="display: inline;"><p:graphicImage
+						value="${request.contextPath}/app/resources/images/menu-icon.png"
+						styleClass="menu" /></a><a id="cerrar" class="abrir-cerrar" href="#"
+					onclick="ocultar()" style="display: none;"><p:graphicImage
+						value="${request.contextPath}/app/resources/images/menu-icon.png"
+						styleClass="menu" /></a>
 
-			<ui:insert name="content">Main Content</ui:insert>
+				<ul class="nav">
+					<li><a href="">Usuario<p:spacer width="20" height="25" /><img
+							src="${request.contextPath}/app/resources/images/user.png"
+							alt="Usuario" id="user" /> <p:spacer width="20" height="25" /><i
+							class="fas fa-angle-down"></i></a>
+						<ul>
+							<li><a href=""><i class="far fa-user-circle"></i> <p:spacer
+										width="5" height="25" />Perfil</a></li>
+							<li><a href=""><i class="fas fa-wrench"></i> <p:spacer
+										width="5" height="25" />Configuración</a></li>
+							<li><a href=""><i class="far fa-envelope"></i> <p:spacer
+										width="5" height="25" />Mensajes</a></li>
+							<li><a href=""><i class="far fa-bell"></i> <p:spacer
+										width="5" height="25" />Notificaciones</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
 		</div>
-		<div id="bottom" class="bottom"></div>
+		<div>
+			
+			<div id="content" class="left_content">
 
+				<ui:insert name="content">Main Content</ui:insert>
+			</div>
+			<div id="bottom" class="bottom"></div>
+
+		</div>
 	</div>
+	<script>
+		function mostrar() {
+			document.getElementById("sidebar").style.width = "270px";
+			document.getElementById("contenido").style.marginLeft = "270px";
+			document.getElementById("abrir").style.display = "none";
+			document.getElementById("cerrar").style.display = "inline";
+		}
+
+		function ocultar() {
+			document.getElementById("sidebar").style.width = "0";
+			document.getElementById("contenido").style.marginLeft = "0";
+			document.getElementById("abrir").style.display = "inline";
+			document.getElementById("cerrar").style.display = "none";
+		}
+	</script>
 </h:body>
 
 </html>

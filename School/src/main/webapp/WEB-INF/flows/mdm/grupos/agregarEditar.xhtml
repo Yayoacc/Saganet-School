@@ -10,28 +10,34 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:growl>
-			<p:autoUpdate />
-		</p:growl>
-		<p:focus />
-		<p:panel header="Agregar Grupo">
-			<p:panel header="Datos Generales">
-				<p:panelGrid columns="2">
-					<p:outputLabel value="Nombre" />
-					<p:inputText value="${grupo.nombre}" />
-					<p:outputLabel value="Cupo" />
-					<p:inputText value="${grupo.cupo}" />
-				</p:panelGrid>
-			</p:panel>
-			<f:facet name="footer">
-				<p:commandButton value="Guardar" action="guardar" icon="ui-icon-disk"/>
-				<p:commandButton value="Cancelar" action="cancelar" immediate="true" icon="ui-icon-close"/>
-			</f:facet>
-		</p:panel>
-		
-	</h:form>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
 
+		<ui:define name="content">
+			<h:form>
+				<p:growl>
+					<p:autoUpdate />
+				</p:growl>
+				<p:focus />
+				<p:panel header="Agregar Grupo">
+					<p:panel header="Datos Generales">
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Nombre" />
+							<p:inputText value="${grupo.nombre}" />
+							<p:outputLabel value="Cupo" />
+							<p:inputText value="${grupo.cupo}" />
+						</p:panelGrid>
+					</p:panel>
+					<f:facet name="footer">
+						<p:commandButton value="Guardar" action="guardar"
+							icon="ui-icon-disk" />
+						<p:commandButton value="Cancelar" action="cancelar"
+							immediate="true" icon="ui-icon-close" />
+					</f:facet>
+				</p:panel>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

@@ -10,34 +10,39 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:panel header="${alumno.nombreCompleto}">
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
 
-			<p:panelGrid columns="2">
-				<p:outputLabel value="Id" />
-				<p:outputLabel value="${alumno.id}" />
-				<p:outputLabel value="Nombre" />
-				<p:outputLabel value="${alumno.nombre}" />
-				<p:outputLabel value="Primer Apellido" />
-				<p:outputLabel value="${alumno.primerApellido}" />
-				<p:outputLabel value="Segundo Apellido" />
-				<p:outputLabel value="${alumno.segundoApellido}" />
-				<p:outputLabel value="Género" />
-				<p:outputLabel value="${alumno.genero.nombre}" />
-				<p:outputLabel value="Fecha de Nacimiento" />
-				<p:outputLabel value="${alumno.fechaNacimiento.time}" >
-				<f:convertDateTime pattern="dd/MM/yyyy"/>
-				</p:outputLabel>
-				<p:outputLabel value="Dirección" />
-				<p:outputLabel value="${alumno.direccion.direccionCompleta}" />
-			</p:panelGrid>
+		<ui:define name="content">
+			<h:form>
+				<p:panel header="${alumno.nombreCompleto}">
 
-			<f:facet name="footer">
-				<p:commandButton value="Regresar" action="regresar"
-					icon="ui-icon-circle-arrow-w" />
-			</f:facet>
-		</p:panel>
-	</h:form>
+					<p:panelGrid columns="2">
+						<p:outputLabel value="Id" />
+						<p:outputLabel value="${alumno.id}" />
+						<p:outputLabel value="Nombre" />
+						<p:outputLabel value="${alumno.nombre}" />
+						<p:outputLabel value="Primer Apellido" />
+						<p:outputLabel value="${alumno.primerApellido}" />
+						<p:outputLabel value="Segundo Apellido" />
+						<p:outputLabel value="${alumno.segundoApellido}" />
+						<p:outputLabel value="Género" />
+						<p:outputLabel value="${alumno.genero.nombre}" />
+						<p:outputLabel value="Fecha de Nacimiento" />
+						<p:outputLabel value="${alumno.fechaNacimiento.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+						<p:outputLabel value="Dirección" />
+						<p:outputLabel value="${alumno.direccion.direccionCompleta}" />
+					</p:panelGrid>
+
+					<f:facet name="footer">
+						<p:commandButton value="Regresar" action="regresar"
+							icon="ui-icon-circle-arrow-w" />
+					</f:facet>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>
