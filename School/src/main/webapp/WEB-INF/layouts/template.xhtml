@@ -10,20 +10,36 @@
 		href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="style.css" />
-<!-- 	<title><ui:insert name="title"></ui:insert></title> -->
+	<!-- 	<title><ui:insert name="title"></ui:insert></title> -->
 </h:head>
 
 <h:body>
 	<div id="sidebar" class="sidebar" style="width: 0px;">
 		<a href="#" class="boton-cerrar" onclick="ocultar()">×</a>
 		<ul id="menu">
-			<li><a href="${request.contextPath}/app/mdm/alumnos">Alumnos</a></li>
+			<li><img
+				src="${request.contextPath}/app/resources/images/links/alumnos.png"
+				alt="Alumnos" class="link" /><a
+				href="${request.contextPath}/app/mdm/alumnos"><p:spacer
+						width="20" height="25" />Alumnos</a></li>
 			<h:outputText value="&lt;br/&gt;" escape="false" />
-			<li><a href="${request.contextPath}/app/mdm/padres">Padres</a></li>
+			<li><img
+				src="${request.contextPath}/app/resources/images/links/padres.png"
+				alt="Padres" class="link" /><a
+				href="${request.contextPath}/app/mdm/padres"><p:spacer
+						width="20" height="25" />Padres</a></li>
 			<h:outputText value="&lt;br/&gt;" escape="false" />
-			<li><a href="${request.contextPath}/app/mdm/profesores">Profesores</a></li>
+			<li><img
+				src="${request.contextPath}/app/resources/images/links/icono-profesores.png"
+				alt="Profesores" class="link" /><a
+				href="${request.contextPath}/app/mdm/profesores"><p:spacer
+						width="20" height="25" />Profesores</a></li>
 			<h:outputText value="&lt;br/&gt;" escape="false" />
-			<li><a href="${request.contextPath}/app/mdm/grupos">Grupos</a></li>
+			<li><img
+				src="${request.contextPath}/app/resources/images/links/grupos.png"
+				alt="Grupos" class="link" /><a
+				href="${request.contextPath}/app/mdm/grupos"><p:spacer
+						width="20" height="25" />Grupos</a></li>
 		</ul>
 	</div>
 	<div id="contenido" style="margin-left: 0px;">
@@ -57,7 +73,7 @@
 			<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
 		</div>
 		<div>
-			
+
 			<div id="content" class="left_content">
 
 				<ui:insert name="content">Main Content</ui:insert>

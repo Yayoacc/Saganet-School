@@ -37,12 +37,14 @@
 
 .sidebar ul {
 	margin: 4rem auto;
+	align-content:space-between;
 	display: block;
 	width: 80%;
 	min-width: 200px;
 }
 
 .sidebar a {
+	margin-top:20px;
 	display: block;
 	font-size: 120%;
 	color: #eee;
@@ -120,6 +122,9 @@ h1 {
 		padding:5px;
 		bottom:0;
 	}
+	#text-menu{
+		padding-top: 10px;
+	}
 	* {
 				margin:0px;
 				padding:0px;
@@ -187,6 +192,11 @@ h1 {
 				margin-top:1%;
 				margin-left:1%;
 				width: 30px;
+				height: auto;
+				float: left;		
+			}
+			.link {
+				width: 40px;
 				height: auto;
 				float: left;		
 			}
