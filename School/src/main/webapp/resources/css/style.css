@@ -1,7 +1,7 @@
 .sidebar {
 	position: fixed;
 	height: 100%;
-	margin-top:56px;
+	margin-top: 56px;
 	width: 0;
 	top: 0;
 	left: 0;
@@ -12,7 +12,6 @@
 	padding: 1rem 0;
 	box-sizing: border-box;
 }
-
 
 .sidebar .boton-cerrar {
 	position: absolute;
@@ -37,14 +36,14 @@
 
 .sidebar ul {
 	margin: 4rem auto;
-	align-content:space-between;
+	align-content: space-between;
 	display: block;
 	width: 80%;
 	min-width: 200px;
 }
 
 .sidebar a {
-	margin-top:20px;
+	margin-top: 20px;
 	display: block;
 	font-size: 120%;
 	color: #eee;
@@ -83,120 +82,140 @@ h1 {
 }
 
 /* DE AQUI EMPIEZAN LOS ESTILOS DE YAEL */
-
 #top {
-		position:fixed;
-		vertical-align: top;
-		background-color:#13654a;
-		height:3em;
-		width:100%;
-		z-index:100;
-		left:0;
-		top:0;
+	position: fixed;
+	vertical-align: top;
+	background-color: #13654a;
+	height: 3em;
+	width: 100%;
+	z-index: 100;
+	left: 0;
+	top: 0;
+}
 
-	}
-	
-	#left {
-		position:fixed;
-		left: 4px;
-		top: 3em;
-		width:145px;	
-		height:100%;
-		background-color:#d6bd91;
-		padding-left:1.5em;
-	}
-		
-	#content {
-		top: 3em;
-		position:relative;
-/* 		margin-left: 2%; */
-/* 		margin-right: 2%; */
-		margin-top:2%;
-		padding:5px;
-		margin-bottom:7%;;
-	}
+#left {
+	position: fixed;
+	left: 4px;
+	top: 3em;
+	width: 145px;
+	height: 100%;
+	background-color: #d6bd91;
+	padding-left: 1.5em;
+}
 
-	#bottom {
-		position:fixed;
-		margin-left: 165px;
-		padding:5px;
-		bottom:0;
-	}
-	#text-menu{
-		padding-top: 10px;
-	}
-	* {
-				margin:0px;
-				padding:0px;
-			}
-			
-			#header {
-				margin:auto;
-				width:100%;
-				height: 55px;
-				font-family:Arial, Helvetica, sans-serif;
-				background-color: black;
-				-webkit-box-shadow: -1px 5px 37px -5px rgba(0,0,0,0.75);
-				-moz-box-shadow: -1px 5px 37px -5px rgba(0,0,0,0.75);
-				box-shadow: -1px 5px 37px -5px rgba(0,0,0,0.75);
-			}
-			
-			ul, ol {
-				list-style:none;
-			}
-			
-			.nav > li {
-				float:right;
-			}
-			
-			.nav li a {
-				background-color:#000;
-				color:#fff;
-				text-decoration:none;
-				padding:10px 12px;
-				display:block;
-			}
-			
-			.nav li a:hover {
-				background-color:#434343;
-			}
-			
-			.nav li ul {
-				display:none;
-				position:absolute;
-				min-width:140px;
-			}
-			
-			.nav li:hover > ul {
-				display:block;
-			}
-			
-			.nav li ul li {
-				position:relative;
-			}
-			
-			.nav li ul li ul {
-				right:-140px;
-				top:0px;
-			}
-			#user {
-				border-radius: 128px 128px 128px 128px;
-				-moz-border-radius: 128px 128px 128px 128px;
-				-webkit-border-radius: 128px 128px 128px 128px;
-				border: 0px dotted #7a2b7a;
-				width: 25px;
-				height: 25px;
-				background-color: white;
-			}
-			.menu {
-				margin-top:1%;
-				margin-left:1%;
-				width: 30px;
-				height: auto;
-				float: left;		
-			}
-			.link {
-				width: 40px;
-				height: auto;
-				float: left;		
-			}
+#content {
+	top: 3em;
+	position: relative;
+	/* 		margin-left: 2%; */
+	/* 		margin-right: 2%; */
+	margin-top: 2%;
+	padding: 5px;
+	margin-bottom: 7%;;
+}
+
+#bottom {
+	position: fixed;
+	margin-left: 165px;
+	padding: 5px;
+	bottom: 0;
+}
+
+#text-menu {
+	padding-top: 10px;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#header {
+	margin: auto;
+	width: 100%;
+	height: 55px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: black;
+	-webkit-box-shadow: -1px 5px 37px -5px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: -1px 5px 37px -5px rgba(0, 0, 0, 0.75);
+	box-shadow: -1px 5px 37px -5px rgba(0, 0, 0, 0.75);
+}
+
+ul, ol {
+	list-style: none;
+}
+
+.nav {
+	float: right;
+	color: black;
+	padding-right: 20px;
+	padding-top: 10px;
+}
+
+.nav .ui-button {
+	background-color: black;
+	border: none !important;
+	border-style: hidden !important;
+	text-shadow: none;
+	background: black !important;
+	color: white;
+}
+
+.nav.ui-menubutton {
+	background-color: black;
+	border: none !important;
+	text-shadow: none;
+	background: rgba(0,0,0,1);
+	color: white;
+	-webkit-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+	box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+}
+
+.ui-menu, .ui-menu .ui-menu-child {
+	background-color: black;
+	border: none;
+	background: black;
+	color: white;
+}
+
+.ui-widget-content a {
+	color: #FFFFFF;
+}
+
+.ui-menu .ui-menuitem:hover {
+	background-color: #5f5f5f;
+	color: white;
+	border-right-style: none;
+}
+
+.ui-widget-content a:hover {
+	color: white;
+}
+
+.fa-user {
+	color: orange;
+}
+
+#user {
+	border-radius: 128px 128px 128px 128px;
+	-moz-border-radius: 128px 128px 128px 128px;
+	-webkit-border-radius: 128px 128px 128px 128px;
+	border: 0px dotted #7a2b7a;
+	width: 25px;
+	height: 25px;
+	background-color: white;
+}
+
+.menu {
+	margin-top: 1%;
+	margin-left: 1%;
+	width: 30px;
+	height: auto;
+	float: left;
+}
+
+.link {
+	width: 40px;
+	height: auto;
+	float: left;
+}

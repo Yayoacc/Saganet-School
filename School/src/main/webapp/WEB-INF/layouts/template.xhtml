@@ -52,23 +52,38 @@
 					onclick="ocultar()" style="display: none;"><p:graphicImage
 						value="${request.contextPath}/app/resources/images/menu-icon.png"
 						styleClass="menu" /></a>
-
-				<ul class="nav">
-					<li><a href="">Usuario<p:spacer width="20" height="25" /><img
-							src="${request.contextPath}/app/resources/images/user.png"
-							alt="Usuario" id="user" /> <p:spacer width="20" height="25" /><i
-							class="fas fa-angle-down"></i></a>
-						<ul>
-							<li><a href=""><i class="far fa-user-circle"></i> <p:spacer
-										width="5" height="25" />Perfil</a></li>
-							<li><a href=""><i class="fas fa-wrench"></i> <p:spacer
-										width="5" height="25" />Configuración</a></li>
-							<li><a href=""><i class="far fa-envelope"></i> <p:spacer
-										width="5" height="25" />Mensajes</a></li>
-							<li><a href=""><i class="far fa-bell"></i> <p:spacer
-										width="5" height="25" />Notificaciones</a></li>
-						</ul></li>
-				</ul>
+				<h:form>
+					<p:menuButton value="Usuario" styleClass="nav" icon="fa fa-user">
+						<p:menuitem>
+							<i class="far fa-user-circle"></i>
+							<p:spacer width="5" height="25" />Perfil</p:menuitem>
+						<p:menuitem>
+							<i class="fas fa-wrench"></i>
+							<p:spacer width="5" height="25" />Configuración</p:menuitem>
+						<p:menuitem>
+							<i class="far fa-envelope"></i>
+							<p:spacer width="5" height="25" />Mensajes</p:menuitem>
+						<p:menuitem>
+							<i class="far fa-bell"></i>
+							<p:spacer width="5" height="25" />Notificaciones</p:menuitem>
+					</p:menuButton>
+				</h:form>
+<!-- 				<ul class="nav"> -->
+<!-- 					<li>Usuario<p:spacer width="20" height="25" /><img -->
+<!-- 						src="${request.contextPath}/app/resources/images/user.png" -->
+<!-- 						alt="Usuario" id="user" /> <p:spacer width="20" height="25" /><i -->
+<!-- 						class="fas fa-angle-down"></i> -->
+<!-- 						<ul> -->
+<!-- 							<li><a href=""><i class="far fa-user-circle"></i> <p:spacer -->
+<!-- 										width="5" height="25" />Perfil</a></li> -->
+<!-- 							<li><a href=""><i class="fas fa-wrench"></i> <p:spacer -->
+<!-- 										width="5" height="25" />Configuración</a></li> -->
+<!-- 							<li><a href=""><i class="far fa-envelope"></i> <p:spacer -->
+<!-- 										width="5" height="25" />Mensajes</a></li> -->
+<!-- 							<li><a href=""><i class="far fa-bell"></i> <p:spacer -->
+<!-- 										width="5" height="25" />Notificaciones</a></li> -->
+<!-- 						</ul></li> -->
+<!-- 				</ul> -->
 			</div>
 			<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
 		</div>
