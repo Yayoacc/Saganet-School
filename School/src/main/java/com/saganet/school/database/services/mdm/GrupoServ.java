@@ -15,6 +15,8 @@ import com.saganet.school.database.entities.mdm.GrupoEO;
 import com.saganet.school.database.entities.mdm.ProfesorEO;
 import com.saganet.school.utils.Modelo;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service("GrupoServ")
 public class GrupoServ {
 	@Autowired
@@ -67,6 +69,7 @@ public class GrupoServ {
 	}
 
 	public Modelo<AlumnoEO> AlumnosGrupo(GrupoEO grupo) {
+		log.info("Es el grupo a detallar."+grupo);
 		List<AlumnoEO> listado;
 		listado = grupo.getAlumnos();
 		return new Modelo<>(listado);
@@ -100,5 +103,14 @@ public class GrupoServ {
 		List<ProfesorEO> listado;
 		listado = grupo.getProfesores();
 		return new Modelo<>(listado);
+	}
+	
+	public List<GrupoEO> gruposAlumno(Integer id){
+			List<GrupoEO> lista;
+			lista = grupoDao.findByAlumnos_id(id);
+			return lista;
+	}
+	public void verflowScope(GrupoEO grupo) {
+		log.info("El grupo recibido es:"+grupo);
 	}
 }

@@ -33,7 +33,30 @@
 						</p:outputLabel>
 						<p:outputLabel value="Dirección" />
 						<p:outputLabel value="${alumno.direccion.direccionCompleta}" />
+						<p:outputLabel value="Tutor" />
+						<p:outputLabel value="${alumno.padre.nombreCompleto}" />
 					</p:panelGrid>
+					<p:separator />
+					<p:panel header="Grupos">
+						<p:dataTable value="${gruposAlumno.listado}" var="fila"
+							rowKey="${fila.id}" filteredValue="${fila.nombre}"
+							scrollable="true" crollHeight="150" paginator="true" rows="15"
+							selection="${gruposAlumno.seleccionado}" selectionMode="single"
+							paginatorAlwaysVisible="false" paginatorPosition="bottom"
+							id="tablaGrupos">
+							<p:column headerText="Id" width="50" rowSelectMode="checkbox"
+								stickyHeader="true">
+								<p:outputLabel value="${fila.id}" />
+							</p:column>
+							<p:column headerText="Nombre" width="200">
+								<p:outputLabel value="${fila.nombre}" />
+							</p:column>
+						</p:dataTable>
+						<f:facet name="footer">
+							<p:commandButton value="Detalle de Grupo" action="detalleGrupo"
+								icon="fa fa-list-alt" />
+						</f:facet>
+					</p:panel>
 
 					<f:facet name="footer">
 						<p:commandButton value="Regresar" action="regresar"

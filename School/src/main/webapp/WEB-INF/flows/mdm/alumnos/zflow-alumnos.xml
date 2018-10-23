@@ -59,14 +59,7 @@
 			 <set name="flashScope.accion" value="'nuevo'" />
 			  <set name="flowScope.alumno" value="viewScope.alumno" />
 		</transition>
-
-
-		<!-- <transition on="agregarPadre" to="agregarPadres"> -->
-
-		<!-- <set name="requestScope.alumno" -->
-		<!-- value="viewScope.alumno" /> -->
-<!-- </transition> -->
-
+		
 		<transition on="cancelar" to="agregarEditarCancelado" />
 	</view-state>
 
@@ -96,10 +89,24 @@
 	<view-state id="detalle">
 		<on-entry>
 			<set name="viewScope.alumno" value="requestScope.alumno" />
+			<evaluate expression="AlumnoServ.AlumnoGrupo(viewScope.alumno)" result="viewScope.gruposAlumno"/>
 		</on-entry>
-
+		<transition on="detalleGrupo" to="grupoDetalle">
+			<set name="flashScope.accion" value="'detalleGrupo'" />
+			<set name="flowScope.alumno" value="viewScope.alumno" />
+			<set name="flowScope.grupo" value="viewScope.gruposAlumno.seleccionado"/> 
+		</transition>
 		<transition on="regresar" to="listado" />
 	</view-state>
+	
+	<subflow-state id="grupoDetalle" subflow="mdm/grupos">
+		<input name="id" value="accion"/>
+		<input name="grupo" value="flowScope.grupo"/>
+		<transition on="agregarEditarCancelado" to="detalle"/>
+		<on-exit>
+			<set name="requestScope.alumno" value="flowScope.alumno" />
+		</on-exit>
+	</subflow-state>
 
 	<end-state id="agregarEditarExitoso" />
 	<end-state id="agregarEditarCancelado" />

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.saganet.school.database.daos.mdm.AlumnoDao;
 import com.saganet.school.database.entities.mdm.AlumnoEO;
+import com.saganet.school.database.entities.mdm.GrupoEO;
 import com.saganet.school.utils.Modelo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,8 @@ public class AlumnoServ {
 
 	@Autowired
 	private DireccionServ direccionServ;
+	@Autowired
+	private GrupoServ grupoServ;
 
 	public Modelo<AlumnoEO> modeloTodos() {
 		List<AlumnoEO> listado;
@@ -58,5 +61,9 @@ public class AlumnoServ {
 		// padreServ.guardar(alumno.getPadre());
 		alumnoDao.save(alumno);
 	}
-
+	public Modelo<GrupoEO> AlumnoGrupo(AlumnoEO alumno){
+		List<GrupoEO> listado;
+		listado = grupoServ.gruposAlumno(alumno.getId());
+		return new Modelo<>(listado);
+	}
 }
