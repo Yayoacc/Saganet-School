@@ -47,10 +47,10 @@
 			<div id="header">
 				<a id="abrir" class="abrir-cerrar" href="javascript:void(0)"
 					onclick="mostrar()" style="display: inline;"><p:graphicImage
-						value="${request.contextPath}/app/resources/images/menu-ic.png"
+						value="${request.contextPath}/app/resources/images/menu-icon.png"
 						styleClass="menu" /></a><a id="cerrar" class="abrir-cerrar" href="#"
 					onclick="ocultar()" style="display: none;"><p:graphicImage
-						value="${request.contextPath}/app/resources/images/menu-ic.png"
+						value="${request.contextPath}/app/resources/images/menu-icon.png"
 						styleClass="menu" /></a>
 				<h:form>
 					<p:menuButton value="Usuario" styleClass="nav" icon="fa fa-user">
@@ -60,6 +60,8 @@
 						<p:menuitem>
 							<i class="fas fa-wrench"></i>
 							<p:spacer width="5" height="25" />Configuración</p:menuitem>
+						<p:menuitem>
+							<i class="far fa-envelope"></i>
 							<p:spacer width="5" height="25" />Mensajes</p:menuitem>
 						<p:menuitem>
 							<i class="far fa-bell"></i>

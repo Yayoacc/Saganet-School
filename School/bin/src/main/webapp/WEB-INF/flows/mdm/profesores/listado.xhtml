@@ -10,34 +10,47 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:panel header="Listado de Profesores">
-			<p:dataTable value="${modelo.listado}" var="fila" rowKey="${fila.id}"
-				selection="${modelo.seleccionado}" selectionMode="single"
-				paginator="true" rows="20"
-				paginatorAlwaysVisible="false" paginatorPosition="bottom"
-				filterBy="${fila.primerApellido}">
-				<p:column headerText="Id" width="50">
-					<p:outputLabel value="${fila.id}" />
-				</p:column>
-				<p:column headerText="Primer Apellido" width="200">
-					<p:outputLabel value="${fila.primerApellido}" />
-				</p:column>
-				<p:column headerText="Segundo Apellido" width="200">
-					<p:outputLabel value="${fila.segundoApellido}" />
-				</p:column>
-				<p:column headerText="Nombre" width="200">
-					<p:outputLabel value="${fila.nombre}" />
-				</p:column>
-			</p:dataTable>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
+		<ui:define name="title">School - Profesores</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<p:panel header="Listado de Profesores">
+					<p:growl id="growlError" showDetail="true" sticky="true" />
+					<p:dataTable id="tablaProfesores" value="${modelo.listado}"
+						var="fila" rowKey="${fila.id}" selection="${modelo.seleccionado}"
+						selectionMode="single" paginator="true" rows="20"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom"
+						filterBy="${fila.primerApellido}">
+						<p:column headerText="Id" width="50">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+						<p:column headerText="Primer Apellido" width="200">
+							<p:outputLabel value="${fila.primerApellido}" />
+						</p:column>
+						<p:column headerText="Segundo Apellido" width="200">
+							<p:outputLabel value="${fila.segundoApellido}" />
+						</p:column>
+						<p:column headerText="Nombre" width="200">
+							<p:outputLabel value="${fila.nombre}" />
+						</p:column>
+					</p:dataTable>
 
-			<f:facet name="footer">
-				<p:commandButton value="Detalle" action="detalle" disabled="${modelo.seleccionado == null}" />
-				<p:commandButton value="Agregar" action="agregar" />
-				<p:commandButton value="Editar" action="editar" disabled="${modelo.seleccionado == null}" />
-			</f:facet>
-		</p:panel>
-	</h:form>
+					<f:facet name="footer">
+						<p:commandButton value="Detalle" action="detalle"
+							disabled="${modelo.seleccionado == null}" icon="ui-icon-document" />
+						<p:commandButton value="Agregar" action="agregar"
+							icon="ui-icon-person" />
+						<p:commandButton value="Editar" action="editar"
+							disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil" />
+						<p:commandButton value="Eliminar"
+							update="${p:component('tablaProfesores')} ${p:component('growlError')}"
+							actionListener="#{ProfesorServ.mensaje}" action="eliminar"
+							icon="ui-icon-trash" />
+					</f:facet>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

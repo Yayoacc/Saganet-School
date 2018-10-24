@@ -4,45 +4,123 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://saganet.com.mx/webflow/spring-webflow-2.0.xsd">
 
+	<input name="id" />
+	<input name="grupo" />
+	<decision-state id="detalleGrupo">
+		<if test="id == 'detalleGrupo'" then="verGrupo" else="listado" />
+	</decision-state>
+	<action-state id="verGrupo">
+		<set name="requestScope.grupo" value="grupo" />
+		<transition to="detalle" />
+	</action-state>
 	<view-state id="listado">
 		<on-entry>
-			<evaluate expression="GrupoServ.modeloTodos()" result="viewScope.modelo" />
+			<evaluate expression="GrupoServ.modeloTodos()"
+				result="viewScope.modelo" />
 		</on-entry>
-		
+
 		<transition on="agregar" to="agregarEditar">
-			<evaluate expression="GrupoServ.nuevo()" result="requestScope.grupo" />
+			<evaluate expression="GrupoServ.nuevo()"
+				result="requestScope.grupo" />
 		</transition>
-		
+
 		<transition on="editar" to="agregarEditar">
-			<set name="requestScope.grupo" value="viewScope.modelo.seleccionado" />
+			<set name="requestScope.grupo"
+				value="viewScope.modelo.seleccionado" />
 		</transition>
-		
+
 		<transition on="detalle" to="detalle">
-			<set name="requestScope.grupo" value="viewScope.modelo.seleccionado" />
+			<set name="requestScope.grupo"
+				value="viewScope.modelo.seleccionado" />
+			<!-- <set name="requestScope.profesor" value="viewScope.profesor"/> -->
 		</transition>
 	</view-state>
-	
-	<view-state id="agregarEditar">
+
+	<view-state id="agregarEditar" popup="false">
 		<on-entry>
 			<set name="viewScope.grupo" value="requestScope.grupo" />
 		</on-entry>
-		
+
 		<transition on="guardar" to="agregarEditarExitoso">
 			<evaluate expression="GrupoServ.guardar(viewScope.grupo)" />
 		</transition>
-		
+
 		<transition on="cancelar" to="agregarEditarCancelado" />
 	</view-state>
-	
+
 	<view-state id="detalle">
 		<on-entry>
 			<set name="viewScope.grupo" value="requestScope.grupo" />
+			<evaluate expression="AlumnoServ.modeloTodos()"
+				result="viewScope.modeloAlumno" />
+			<evaluate
+				expression="GrupoServ.AlumnosGrupo(viewScope.grupo)"
+				result="viewScope.modeloAlumnos" />
+			<evaluate
+				expression="GrupoServ.ProfesoresGrupo(viewScope.grupo)"
+				result="viewScope.modeloProfesores" />
+			<evaluate expression="ProfesorServ.modeloProf()"
+				result="viewScope.modeloProfesor" />
 		</on-entry>
-		
-		<transition on="regresar" to="listado" />
+
+		<transition on="regresar" to="agregarEditarCancelado">
+			<evaluate expression="GrupoServ.guardar(viewScope.grupo)"></evaluate>
+		</transition>
+
+		<transition on="agregarAlumnos">
+			<evaluate
+				expression="GrupoServ.addAlumnos(viewScope.modeloAlumno.seleccionados, viewScope.grupo)" />
+			<evaluate
+				expression="GrupoServ.AlumnosGrupo(viewScope.grupo)"
+				result="viewScope.modeloAlumnos" />
+		</transition>
+		<transition on="borrarAlumno">
+			<evaluate
+				expression="GrupoServ.borrarAlumnos(modeloAlumnos.seleccionado, viewScope.grupo)" />
+		</transition>
+
+		<transition on="asignarProfesor">
+			<evaluate
+				expression="GrupoServ.addProfesores(viewScope.modeloProfesor.seleccionado, viewScope.grupo)" />
+		</transition>
+
+		<transition on="quitarProfesor">
+			<evaluate
+				expression="GrupoServ.borrarProfesor(viewScope.modeloProfesores.seleccionado, viewScope.grupo)" />
+		</transition>
+
+		<transition on="altaAlumno" to="Alumnos" bind="false">
+			<set name="flowScope.grupo" value="viewScope.grupo" />
+			<set name="flashScope.accion" value="'alta'" />
+		</transition>
+
+		<transition on="altaProfesor" to="Profesores" bind="false">
+			<set name="flowScope.grupo" value="viewScope.grupo" />
+			<set name="flashScope.accion" value="'alta'" />
+		</transition>
 	</view-state>
-	
+
+	<subflow-state id="Alumnos" subflow="mdm/alumnos">
+		<input name="accion" value="accion" />
+		<transition on="agregarEditarExitoso" to="detalle" />
+		<transition on="agregarEditarCancelado" to="detalle" />
+		<on-exit>
+			<set name="requestScope.grupo" value="flowScope.grupo" />
+		</on-exit>
+	</subflow-state>
+
+	<subflow-state id="Profesores" subflow="mdm/profesores">
+		<input name="accion" value="accion" />
+		<transition on="agregarEditarExitoso" to="detalle" />
+		<transition on="agregarEditarCancelado" to="detalle" />
+		<on-exit>
+			<set name="requestScope.grupo" value="flowScope.grupo" />
+		</on-exit>
+	</subflow-state>
+
 	<end-state id="agregarEditarExitoso" />
 	<end-state id="agregarEditarCancelado" />
+
+
 
 </flow>

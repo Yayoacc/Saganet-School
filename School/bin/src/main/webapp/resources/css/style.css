@@ -1,0 +1,221 @@
+.sidebar {
+	position: fixed;
+	height: 100%;
+	margin-top: 56px;
+	width: 0;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: #3f7c7c;
+	overflow-x: hidden;
+	transition: 0.1s;
+	padding: 1rem 0;
+	box-sizing: border-box;
+}
+
+.sidebar .boton-cerrar {
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	font-size: 2rem;
+	display: block;
+	padding: 0;
+	line-height: 1.5rem;
+	margin: 0;
+	height: 32px;
+	width: 32px;
+	text-align: center;
+	vertical-align: top;
+}
+
+.sidebar ul, .sidebar li {
+	margin: 0;
+	padding: 0;
+	list-style: none inside;
+}
+
+.sidebar ul {
+	margin: 4rem auto;
+	align-content: space-between;
+	display: block;
+	width: 80%;
+	min-width: 200px;
+}
+
+.sidebar a {
+	margin-top: 20px;
+	display: block;
+	font-size: 120%;
+	color: #eee;
+	text-decoration: none;
+}
+
+.sidebar a:hover {
+	color: #fff;
+	background-color: #9ec4ea;
+	padding-left: 5px;
+	border-radius: 2px;
+}
+
+h1 {
+	color: #f90;
+	font-size: 180%;
+	font-weight: normal;
+}
+
+#contenido {
+	transition: margin-left .1s;
+	padding: 1rem;
+}
+
+.abrir-cerrar {
+	color: #2E88C7;
+	font-size: 1rem;
+}
+
+#abrir {
+	
+}
+
+#cerrar {
+	display: none;
+}
+
+/* DE AQUI EMPIEZAN LOS ESTILOS DE YAEL */
+#top {
+	position: fixed;
+	vertical-align: top;
+	background-color: #13654a;
+	height: 3em;
+	width: 100%;
+	z-index: 100;
+	left: 0;
+	top: 0;
+}
+
+#left {
+	position: fixed;
+	left: 4px;
+	top: 3em;
+	width: 145px;
+	height: 100%;
+	background-color: #d6bd91;
+	padding-left: 1.5em;
+}
+
+#content {
+	top: 3em;
+	position: relative;
+	/* 		margin-left: 2%; */
+	/* 		margin-right: 2%; */
+	margin-top: 2%;
+	padding: 5px;
+	margin-bottom: 7%;;
+}
+
+#bottom {
+	position: fixed;
+	margin-left: 165px;
+	padding: 5px;
+	bottom: 0;
+}
+
+#text-menu {
+	padding-top: 10px;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#header {
+	margin: auto;
+	width: 100%;
+	height: 55px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: black;
+	-webkit-box-shadow: -1px 5px 37px -5px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: -1px 5px 37px -5px rgba(0, 0, 0, 0.75);
+	box-shadow: -1px 5px 37px -5px rgba(0, 0, 0, 0.75);
+}
+
+ul, ol {
+	list-style: none;
+}
+
+.nav {
+	float: right;
+	color: black;
+	padding-right: 20px;
+	padding-top: 10px;
+}
+
+.nav .ui-button {
+	background-color: black;
+	border: none !important;
+	border-style: hidden !important;
+	text-shadow: none;
+	background: black !important;
+	color: white;
+}
+
+.nav.ui-menubutton {
+	background-color: black;
+	border: none !important;
+	text-shadow: none;
+	background: rgba(0,0,0,1);
+	color: white;
+	-webkit-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+	box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+}
+
+.ui-menu, .ui-menu .ui-menu-child {
+	background-color: black;
+	border: none;
+	background: black;
+	color: white;
+}
+
+.ui-widget-content a {
+	color: #FFFFFF;
+}
+
+.ui-menu .ui-menuitem:hover {
+	background-color: #5f5f5f;
+	color: white;
+	border-right-style: none;
+}
+
+.ui-widget-content a:hover {
+	color: white;
+}
+
+.fa-user {
+	color: orange;
+}
+
+#user {
+	border-radius: 128px 128px 128px 128px;
+	-moz-border-radius: 128px 128px 128px 128px;
+	-webkit-border-radius: 128px 128px 128px 128px;
+	border: 0px dotted #7a2b7a;
+	width: 25px;
+	height: 25px;
+	background-color: white;
+}
+
+.menu {
+	margin-top: 1%;
+	margin-left: 1%;
+	width: 30px;
+	height: auto;
+	float: left;
+}
+
+.link {
+	width: 40px;
+	height: auto;
+	float: left;
+}

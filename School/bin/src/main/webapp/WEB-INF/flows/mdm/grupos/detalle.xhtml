@@ -10,24 +10,167 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:panel header="${grupo.nombre}">
-			<center>
-				<p:panelGrid columns="2">
-					<p:outputLabel value="Id" />
-					<p:outputLabel value="${grupo.id}" />
-					<p:outputLabel value="Nombre" />
-					<p:outputLabel value="${grupo.nombre}" />
-					<p:outputLabel value="Cupo" />
-					<p:outputLabel value="${grupo.cupo}" />
-					
-				</p:panelGrid>
-			</center>
-			<f:facet name="footer">
-				<p:commandButton value="Regresar" action="regresar" />
-			</f:facet>
-		</p:panel>
-	</h:form>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
+		<ui:define name="title">School - Detalle de Grupo</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<p:growl id="growl" showDetail="true" sticky="true" />
+				<p:panel header="${grupo.nombre}">
+					<center>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Id" />
+							<p:outputLabel value="${grupo.id}" />
+							<p:outputLabel value="Nombre" />
+							<p:outputLabel value="${grupo.nombre}" />
+							<p:outputLabel value="Cupo" />
+							<p:outputLabel value="${grupo.cupo}" />
+						</p:panelGrid>
+					</center>
+
+				</p:panel>
+				<p:separator />
+				<p:panel header="Alumnos" widgetVar="panelAlumnosWV">
+					<p:dataTable value="${modeloAlumnos.listado}" var="fila"
+						rowKey="${fila.id}" filteredValue="${fila.nombre}"
+						scrollable="true" crollHeight="150" paginator="true" rows="15"
+						selection="${modeloAlumnos.seleccionado}" selectionMode="single"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom"
+						id="tablaAlumnos">
+						<p:column headerText="Id" width="50" rowSelectMode="checkbox"
+							stickyHeader="true">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+						<p:column headerText="Nombre" width="200">
+							<p:outputLabel value="${fila.nombre}" />
+						</p:column>
+						<p:column headerText="Apellido Paterno" width="200">
+							<p:outputLabel value="${fila.primerApellido}" />
+						</p:column>
+						<p:column headerText="Apellido materno" width="200">
+							<p:outputLabel value="${fila.segundoApellido}" />
+						</p:column>
+					</p:dataTable>
+					<f:facet name="footer">
+
+						<p:commandButton value="Agregar Alumno(s)"
+							onclick="PF('dialogoSeleccionarAlumnoWV').show()"
+							icon="ui-icon-person" />
+						<p:commandButton id="botonBorrar" value="Borrar Alumno"
+							icon="ui-icon-trash" action="borrarAlumno"
+							update="${p:component('tablaAlumnos')}" />
+						<p:commandButton value="Alta de alumno" action="altaAlumno"
+							icon="ui-icon-plus" />
+					</f:facet>
+				</p:panel>
+				<p:separator />
+				<p:panel header="Profesores">
+					<p:dataTable id="tablaProfesores"
+						value="${modeloProfesores.listado}" var="fila" rowKey="${fila.id}"
+						selection="${modeloProfesores.seleccionado}"
+						selectionMode="single" filteredValue="${fila.nombre}"
+						scrollable="true" crollHeight="150" paginator="true" rows="15"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom">
+						<p:column headerText="Id" width="50" rowSelectMode="checkbox"
+							stickyHeader="true">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+						<p:column headerText="Nombre" width="200">
+							<p:outputLabel value="${fila.nombre}" />
+						</p:column>
+						<p:column headerText="Apellido Paterno" width="200">
+							<p:outputLabel value="${fila.primerApellido}" />
+						</p:column>
+						<p:column headerText="Apellido materno" width="200">
+							<p:outputLabel value="${fila.segundoApellido}" />
+						</p:column>
+					</p:dataTable>
+					<f:facet name="footer">
+						<p:commandButton value="Asignar profesor"
+							onclick="PF('dialogoAsignarProfesorWV').show()"
+							icon="ui-icon-person" />
+						<p:commandButton value="Borrar profesor" action="quitarProfesor"
+							icon="ui-icon-trash" update="${p:component('tablaProfesores')}" />
+						<p:commandButton value="Alta de profesor" action="altaProfesor"
+							icon="ui-icon-plus" />
+					</f:facet>
+				</p:panel>
+				<p:separator />
+				<center>
+					<p:commandButton value="Regresar" action="regresar"
+						icon="ui-icon-circle-arrow-w" />
+				</center>
+			</h:form>
+			<h:form>
+				<p:dialog widgetVar="dialogoSeleccionarAlumnoWV"
+					header="Seleccionar Alumno" modal="true" closable="true"
+					closeOnEscape="true" visible="false">
+					<p:dataTable value="${modeloAlumno.listado}" var="fila"
+						rowKey="${fila.id}" filteredValue="${fila.nombre}"
+						selection="${modeloAlumno.seleccionados}" selectionMode="multiple"
+						scrollable="true" crollHeight="150" paginator="true" rows="15"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom"
+						rowHover="true">
+						<p:column headerText="Id" width="50" stickyHeader="true">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+
+						<p:column headerText="Primer Apellido" width="200">
+							<p:outputLabel value="${fila.primerApellido}" />
+						</p:column>
+						<p:column headerText="Segundo Apellido" width="200">
+							<p:outputLabel value="${fila.segundoApellido}" />
+						</p:column>
+
+						<p:column headerText="Nombre" width="200">
+							<p:outputLabel value="${fila.nombre}" />
+						</p:column>
+					</p:dataTable>
+
+
+					<f:facet name="footer">
+						<p:commandButton value="Agregar alumno(s)"
+							onclick="PF('dialogoSeleccionarAlumnoWV').hide()"
+							action="agregarAlumnos" actionListener="#{GrupoServ.mensaje}"
+							update="${p:component('tablaAlumnos')} ${p:component('growl')}" />
+					</f:facet>
+				</p:dialog>
+			</h:form>
+
+			<h:form>
+				<p:dialog widgetVar="dialogoAsignarProfesorWV"
+					header="Asignar Profesor" modal="true" closable="true"
+					closeOnEscape="true" visible="false">
+					<p:dataTable value="${modeloProfesor.listado}" var="fila"
+						rowKey="${fila.id}" selection="${modeloProfesor.seleccionado}"
+						selectionMode="single" paginator="true" rows="10"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom">
+						<p:column headerText="Id" width="50">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+
+						<p:column headerText="Primer Apellido" width="200">
+							<p:outputLabel value="${fila.primerApellido}" />
+						</p:column>
+						<p:column headerText="Segundo Apellido" width="200">
+							<p:outputLabel value="${fila.segundoApellido}" />
+						</p:column>
+
+						<p:column headerText="Nombre" width="200">
+							<p:outputLabel value="${fila.nombre}" />
+						</p:column>
+					</p:dataTable>
+
+
+					<f:facet name="footer">
+						<p:commandButton value="Asignar"
+							onclick="PF('dialogoAsignarProfesorWV').hide()"
+							actionListener="#{GrupoServ.mensaje}" action="asignarProfesor"
+							update="${p:component('tablaProfesores')} ${p:component('growl')}" />
+					</f:facet>
+				</p:dialog>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

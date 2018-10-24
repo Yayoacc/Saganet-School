@@ -3,7 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://saganet.com.mx/webflow/spring-webflow-2.0.xsd">
+	<input name="accion" />
 
+	<decision-state id="alta">
+		<if test="accion == 'alta'" then="nuevoProfesor" else="listado" />
+	</decision-state>
+	<action-state id="nuevoProfesor">
+		<evaluate expression="ProfesorServ.nuevo()"
+				result="requestScope.profesor" />
+		<transition to = "agregarEditar" />
+	</action-state>
+	
 	<view-state id="listado">
 		<on-entry>
 			<evaluate expression="ProfesorServ.modeloProf()" result="viewScope.modelo" />
@@ -19,6 +29,12 @@
 		
 		<transition on="detalle" to="detalle">
 			<set name="requestScope.profesor" value="viewScope.modelo.seleccionado" />
+		</transition>
+		
+		<transition on="eliminar">
+			<evaluate expression="ProfesorServ.eliminarProfesor(viewScope.modelo.seleccionado)"/>
+			<evaluate expression="ProfesorServ.modeloProf()"
+				result="viewScope.modelo" />
 		</transition>
 	</view-state>
 	
