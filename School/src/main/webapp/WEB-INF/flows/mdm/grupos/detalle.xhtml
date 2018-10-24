@@ -25,8 +25,10 @@
 							<p:outputLabel value="Cupo" />
 							<p:outputLabel value="${grupo.cupo}" />
 						</p:panelGrid>
+						<br />
+						<p:commandButton value="Enviar correo" action="correo" onclick="PF('dialogoEnviarCorreoWV').show()"
+							icon="ui-icon-mail-closed" />
 					</center>
-
 				</p:panel>
 				<p:separator />
 				<p:panel header="Alumnos" widgetVar="panelAlumnosWV">
@@ -51,15 +53,16 @@
 						</p:column>
 					</p:dataTable>
 					<f:facet name="footer">
-
-						<p:commandButton value="Agregar Alumno(s)"
-							onclick="PF('dialogoSeleccionarAlumnoWV').show()"
-							icon="ui-icon-person" />
-						<p:commandButton id="botonBorrar" value="Borrar Alumno"
-							icon="ui-icon-trash" action="borrarAlumno"
-							update="${p:component('tablaAlumnos')}" />
-						<p:commandButton value="Alta de alumno" action="altaAlumno"
-							icon="ui-icon-plus" />
+						<center>
+							<p:commandButton value="Agregar Alumno(s)"
+								onclick="PF('dialogoSeleccionarAlumnoWV').show()"
+								icon="ui-icon-person" />
+							<p:commandButton id="botonBorrar" value="Borrar Alumno"
+								icon="ui-icon-trash" action="borrarAlumno"
+								update="${p:component('tablaAlumnos')}" />
+							<p:commandButton value="Alta de alumno" action="altaAlumno"
+								icon="ui-icon-plus" />
+						</center>
 					</f:facet>
 				</p:panel>
 				<p:separator />
@@ -85,17 +88,20 @@
 						</p:column>
 					</p:dataTable>
 					<f:facet name="footer">
-						<p:commandButton value="Asignar profesor"
-							onclick="PF('dialogoAsignarProfesorWV').show()"
-							icon="ui-icon-person" />
-						<p:commandButton value="Borrar profesor" action="quitarProfesor"
-							icon="ui-icon-trash" update="${p:component('tablaProfesores')}" />
-						<p:commandButton value="Alta de profesor" action="altaProfesor"
-							icon="ui-icon-plus" />
+						<center>
+							<p:commandButton value="Asignar profesor"
+								onclick="PF('dialogoAsignarProfesorWV').show()"
+								icon="ui-icon-person" />
+							<p:commandButton value="Borrar profesor" action="quitarProfesor"
+								icon="ui-icon-trash" update="${p:component('tablaProfesores')}" />
+							<p:commandButton value="Alta de profesor" action="altaProfesor"
+								icon="ui-icon-plus" />
+						</center>
 					</f:facet>
 				</p:panel>
 				<p:separator />
 				<center>
+					<br />
 					<p:commandButton value="Regresar" action="regresar"
 						icon="ui-icon-circle-arrow-w" />
 				</center>
@@ -167,6 +173,36 @@
 							actionListener="#{GrupoServ.mensaje}" action="asignarProfesor"
 							update="${p:component('tablaProfesores')} ${p:component('growl')}" />
 					</f:facet>
+				</p:dialog>
+			</h:form>
+
+			<h:form>
+				<p:dialog widgetVar="dialogoEnviarCorreoWV" header="Enviar correo"
+					modal="true" closable="true" closeOnEscape="true" visible="false">
+					<p:panel header="A padres de ${grupo.nombre}"
+						id="panelCorreo">
+						<p:panel>
+							<p:outputLabel value="Asunto" />
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon"><i
+									class="fa fa-fw fa-envelope-open"></i></span>
+								<p:inputText placeholder="Asunto" value="${correo.subject}" />
+							</div>
+							<br />
+							<p:outputLabel value="Mensaje" />
+							<br />
+							<!-- 							<p:editor value="${correo.body}" width="600" /> -->
+							<p:inputTextarea rows="6" cols="50" value="${correo.body}" />
+							<!-- 							<p:textEditor value="${correo.body}"/> -->
+						</p:panel>
+						<f:facet name="footer">
+							<center>
+								<p:commandButton value="Enviar" action="enviar"
+									onclick="PF('dialogoEnviarCorreoWV').hide()"
+									icon="ui-icon-mail-closed" />
+							</center>
+						</f:facet>
+					</p:panel>
 				</p:dialog>
 			</h:form>
 		</ui:define>

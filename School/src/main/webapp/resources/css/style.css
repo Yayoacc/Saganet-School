@@ -1,8 +1,8 @@
 .sidebar {
 	position: fixed;
 	height: 100%;
-	margin-top: 56px;
-	width: 0;
+	margin-top:55px;
+	width: 0px;
 	top: 0;
 	left: 0;
 	z-index: 1;
@@ -36,17 +36,18 @@
 
 .sidebar ul {
 	margin: 4rem auto;
-	align-content: space-between;
+	align-content:space-between;
 	display: block;
 	width: 80%;
 	min-width: 200px;
 }
 
 .sidebar a {
-	margin-top: 20px;
+	margin-top:10px;
 	display: block;
 	font-size: 120%;
 	color: #eee;
+	padding-bottom: 10px;
 	text-decoration: none;
 }
 
@@ -81,6 +82,7 @@ h1 {
 	display: none;
 }
 
+/* DE AQUI EMPIEZAN LOS ESTILOS DE YAEL */
 /* DE AQUI EMPIEZAN LOS ESTILOS DE YAEL */
 #top {
 	position: fixed;
