@@ -39,6 +39,14 @@
 			<evaluate expression="PadreServ.modeloTodos()"
 				result="viewScope.modelo" />
 		</transition>
+		<transition on="correo">
+			<set name="viewScope.padre" value="viewScope.modelo.seleccionado" />
+			<evaluate expression="MailService.nuevo()" result="viewScope.correo"/>
+		</transition>
+		<transition on="enviar" to="Lista">
+			<set name="viewScope.correo.to" value="padre.correoElectronico"/>
+			<evaluate expression="MailService.sendMail(viewScope.correo)"/>
+		</transition>
 	</view-state>
 	<view-state id="agregarEditar">
 		<on-entry>	
@@ -57,6 +65,7 @@
 		</on-entry>
 		<transition on="regresar" to="Lista" />
 	</view-state>
+	
 	<end-state id="agregarEditarCancelado" />
 	<end-state id="agregarEditarExitoso" />
 </flow>

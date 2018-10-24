@@ -4,7 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>Padres</h:head>
+<h:head>
+
+</h:head>
 <h:body>
 	<ui:composition template="/WEB-INF/layouts/template.xhtml">
 
@@ -30,18 +32,68 @@
 						</p:column>
 					</p:dataTable>
 					<f:facet name="footer">
-						<p:commandButton value="Detalle" action="detalle"
-							disabled="${modelo.seleccionado == null}" icon="ui-icon-document" />
-						<p:commandButton value="Agregar" action="agregar"
-							icon="ui-icon-person" />
-						<p:commandButton value="Editar" action="editar"
-							disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil" />
-						<p:commandButton value="Eliminar"
-							update="${p:component('tablaPadres')} ${p:component('growlError')}"
-							actionListener="#{PadreServ.mensaje}" action="eliminar"
-							icon="ui-icon-trash" />
+						<center>
+							<p:commandButton value="Detalle" action="detalle"
+								disabled="${modelo.seleccionado == null}"
+								icon="ui-icon-document" />
+							<p:commandButton value="Agregar" action="agregar"
+								icon="ui-icon-person" />
+							<p:commandButton value="Editar" action="editar"
+								disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil" />
+							<p:commandButton value="Eliminar"
+								update="${p:component('tablaPadres')} ${p:component('growlError')}"
+								actionListener="#{PadreServ.mensaje}" action="eliminar"
+								icon="ui-icon-trash" />
+							<p:commandButton value="Enviar correo" icon="ui-icon-mail-closed"
+								action="correo" update="${p:component('panelCorreo')}"
+								onclick="PF('dialogoEnviarCorreoWV').show()"
+								disabled="${modelo.seleccionado == null}" />
+						</center>
 					</f:facet>
 				</p:panel>
+			</h:form>
+			<h:form>
+				<p:dialog widgetVar="dialogoEnviarCorreoWV" header="Enviar correo"
+					modal="true" closable="true" closeOnEscape="true" visible="false">
+					<p:panel header="A ${modelo.seleccionado.nombreCompleto}"
+						id="panelCorreo">
+						<p:panel>
+							<p:outputLabel value="Nombre" />
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+								<p:inputText placeholder="Nombre"
+									value="${modelo.seleccionado.nombre}" />
+							</div>
+							<br />
+							<p:outputLabel value="Correo" />
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon">@</span>
+								<p:inputText placeholder="Correo"
+									value="${modelo.seleccionado.correoElectronico}" />
+							</div>
+							<br />
+							<p:outputLabel value="Asunto" />
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon"><i
+									class="fa fa-fw fa-envelope-open"></i></span>
+								<p:inputText placeholder="Asunto" value="${correo.subject}" />
+							</div>
+							<br />
+							<p:outputLabel value="Mensaje" />
+							<br />
+							<!-- 							<p:editor value="${correo.body}" width="600" /> -->
+							<p:inputTextarea rows="6" cols="50" value="${correo.body}" />
+							<!-- 							<p:textEditor value="${correo.body}"/> -->
+						</p:panel>
+						<f:facet name="footer">
+							<center>
+								<p:commandButton value="Enviar" action="enviar"
+									onclick="PF('dialogoEnviarCorreoWV').hide()"
+									icon="ui-icon-mail-closed" />
+							</center>
+						</f:facet>
+					</p:panel>
+				</p:dialog>
 			</h:form>
 		</ui:define>
 	</ui:composition>

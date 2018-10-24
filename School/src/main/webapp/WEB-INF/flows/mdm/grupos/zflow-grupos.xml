@@ -23,7 +23,6 @@
 		<transition on="detalle" to="detalle">
 			<set name="requestScope.grupo"
 				value="viewScope.modelo.seleccionado" />
-			<!-- <set name="requestScope.profesor" value="viewScope.profesor"/> -->
 		</transition>
 	</view-state>
 
@@ -55,9 +54,7 @@
 		</on-entry>
 
 
-		<transition on="regresar" to="listado">
-			<evaluate expression="GrupoServ.guardar(viewScope.grupo)"></evaluate>
-		</transition>
+		<transition on="regresar" to="listado"/>
 
 		<transition on="agregarAlumnos">
 			<evaluate
@@ -90,6 +87,19 @@
 			<set name="flowScope.grupo" value="viewScope.grupo" />
 			<set name="flashScope.accion" value="'alta'" />
 		</transition>
+		<transition on="correo">
+			<evaluate expression="MailService.nuevo()" result="viewScope.correo"/>
+		</transition>
+		<transition on="enviar" to="detalle">
+			<evaluate expression="GrupoServ.padresGrupo(viewScope.modeloAlumnos.listado)" result="viewScope.Padres"/>
+			<evaluate expression="MailService.sendMail(viewScope.Padres, viewScope.correo)"/>
+			<set name="requestScope.grupo"
+				value="viewScope.grupo" />
+		</transition>
+		<on-exit>
+			<evaluate expression="GrupoServ.guardar(viewScope.grupo)"/>
+		</on-exit>
+		
 	</view-state>
 	
 	<subflow-state id="Alumnos" subflow="mdm/alumnos">
