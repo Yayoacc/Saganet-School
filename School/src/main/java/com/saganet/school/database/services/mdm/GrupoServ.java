@@ -1,5 +1,6 @@
 package com.saganet.school.database.services.mdm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,6 +13,7 @@ import com.saganet.school.database.daos.mdm.GrupoDao;
 import com.saganet.school.database.entities.mdm.AlumnoEO;
 import com.saganet.school.database.daos.mdm.ProfesorDao;
 import com.saganet.school.database.entities.mdm.GrupoEO;
+import com.saganet.school.database.entities.mdm.PadreEO;
 import com.saganet.school.database.entities.mdm.ProfesorEO;
 import com.saganet.school.utils.Modelo;
 
@@ -73,6 +75,19 @@ public class GrupoServ {
 		List<AlumnoEO> listado;
 		listado = grupo.getAlumnos();
 		return new Modelo<>(listado);
+	}
+	
+	public List<PadreEO> padresGrupo(List<AlumnoEO> alumnos){
+		List<PadreEO> padres = new ArrayList<>();
+		for (AlumnoEO a : alumnos) {
+			PadreEO padre = a.getPadre();
+			if(padres.indexOf(padre) == -1) { //Si el padre del alumno aun no esta en la lista
+				padres.add(padre);
+			}
+		}
+		System.out.println("Total de padres del grupo: "+padres.size());
+		return padres;
+		
 	}
 
 	public void addProfesores(ProfesorEO profesor, GrupoEO grupo) {

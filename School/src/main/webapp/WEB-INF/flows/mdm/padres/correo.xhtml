@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>School - Enviar correo a Padre</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
+
+		<ui:define name="content">
+			<h:form>
+				<p:panel header="Enviar correo a ${padre.nombreCompleto}">
+					<p:panel >
+							<p:outputLabel value="Nombre" />
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+								<p:inputText placeholder="Username"
+									value="${padre.nombre}" />
+							</div>
+							<br />
+							<p:outputLabel value="Correo" />
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon">@</span>
+								<p:inputText placeholder="Correo"
+									value="${padre.correoElectronico}" />
+							</div>
+							<br />
+							<p:outputLabel value="Asunto" />
+							<div class="ui-inputgroup">
+								<span class="ui-inputgroup-addon"><i
+									class="fa fa-fw fa-envelope-open"></i></span>
+								<p:inputText placeholder="Asunto" value="${correo.subject}" />
+							</div>
+							<br />
+							<p:outputLabel value="Mensaje" />
+							<br />
+<!-- 							<p:editor value="${correo.body}" width="600" /> -->
+							<p:inputTextarea rows="6" cols="50" value="${correo.body}"/>
+<!-- 							<p:textEditor value="${correo.body}"/> -->
+					</p:panel>
+					<f:facet name="footer">
+						<p:commandButton value="Regresar" action="regresar"
+							icon="ui-icon-circle-arrow-w" />
+						<p:commandButton value="Enviar" action="enviar" icon="ui-icon-mail-closed"/>
+					</f:facet>
+
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
