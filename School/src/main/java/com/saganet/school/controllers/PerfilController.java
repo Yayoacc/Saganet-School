@@ -1,0 +1,16 @@
+package com.saganet.school.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+@RequestMapping("/vc")
+public class PerfilController {
+	@RequestMapping("/perfil")
+	public String vista(@RequestParam(name = "name", required = true, defaultValue = "World") String name, Model model) {
+		
+		return "perfil";
+	}
+}

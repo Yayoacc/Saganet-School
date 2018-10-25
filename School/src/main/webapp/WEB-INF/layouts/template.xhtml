@@ -9,7 +9,12 @@
 	<link rel="stylesheet"
 		href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputStylesheet library="css" name="style.css" />
+	<link
+		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+		rel="stylesheet" id="bootstrap-css"/>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<h:outputStylesheet library="css" name="style.css" />
 		<title><ui:insert name="title"></ui:insert></title>
 </h:head>
 
@@ -54,7 +59,7 @@
 						styleClass="menu" /></a>
 				<h:form>
 					<p:menuButton value="Usuario" styleClass="nav" icon="fa fa-user">
-						<p:menuitem url="${request.contextPath}/app/views/perfil.xhtml">
+						<p:menuitem url="${request.contextPath}/app/vc/perfil">
 							<i class="far fa-user-circle"></i>
 							<p:spacer width="5" height="25" />Perfil</p:menuitem>
 						<p:menuitem>
