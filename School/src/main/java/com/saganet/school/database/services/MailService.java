@@ -21,7 +21,6 @@ public class MailService {
 		return new Correo();
 	}
 	
-//	String from, String to, String subject, String body
 	public void sendMail(Correo correo) {
 
         SimpleMailMessage mail = new SimpleMailMessage();
@@ -30,7 +29,7 @@ public class MailService {
         mail.setTo(correo.getTo());
         mail.setSubject(correo.getSubject());
         mail.setText(correo.getBody());
-
+        System.out.println("Correo a destino: "+correo.getFrom()+" de: "+correo.getTo()+" asunto: "+correo.getSubject()+" cuerpo: "+correo.getBody());
         javaMailSender.send(mail);
     }
 	

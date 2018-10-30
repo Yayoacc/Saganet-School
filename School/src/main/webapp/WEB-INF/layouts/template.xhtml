@@ -10,11 +10,11 @@
 		href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="style.css" />
-		<title><ui:insert name="title"></ui:insert></title>
+	<title><ui:insert name="title"></ui:insert></title>
 </h:head>
 
 <h:body>
-	<div id="sidebar" class="sidebar" style="width: 0px;">
+	<div id="sidebar" class="sidebar">
 		<a href="#" class="boton-cerrar" onclick="ocultar()">×</a>
 		<ul id="menu">
 			<li><img
@@ -42,7 +42,7 @@
 						width="20" height="25" />Grupos</a></li>
 		</ul>
 	</div>
-	<div id="contenido" style="margin-left: 0px;">
+	<div id="contenido">
 		<div id="top" class="top">
 			<div id="header">
 				<a id="abrir" class="abrir-cerrar" href="javascript:void(0)"
@@ -53,20 +53,22 @@
 						value="${request.contextPath}/app/resources/images/menu-ic.png"
 						styleClass="menu" /></a>
 				<h:form>
-					<p:menuButton value="Usuario" styleClass="nav" icon="fa fa-user">
-						<p:menuitem url="${request.contextPath}/app/views/perfil.xhtml">
-							<i class="far fa-user-circle"></i>
-							<p:spacer width="5" height="25" />Perfil</p:menuitem>
-						<p:menuitem>
-							<i class="fas fa-wrench"></i>
-							<p:spacer width="5" height="25" />Configuración</p:menuitem>
-						<p:menuitem>
-							<i class="far fa-envelope"></i>
-							<p:spacer width="5" height="25" />Mensajes</p:menuitem>
-						<p:menuitem>
-							<i class="far fa-bell"></i>
-							<p:spacer width="5" height="25" />Notificaciones</p:menuitem>
-					</p:menuButton>
+					<div class="nav">
+						<p:menuButton value="Usuario" icon="fa fa-user">
+							<p:menuitem url="${request.contextPath}/app/views/perfil.xhtml">
+								<i class="far fa-user-circle"></i>
+								<p:spacer width="5" height="25" />Perfil</p:menuitem>
+							<p:menuitem>
+								<i class="fas fa-wrench"></i>
+								<p:spacer width="5" height="25" />Configuración</p:menuitem>
+							<p:menuitem>
+								<i class="far fa-envelope"></i>
+								<p:spacer width="5" height="25" />Mensajes</p:menuitem>
+							<p:menuitem>
+								<i class="far fa-bell"></i>
+								<p:spacer width="5" height="25" />Notificaciones</p:menuitem>
+						</p:menuButton>
+					</div>
 				</h:form>
 			</div>
 			<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
