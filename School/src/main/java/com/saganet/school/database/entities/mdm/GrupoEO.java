@@ -48,16 +48,23 @@ public class GrupoEO extends AuditObject {
 	@JoinTable(schema = "mdm", name = "grupos_profesores")
 	private List<ProfesorEO> profesores = new ArrayList<>();
 
-	public List<AlumnoEO> addAlumno(List<AlumnoEO> alumno) {
-		List<AlumnoEO> repetidos = new ArrayList<>();
-		for (AlumnoEO a: alumno) {
-			if (alumnos.indexOf(a) != -1) {
-				repetidos.add(a);			
+	public String evaluaCupo(int noAlumnos) {
+		int cupoRestante=Cupo - alumnos.size();
+		String nota="";
+		if(noAlumnos<=cupoRestante) {
+			nota="cupo";
+		}
+		else {
+			nota="Ya no hay lugares disponibles";
+			if(cupoRestante!=0) {
+				nota="Unicamente "+cupoRestante+" lugar(es) disponibles";
 			}
 		}
-		alumno.removeAll(repetidos);
+		return nota;
+	}	
+	
+	public void addAlumno(List<AlumnoEO> alumno) {
 		alumnos.addAll(alumno);
-		return repetidos;
 	}
 
 	public void addProfesor(ProfesorEO profesor) {

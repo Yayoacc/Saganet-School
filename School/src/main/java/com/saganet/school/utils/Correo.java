@@ -7,7 +7,7 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 public class Correo implements Serializable {
-	private String from = "darcap1996@gmail.com";
+	private String from = "dualmodelitp@gmail.com";
 	private String to;
 	private String subject;
 	private String body;

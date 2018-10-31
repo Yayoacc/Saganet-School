@@ -39,16 +39,19 @@
 					</p:dataTable>
 
 					<f:facet name="footer">
-						<p:commandButton value="Detalle" action="detalle"
-							disabled="${modelo.seleccionado == null}" icon="ui-icon-document" />
-						<p:commandButton value="Agregar" action="agregar"
-							icon="ui-icon-person" />
-						<p:commandButton value="Editar" action="editar"
-							disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil" />
-						<p:commandButton value="Eliminar"
-							update="${p:component('tablaAlumnos')} ${p:component('growlError')}"
-							actionListener="#{AlumnoServ.mensaje}" action="eliminar"
-							icon="ui-icon-trash" />
+						<center>
+							<p:commandButton value="Detalle" action="detalle"
+								disabled="${modelo.seleccionado == null}"
+								icon="ui-icon-document" />
+							<p:commandButton value="Agregar" action="agregar"
+								icon="ui-icon-person" />
+							<p:commandButton value="Editar" action="editar"
+								disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil" />
+							<p:commandButton value="Eliminar"
+								update="${p:component('tablaAlumnos')} ${p:component('growlError')}"
+								actionListener="#{AlumnoServ.mensaje}" action="eliminar"
+								icon="ui-icon-trash" />
+						</center>
 					</f:facet>
 				</p:panel>
 			</h:form>

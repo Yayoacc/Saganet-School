@@ -15,34 +15,37 @@
 		<ui:define name="content">
 			<h:form>
 				<p:panel header="${padre.nombreCompleto}">
-
-					<p:panelGrid columns="2">
-						<p:outputLabel value="Id" />
-						<p:outputLabel value="${padre.id}" />
-						<p:outputLabel value="Nombre" />
-						<p:outputLabel value="${padre.nombre}" />
-						<p:outputLabel value="Primer Apellido" />
-						<p:outputLabel value="${padre.primerApellido}" />
-						<p:outputLabel value="Segundo Apellido" />
-						<p:outputLabel value="${padre.segundoApellido}" />
-						<p:outputLabel value="Género" />
-						<p:outputLabel value="${padre.genero.nombre}" />
-						<p:outputLabel value="Fecha de Nacimiento" />
-						<p:outputLabel value="${padre.fechaNacimiento.time}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</p:outputLabel>
-						<p:outputLabel value="Correo electrónico" />
-						<p:outputLabel value="${padre.correoElectronico}" />
-						<p:outputLabel value="Número de teléfono" />
-						<p:outputLabel value="${padre.numeroTelefono}" />
-						<p:outputLabel value="Parentesco" />
-						<p:outputLabel value="${padre.parentesco}" />
-						<p:outputLabel value="Dirección" />
-						<p:outputLabel value="${padre.direccion.direccionCompleta}" />
-					</p:panelGrid>
+					<center>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Id" />
+							<p:outputLabel value="${padre.id}" />
+							<p:outputLabel value="Nombre" />
+							<p:outputLabel value="${padre.nombre}" />
+							<p:outputLabel value="Primer Apellido" />
+							<p:outputLabel value="${padre.primerApellido}" />
+							<p:outputLabel value="Segundo Apellido" />
+							<p:outputLabel value="${padre.segundoApellido}" />
+							<p:outputLabel value="Género" />
+							<p:outputLabel value="${padre.genero.nombre}" />
+							<p:outputLabel value="Fecha de Nacimiento" />
+							<p:outputLabel value="${padre.fechaNacimiento.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:outputLabel>
+							<p:outputLabel value="Correo electrónico" />
+							<p:outputLabel value="${padre.correoElectronico}" />
+							<p:outputLabel value="Número de teléfono" />
+							<p:outputLabel value="${padre.numeroTelefono}" />
+							<p:outputLabel value="Parentesco" />
+							<p:outputLabel value="${padre.parentesco}" />
+							<p:outputLabel value="Dirección" />
+							<p:outputLabel value="${padre.direccion.direccionCompleta}" />
+						</p:panelGrid>
+					</center>
 					<f:facet name="footer">
-						<p:commandButton value="Regresar" action="regresar"
-							icon="ui-icon-circle-arrow-w" />
+						<center>
+							<p:commandButton value="Regresar" action="regresar"
+								icon="ui-icon-circle-arrow-w" />
+						</center>
 					</f:facet>
 				</p:panel>
 			</h:form>

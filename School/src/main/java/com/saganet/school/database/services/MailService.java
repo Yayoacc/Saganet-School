@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.saganet.school.database.entities.mdm.PadreEO;
@@ -21,7 +22,7 @@ public class MailService {
 		return new Correo();
 	}
 	
-//	String from, String to, String subject, String body
+	@Async
 	public void sendMail(Correo correo) {
 
         SimpleMailMessage mail = new SimpleMailMessage();
@@ -30,14 +31,15 @@ public class MailService {
         mail.setTo(correo.getTo());
         mail.setSubject(correo.getSubject());
         mail.setText(correo.getBody());
-
+        System.out.println("Correo a destino: "+correo.getFrom()+" de: "+correo.getTo()+" asunto: "+correo.getSubject()+" cuerpo: "+correo.getBody());
         javaMailSender.send(mail);
     }
 	
+	@Async
 	public void sendMail(List<PadreEO> padres, Correo correo) {
 		for (PadreEO padre : padres) {
 			SimpleMailMessage mail = new SimpleMailMessage();
-			mail.setFrom("darcap1996@gmail.com");
+			mail.setFrom("dualmodelitp@gmail.com");
 	        mail.setTo(padre.getCorreoElectronico());
 	        mail.setSubject(correo.getSubject());
 	        mail.setText(correo.getBody());

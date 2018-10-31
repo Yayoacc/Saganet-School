@@ -36,6 +36,7 @@
 					</p:dataTable>
 
 					<f:facet name="footer">
+					<center>
 						<p:commandButton value="Detalle" action="detalle"
 							disabled="${modelo.seleccionado == null}" icon="ui-icon-document" />
 						<p:commandButton value="Agregar" action="agregar"
@@ -46,6 +47,7 @@
 							update="${p:component('tablaProfesores')} ${p:component('growlError')}"
 							actionListener="#{ProfesorServ.mensaje}" action="eliminar"
 							icon="ui-icon-trash" />
+						</center>
 					</f:facet>
 				</p:panel>
 			</h:form>

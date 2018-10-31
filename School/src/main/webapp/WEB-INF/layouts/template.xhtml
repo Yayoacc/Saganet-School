@@ -15,11 +15,11 @@
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<h:outputStylesheet library="css" name="style.css" />
-		<title><ui:insert name="title"></ui:insert></title>
+	<title><ui:insert name="title"></ui:insert></title>
 </h:head>
 
 <h:body>
-	<div id="sidebar" class="sidebar" style="width: 0px;">
+	<div id="sidebar" class="sidebar">
 		<a href="#" class="boton-cerrar" onclick="ocultar()">×</a>
 		<ul id="menu">
 			<li><img
@@ -88,6 +88,7 @@
 
 		</div>
 	</div>
+
 	<script>
 		function mostrar() {
 			document.getElementById("sidebar").style.width = "270px";

@@ -44,6 +44,7 @@
 								update="${p:component('tablaPadres')} ${p:component('growlError')}"
 								actionListener="#{PadreServ.mensaje}" action="eliminar"
 								icon="ui-icon-trash" />
+							<br/><br/>
 							<p:commandButton value="Enviar correo" icon="ui-icon-mail-closed"
 								action="correo" update="${p:component('panelCorreo')}"
 								onclick="PF('dialogoEnviarCorreoWV').show()"
@@ -58,13 +59,6 @@
 					<p:panel header="A ${modelo.seleccionado.nombreCompleto}"
 						id="panelCorreo">
 						<p:panel>
-							<p:outputLabel value="Nombre" />
-							<div class="ui-inputgroup">
-								<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-								<p:inputText placeholder="Nombre"
-									value="${modelo.seleccionado.nombre}" />
-							</div>
-							<br />
 							<p:outputLabel value="Correo" />
 							<div class="ui-inputgroup">
 								<span class="ui-inputgroup-addon">@</span>

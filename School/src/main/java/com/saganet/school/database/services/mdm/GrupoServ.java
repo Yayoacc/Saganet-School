@@ -41,8 +41,26 @@ public class GrupoServ {
 	}
 
 	public void addAlumnos(List<AlumnoEO> alumno, GrupoEO grupo) {
-		List<AlumnoEO> repetidos = grupo.addAlumno(alumno);
-		//grupoDao.flush();
+		List<AlumnoEO> repetidos = new ArrayList<>();
+		List<AlumnoEO> alumnos = grupo.getAlumnos();
+		//Obtenemos los alumnos repetidos
+		for (AlumnoEO a: alumno) {
+			if (alumnos.indexOf(a) != -1) {
+				repetidos.add(a);			
+			}
+		}
+		//Los eliminamos de la lista
+		alumno.removeAll(repetidos);
+		//Evaluamos cupo
+		String nota=grupo.evaluaCupo(alumno.size());
+		if(nota.equals("cupo")) {
+			grupo.addAlumno(alumno);
+			grupoDao.save(grupo);
+		}
+		else {
+			mensajeCupo(nota);
+		}
+		
 		StringBuilder builder;
 		builder = new StringBuilder();
 		if (!repetidos.isEmpty()) {
@@ -60,6 +78,7 @@ public class GrupoServ {
 		}
 		
 	}
+	
 	public void save(GrupoEO grupo) {
 		grupoDao.save(grupo);
 	}
@@ -67,7 +86,7 @@ public class GrupoServ {
 	
 	public void borrarAlumnos(AlumnoEO alumno, GrupoEO grupo) {
 		grupo.borrarAlumno(alumno);
-		//grupoDao.save(grupo);
+		grupoDao.save(grupo);
 	}
 
 	public Modelo<AlumnoEO> AlumnosGrupo(GrupoEO grupo) {
@@ -93,7 +112,7 @@ public class GrupoServ {
 	public void addProfesores(ProfesorEO profesor, GrupoEO grupo) {
 		if(!grupo.existeProfesor(profesor)) {
 			grupo.addProfesor(profesor);
-//			grupoDao.save(grupo);
+			grupoDao.save(grupo);
 		}
 		else {
 			mensaje(profesor.getNombreCompleto());
@@ -106,11 +125,17 @@ public class GrupoServ {
 	        context.addMessage(null, new FacesMessage("Ya existe(n)", nombre+" ya esta(n) asignado(s) al grupo"));
 		}
 	}
+	
+	public void mensajeCupo(String nota) {
+		if(!nota.substring(0, 5).equals("javax")) {
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage("Cupo al limite", nota));
+		}
+	}
 
 	public void borrarProfesor(ProfesorEO profesor, GrupoEO grupo) {
 		grupo.borrarProfesor(profesor);
-//		grupoDao.save(grupo);
-//		grupoDao.flush();
+		grupoDao.save(grupo);
 	}
 	
 
@@ -124,6 +149,10 @@ public class GrupoServ {
 			List<GrupoEO> lista;
 			lista = grupoDao.findByAlumnos_id(id);
 			return lista;
+	}
+	
+	public void eliminarGrupo(GrupoEO g) {
+		grupoDao.delete(g);
 	}
 	public void verflowScope(GrupoEO grupo) {
 		log.info("El grupo recibido es:"+grupo);
