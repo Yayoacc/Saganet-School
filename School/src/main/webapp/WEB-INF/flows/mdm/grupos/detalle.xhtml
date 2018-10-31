@@ -15,6 +15,7 @@
 		<ui:define name="content">
 			<h:form>
 				<p:growl id="growl" showDetail="true" sticky="true" />
+				<p:panel>
 				<p:panel header="${grupo.nombre}">
 					<center>
 						<p:panelGrid columns="2">
@@ -105,11 +106,15 @@
 					<p:commandButton value="Regresar" action="regresar"
 						icon="ui-icon-circle-arrow-w" />
 				</center>
+				</p:panel>
 			</h:form>
+
+<!-- ==== WIDGET PARA ASIGNAR ALUMNOS ====== -->
+
 			<h:form>
 				<p:dialog widgetVar="dialogoSeleccionarAlumnoWV"
 					header="Seleccionar Alumno" modal="true" closable="true"
-					closeOnEscape="true" visible="false">
+					closeOnEscape="true" visible="false" width="70%">
 					<p:dataTable value="${modeloAlumno.listado}" var="fila"
 						rowKey="${fila.id}" filteredValue="${fila.nombre}"
 						selection="${modeloAlumno.seleccionados}" selectionMode="multiple"
@@ -136,16 +141,18 @@
 					<f:facet name="footer">
 						<p:commandButton value="Agregar alumno(s)"
 							onclick="PF('dialogoSeleccionarAlumnoWV').hide()"
-							action="agregarAlumnos" actionListener="#{GrupoServ.mensaje}"
+							action="agregarAlumnos" actionListener="#{GrupoServ.mensajeCupo}"
 							update="${p:component('tablaAlumnos')} ${p:component('growl')}" />
 					</f:facet>
 				</p:dialog>
 			</h:form>
 
+<!-- ==== WIDGET PARA ASIGNAR PROFESOR ====== -->
+
 			<h:form>
 				<p:dialog widgetVar="dialogoAsignarProfesorWV"
 					header="Asignar Profesor" modal="true" closable="true"
-					closeOnEscape="true" visible="false">
+					closeOnEscape="true" visible="false" width="70%">
 					<p:dataTable value="${modeloProfesor.listado}" var="fila"
 						rowKey="${fila.id}" selection="${modeloProfesor.seleccionado}"
 						selectionMode="single" paginator="true" rows="10"
@@ -175,6 +182,8 @@
 					</f:facet>
 				</p:dialog>
 			</h:form>
+
+<!-- ==== WIDGET PARA ENVIAR CORREO ====== -->
 
 			<h:form>
 				<p:dialog widgetVar="dialogoEnviarCorreoWV" header="Enviar correo"
