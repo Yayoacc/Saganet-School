@@ -148,6 +148,7 @@ ul, ol {
 }
 
 .nav {
+	float:right;
 	padding-left: 88%;
 	padding-top: 10px;
 }
