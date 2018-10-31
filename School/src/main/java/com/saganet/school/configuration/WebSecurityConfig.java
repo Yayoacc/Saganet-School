@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
-        http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('USER', 'ADMIN')");
+        http.authorizeRequests().antMatchers("/app/mdm/alumnos", "/app/mdm/grupos", "/app/mdm/profesores", "/app/mdm/padres").access("hasAnyRole('USER', 'ADMIN')");
  
         // For ADMIN only.
         http.authorizeRequests().antMatchers("/admin").access("hasRole('ADMIN')");
@@ -53,15 +53,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // When the user has logged in as XX.
         // But access a page that requires role YY,
         // AccessDeniedException will be thrown.
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/login");
  
         // Config for Login Form
         http.authorizeRequests().and().formLogin()//
                 // Submit URL of login page.
                 .loginProcessingUrl("/j_spring_security_check") // Submit URL
-                .loginPage("/login")//
+                .loginPage("/app/login")//
                 .defaultSuccessUrl("/app/mdm/alumnos")//
-                .failureUrl("/login?error=true")//
+                .failureUrl("/app/login?error=true")//
                 .usernameParameter("username")//
                 .passwordParameter("password")
                 // Config for Logout Page
