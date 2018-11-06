@@ -11,4 +11,9 @@ public class PerfilController {
 	public String login(Model model) {
 		return "login";
 	}
+	
+	@RequestMapping(value = "error/403", method = RequestMethod.GET)
+	public String AccessDenied(Model model) {
+		return "403";
+	}
 } 	 
