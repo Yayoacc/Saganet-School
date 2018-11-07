@@ -1,8 +1,8 @@
 package com.saganet.school.database.domains;
 
 public enum RolDO {
-	Usuario("USER"),
-	Administrador("ADMIN");
+	Usuario("ROLE_USER"),
+	Administrador("ROLE_ADMIN");
 	private final String nombre;
 
 	private RolDO(String nombre) {
