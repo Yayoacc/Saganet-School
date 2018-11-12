@@ -11,10 +11,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link
 		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-		rel="stylesheet" id="bootstrap-css"/>
+		rel="stylesheet" id="bootstrap-css" />
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-		<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="style.css" />
 	<title><ui:insert name="title"></ui:insert></title>
 </h:head>
 
@@ -59,7 +59,8 @@
 						styleClass="menu" /></a>
 				<h:form>
 					<div class="nav">
-						<p:menuButton value="Usuario" icon="fa fa-user">
+						<p:menuButton value="${request.userPrincipal.name}"
+							icon="fa fa-user">
 							<p:menuitem url="${request.contextPath}/app/views/perfil.xhtml">
 								<i class="far fa-user-circle"></i>
 								<p:spacer width="5" height="25" />Perfil</p:menuitem>
@@ -72,8 +73,23 @@
 							<p:menuitem>
 								<i class="far fa-bell"></i>
 								<p:spacer width="5" height="25" />Notificaciones</p:menuitem>
+							<p:menuitem onclick="PF('dialogoCerrarSession').show()">
+								<i class="fas fa-sign-out-alt"></i>
+								<p:spacer width="5" height="25" />Cerrar Sesión</p:menuitem>
 						</p:menuButton>
 					</div>
+					</h:form>
+					<h:form onsubmit="/logout">
+					<p:dialog widgetVar="dialogoCerrarSession" header="Cerrar sesión"
+						modal="false" closable="true" closeOnEscape="true" visible="false" >
+					Se cerrará la sesión, ¿Esta seguro?
+					<f:facet name="footer">
+							<p:commandButton value="Si" action="submit"/>
+							<p:spacer height="23"></p:spacer>
+							<p:commandButton value="No"
+								onclick="PF('dialogoCerrarSession').hide()" />
+						</f:facet>
+					</p:dialog>
 				</h:form>
 			</div>
 			<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
