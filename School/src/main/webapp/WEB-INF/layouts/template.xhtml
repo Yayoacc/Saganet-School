@@ -78,19 +78,21 @@
 								<p:spacer width="5" height="25" />Cerrar Sesión</p:menuitem>
 						</p:menuButton>
 					</div>
-					</h:form>
-					<h:form onsubmit="/logout">
+				</h:form>
+				<form action="/logout">
 					<p:dialog widgetVar="dialogoCerrarSession" header="Cerrar sesión"
-						modal="false" closable="true" closeOnEscape="true" visible="false" >
+						modal="false" closable="true" closeOnEscape="true" visible="false">
 					Se cerrará la sesión, ¿Esta seguro?
 					<f:facet name="footer">
-							<p:commandButton value="Si" action="submit"/>
+							<input type="submit" value="Si" name="submit"  class="logoutSubmit"/>
 							<p:spacer height="23"></p:spacer>
-							<p:commandButton value="No"
-								onclick="PF('dialogoCerrarSession').hide()" />
+							<h:form>
+								<p:commandButton value="No"
+									onclick="PF('dialogoCerrarSession').hide()" />
+							</h:form>
 						</f:facet>
 					</p:dialog>
-				</h:form>
+				</form>
 			</div>
 			<!-- 		<ui:insert name="top">Top Section</ui:insert> -->
 		</div>
