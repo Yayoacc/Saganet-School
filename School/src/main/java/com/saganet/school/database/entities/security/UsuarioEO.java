@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
@@ -26,7 +28,8 @@ import lombok.EqualsAndHashCode;
 public class UsuarioEO extends AuditObject{
 	
 	@Id
-	private String Id;
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private Integer Id;
 	
 	@NotBlank(message = "Falta Usuario")
 	@Column(columnDefinition = "text")
@@ -42,7 +45,6 @@ public class UsuarioEO extends AuditObject{
 	@NotBlank
 	private Boolean Enabled;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+	@OneToOne(fetch = FetchType.EAGER)
     private ProfesorEO profesor;
 }
