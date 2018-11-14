@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.saganet.school.database.daos.security.UsuarioDao;
 import com.saganet.school.database.entities.security.UsuarioEO;
+import com.saganet.school.utils.Modelo;
 
 @Service("UsuarioServ")
 public class UsuarioServ {
@@ -23,5 +24,10 @@ public class UsuarioServ {
 		List<UsuarioEO> usuarioL = usuarioDao.findByUsuario(Usuario);
 		UsuarioEO usuario = usuarioL.get(0);
 		return usuario;
+	}
+	public Modelo<UsuarioEO> modeloTodos() {
+		List<UsuarioEO> listado;
+		listado = usuarioDao.findAll();
+		return new Modelo<>(listado);
 	}
 }

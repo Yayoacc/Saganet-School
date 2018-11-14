@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>School - Administrador</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
+		<ui:define name="title">School - Usuarios</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<p:panel header="Lista de Usuarios">
+					<p:growl id="growlError" showDetail="true" sticky="true" />
+					<p:dataTable value="${modelo.listado}" id="tablaUsuarios" var="fila"
+						rowKey="${fila.id}" selection="${modelo.seleccionado}"
+						selectionMode="single" paginator="true" rows="20"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom"
+						filterBy="${fila.primerApellido}">
+						<p:column headerText="Id" width="50">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+						<p:column headerText="Nombre de Usuario" width="200"
+							filterable="true" filterBy="${fila.usuario}">
+							<p:outputLabel value="${fila.usuario}" />
+						</p:column>
+						<p:column headerText="Rol" width="200"
+							sortable="true" sortBy="${fila.rol}">
+							<p:outputLabel value="${fila.rol}" />
+						</p:column>
+						<p:column headerText="Profesor" width="200">
+<!-- 							<p:outputLabel value="${fila.profesor.nombreCompleto}" /> -->
+						</p:column>
+					</p:dataTable>
+
+					<f:facet name="footer">
+						<center>
+							<p:commandButton value="Detalle" action="detalle"
+								disabled="${modelo.seleccionado == null}"
+								icon="ui-icon-document" />
+							<p:commandButton value="Agregar" action="agregar"
+								icon="ui-icon-person" />
+							<p:commandButton value="Editar" action="editar"
+								disabled="${modelo.seleccionado == null}" icon="ui-icon-pencil" />
+							<p:commandButton value="Eliminar"
+								update="${p:component('tablaUsuarios')} ${p:component('growlError')}"
+								actionListener="#{AlumnoServ.mensaje}" action="eliminar"
+								icon="ui-icon-trash" />
+						</center>
+					</f:facet>
+				</p:panel>
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+
+</html>
