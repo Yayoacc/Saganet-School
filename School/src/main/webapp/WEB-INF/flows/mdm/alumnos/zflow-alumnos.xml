@@ -3,8 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://saganet.com.mx/webflow/spring-webflow-2.0.xsd">
+    <secured attributes="ROLE_USER, ROLE_ADMIN" match="any" />
 	<input name="accion" />
-
 	<decision-state id="alta">
 		<if test="accion == 'alta'" then="nuevoAlumno" else="listado" />
 	</decision-state>

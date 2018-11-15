@@ -17,11 +17,11 @@
 		</config>
 		<config>
 			<file>src/main/webapp/WEB-INF/flows/mdm/padres/zflow-padres.xml</file>
-			<name><![CDATA[zflow-padres]]></name>
+			<name><![CDATA[zflow-agregarPadres]]></name>
 		</config>
 		<config>
-			<file>src/main/webapp/WEB-INF/flows/mdm/padres/zflow-agregarPadres.xml</file>
-			<name><![CDATA[zflow-agregarPadres]]></name>
+			<file>src/main/webapp/WEB-INF/flows/admin/zflow-admin.xml</file>
+			<name><![CDATA[zflow-admin]]></name>
 		</config>
 	</configs>
 </webflow-project-description>

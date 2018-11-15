@@ -4,12 +4,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import com.saganet.school.auditory.AuditObject;
 import com.saganet.school.database.domains.RolDO;
+import com.saganet.school.database.entities.mdm.ProfesorEO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +27,8 @@ import lombok.EqualsAndHashCode;
 public class UsuarioEO extends AuditObject{
 	
 	@Id
-	private String Id;
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private Integer Id;
 	
 	@NotBlank(message = "Falta Usuario")
 	@Column(columnDefinition = "text")
@@ -37,4 +43,7 @@ public class UsuarioEO extends AuditObject{
 	
 	@NotBlank
 	private Boolean Enabled;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+    private ProfesorEO profesor;
 }

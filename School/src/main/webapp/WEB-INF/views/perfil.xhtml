@@ -19,7 +19,7 @@
 					<div class="col-md-3 ">
 						<div class="list-group ">
 							<a href="#" class="list-group-item list-group-item-action active">Usuario</a>
-							<a href="#" class="list-group-item list-group-item-action">Administración de Usuario
+							<a href="${request.contextPath}/app/admin" class="list-group-item list-group-item-action">Administración de Usuarios
 								</a>
 						</div>
 					</div>
@@ -39,8 +39,7 @@
 												<label for="username" class="col-4 col-form-label">Usuario: 
 													</label>
 												<div class="col-8">
-													<input id="username" name="username" placeholder="Usuario"
-														class="form-control here" required="required" type="text"/>
+													<p:inputText value="${request.userPrincipal.name}" class="form-control here" required="required" type="text" />
 												</div>
 											</div>
 											<div class="form-group row">
@@ -70,7 +69,7 @@
 											<div class="form-group row">
 												<label for="select" class="col-4 col-form-label">Mostrar nombre como:</label>
 												<div class="col-8">
-													<select id="select" name="select" class="custom-select">
+													<select id="select" name="select" class="custom-select" >
 														<option value="admin">Administrador</option>
 													</select>
 												</div>

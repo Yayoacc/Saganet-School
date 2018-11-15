@@ -37,6 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
  
         // [ROLE_USER, ROLE_ADMIN,..]
         String rol = User.getRol().getNombre();
+        log.info("El rol obtenido es: "+rol);
  
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         if (rol != null) {
