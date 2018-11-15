@@ -17,6 +17,7 @@
 		<on-entry>
 			<evaluate expression="GrupoServ.modeloTodos()"
 				result="viewScope.modelo" />
+			
 		</on-entry>
 
 		<transition on="agregar" to="agregarEditar">
@@ -34,7 +35,8 @@
 				value="viewScope.modelo.seleccionado" />
 		</transition>
 		<transition on="eliminar" to="listado">
-			<evaluate expression="GrupoServ.eliminarGrupo(viewScope.modelo.seleccionado)"/>
+			<evaluate
+				expression="GrupoServ.eliminarGrupo(viewScope.modelo.seleccionado)" />
 		</transition>
 	</view-state>
 
@@ -66,7 +68,7 @@
 		</on-entry>
 
 
-		<transition on="regresar" to="listado"/>
+		<transition on="regresar" to="listado" />
 
 		<transition on="agregarAlumnos" to="detalle">
 			<evaluate
@@ -74,69 +76,90 @@
 			<evaluate
 				expression="GrupoServ.AlumnosGrupo(viewScope.grupo)"
 				result="viewScope.modeloAlumnos" />
-			<set name="requestScope.grupo"
-				value="viewScope.grupo" />
+			<set name="requestScope.grupo" value="viewScope.grupo" />
 		</transition>
 		<transition on="borrarAlumno" to="detalle">
 			<evaluate
-				expression="GrupoServ.borrarAlumnos(modeloAlumnos.seleccionado, viewScope.grupo)"/>
-			<set name="requestScope.grupo"
-				value="viewScope.grupo" />
+				expression="GrupoServ.borrarAlumnos(modeloAlumnos.seleccionado, viewScope.grupo)" />
+			<set name="requestScope.grupo" value="viewScope.grupo" />
 		</transition>
 
 		<transition on="asignarProfesor" to="detalle">
 			<evaluate
 				expression="GrupoServ.addProfesores(viewScope.modeloProfesor.seleccionado, viewScope.grupo)" />
-			<set name="requestScope.grupo"
-				value="viewScope.grupo" />
+			<set name="requestScope.grupo" value="viewScope.grupo" />
 		</transition>
 
 		<transition on="quitarProfesor" to="detalle">
 			<evaluate
 				expression="GrupoServ.borrarProfesor(viewScope.modeloProfesores.seleccionado, viewScope.grupo)" />
-			<set name="requestScope.grupo"
-				value="viewScope.grupo" />
+			<set name="requestScope.grupo" value="viewScope.grupo" />
 		</transition>
-		
+
 		<transition on="altaAlumno" to="Alumnos" bind="false">
 			<set name="flowScope.grupo" value="viewScope.grupo" />
 			<set name="flashScope.accion" value="'alta'" />
 		</transition>
-		
+
 		<transition on="altaProfesor" to="Profesores" bind="false">
 			<set name="flowScope.grupo" value="viewScope.grupo" />
 			<set name="flashScope.accion" value="'alta'" />
 		</transition>
 		<transition on="correo">
-			<evaluate expression="MailService.nuevo()" result="viewScope.correo"/>
+			<evaluate expression="MailService.nuevo()"
+				result="viewScope.correo" />
 		</transition>
 		<transition on="enviar" to="detalle">
-			<evaluate expression="GrupoServ.padresGrupo(viewScope.modeloAlumnos.listado)" result="viewScope.Padres"/>
-			<evaluate expression="MailService.sendMail(viewScope.Padres, viewScope.correo)"/>
-			<set name="requestScope.grupo"
-				value="viewScope.grupo" />
+			<evaluate
+				expression="GrupoServ.padresGrupo(viewScope.modeloAlumnos.listado)"
+				result="viewScope.Padres" />
+			<evaluate
+				expression="MailService.sendMail(viewScope.Padres, viewScope.correo)" />
+			<set name="requestScope.grupo" value="viewScope.grupo" />
 		</transition>
-		
+		<transition on="agenda" to="agenda">
+			<set name="requestScope.grupo" value="viewScope.grupo"/>
+		</transition>
+
 	</view-state>
-	
+
+	<view-state id="agenda">
+		<on-entry>
+			<set name="viewScope.grupo" value="requestScope.grupo"/>
+			<evaluate expression="CalendarioServ.nuevo(viewScope.grupo)"
+				result="viewScope.modeloCalendario"/>
+		</on-entry>
+		<transition on="agregarEvento">
+			<evaluate expression="CalendarioServ.guardar(viewScope.modeloCalendario)"/>
+			<evaluate expression="CalendarioServ.nuevo(viewScope.grupo)" result="viewScope.modeloCalendario"></evaluate>
+		</transition>
+		<transition on="mover">
+			<evaluate expression="CalendarioServ.mover(viewScope.modeloCalendario)"/>
+		</transition>
+		<transition on="cancelar">
+			<evaluate expression="CalendarioServ.nuevo(viewScope.grupo)"
+				result="viewScope.modeloCalendario"/>
+		</transition>
+	</view-state>
+
 	<subflow-state id="Alumnos" subflow="mdm/alumnos">
-		<input name="accion" value="accion"/>
+		<input name="accion" value="accion" />
 		<transition on="agregarEditarExitoso" to="detalle" />
 		<transition on="agregarEditarCancelado" to="detalle" />
 		<on-exit>
 			<set name="requestScope.grupo" value="flowScope.grupo" />
 		</on-exit>
 	</subflow-state>
-	
+
 	<subflow-state id="Profesores" subflow="mdm/profesores">
-		<input name="accion" value="accion"/>
+		<input name="accion" value="accion" />
 		<transition on="agregarEditarExitoso" to="detalle" />
 		<transition on="agregarEditarCancelado" to="detalle" />
 		<on-exit>
 			<set name="requestScope.grupo" value="flowScope.grupo" />
 		</on-exit>
 	</subflow-state>
-	
+
 	<end-state id="agregarEditarExitoso" />
 	<end-state id="agregarEditarCancelado" />
 

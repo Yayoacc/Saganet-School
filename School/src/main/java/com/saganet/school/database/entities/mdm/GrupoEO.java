@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -47,7 +48,9 @@ public class GrupoEO extends AuditObject {
 	@Fetch(FetchMode.SELECT)
 	@JoinTable(schema = "mdm", name = "grupos_profesores")
 	private List<ProfesorEO> profesores = new ArrayList<>();
-
+	
+	// ===================================================================
+	
 	public String evaluaCupo(int noAlumnos) {
 		int cupoRestante=Cupo - alumnos.size();
 		String nota="";

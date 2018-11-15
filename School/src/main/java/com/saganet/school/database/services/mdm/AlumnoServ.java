@@ -33,6 +33,7 @@ public class AlumnoServ {
 		// listado =
 		// alumnoDao.findFirst100ByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
 		listado = alumnoDao.findAll();
+//		listado = alumnoDao.findByPrimerApellidoOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc("Pérez");
 		return new Modelo<>(listado);
 	}
 
