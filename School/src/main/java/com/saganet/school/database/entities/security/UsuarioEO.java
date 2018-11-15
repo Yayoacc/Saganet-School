@@ -43,6 +43,6 @@ public class UsuarioEO extends AuditObject{
 	private Boolean Enabled;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+    @MapsId	
     private ProfesorEO profesor;
 }
