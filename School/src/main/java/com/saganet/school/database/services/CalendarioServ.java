@@ -56,13 +56,13 @@ public class CalendarioServ {
 		
 		List<EventoEO> even = eventoDao.findByIdAndGrupo(modelo.getId(), modelo.getGrupo());
 		EventoEO e = even.get(0);
+		e.setDescripcion(modelo.getTitulo());
+		e.setInicio(modelo.getInicio());
+		e.setFin(modelo.getFin());
+		eventoDao.save(e);
 		System.out.println("Id: "+e.getId());//+"Titulo: "+e.getDescripcion()+"Inicio: "+e.getInicio()+"Fin: "+e.getFin());
 	}
 	
-	private void cancelar() {
-		System.out.println("Cancelar");
-
-	}
 
 	public List<EventoEO> eventos() {
 		List<EventoEO> ev = eventoDao.findAll();

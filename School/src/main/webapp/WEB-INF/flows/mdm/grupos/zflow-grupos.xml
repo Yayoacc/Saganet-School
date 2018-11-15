@@ -135,6 +135,8 @@
 		</transition>
 		<transition on="mover">
 			<evaluate expression="CalendarioServ.mover(viewScope.modeloCalendario)"/>
+			<evaluate expression="CalendarioServ.nuevo(viewScope.grupo)"
+				result="viewScope.modeloCalendario"/>
 		</transition>
 		<transition on="cancelar">
 			<evaluate expression="CalendarioServ.nuevo(viewScope.grupo)"

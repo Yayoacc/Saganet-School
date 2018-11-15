@@ -70,10 +70,13 @@ public class ModeloCalendario implements Serializable {
 	public void onEventMove(ScheduleEntryMoveEvent event) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Evento movido","");
         this.event = (ScheduleEvent) event.getScheduleEvent();
+        seleccionado=true;
         id=(Integer)this.event.getData();
-        System.out.println("Id del evento "+id);
-//        CalendarioServ.mover(id, grupo, this.event);
-        
+        titulo=this.event.getTitle();
+        inicio=this.event.getStartDate();
+        fin=this.event.getEndDate();
+//        System.out.println("Id del evento "+id + "Titulo del evento "+titulo +"inicio del evento "+inicio +"Fin del evento "+fin );
+
 //        EventoEO even = eventoDao.findById(id);
 //        even.setDescripcion(this.event.getTitle());
 //        even.setInicio(this.event.getStartDate());
