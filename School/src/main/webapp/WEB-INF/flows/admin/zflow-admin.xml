@@ -5,10 +5,56 @@
         http://saganet.com.mx/webflow/spring-webflow-2.0.xsd">
 
 	<view-state id="lista">
-	<on-entry>
+		<on-entry>
 			<evaluate expression="UsuarioServ.modeloTodos()"
 				result="viewScope.modelo" />
-			</on-entry>
+		</on-entry>
+		<transition on="detalle" to="detalle">
+			<set name="requestScope.usuario"
+				value="viewScope.modelo.seleccionado" />
+		</transition>
+		<transition on="editar" to="agregarEditar">
+			<set name="requestScope.usuario"
+				value="viewScope.modelo.seleccionado" />
+		</transition>
+		<transition on="agregar" to="agregarEditar">
+			<evaluate expression="UsuarioServ.nuevo()"
+				result="requestScope.usuario" />
+		</transition>
 	</view-state>
-
+	<view-state id="detalle">
+		<on-entry>
+			<set name="viewScope.usuario" value="requestScope.usuario" />
+		</on-entry>
+		<transition on="regresar" to="lista" />
+	</view-state>
+	<view-state id="agregarEditar">
+		<on-entry>
+			<set name="viewScope.usuario" value="requestScope.usuario" />
+			<evaluate expression="DominiosServ.modeloRolDO()"
+				result="viewScope.modeloRoles" />
+			<evaluate expression="ProfesorServ.modeloTodos()"
+				result="viewScope.modeloProfesor" />
+		</on-entry>
+		<transition on="regresar" to="lista" />
+		<transition on="agregarProfesor" to="flujoProfesor">
+			 <set name="flashScope.accion" value="'alta'" />
+			  <set name="flowScope.usuario" value="viewScope.usuario" />
+		</transition>
+		<transition on="cancelar" to="agregarEditarCancelado" />
+		<transition on="guardar" to="agregarEditarExitoso">
+			<evaluate expression="UsuarioServ.guardar(viewScope.usuario)" />
+		</transition>
+	</view-state>
+	<subflow-state id="flujoProfesor" subflow="mdm/profesores">
+		<input name="id" value="accion"/>
+		<transition on="agregarEditarExitoso" to="agregarEditar">
+			<set name="requestScope.usuario" value="flowScope.usuario" />
+		</transition>
+		<transition on="agregarEditarCancelado" to="agregarEditar">
+		 	<set name="requestScope.usuario" value="flowScope.usuario" />
+		</transition>
+	</subflow-state>
+	<end-state id="agregarEditarExitoso" />
+	<end-state id="agregarEditarCancelado" />
 </flow>

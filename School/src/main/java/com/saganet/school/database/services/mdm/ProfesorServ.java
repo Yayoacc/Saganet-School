@@ -56,6 +56,11 @@ public class ProfesorServ {
 	        context.addMessage(null, new FacesMessage("No se puede eliminar", nombre+" está asignado a un grupo"));
 		}
 	}
+	public Modelo<ProfesorEO> modeloTodos(){
+		List<ProfesorEO> listado;
+		listado = profesorDao.findByOrderByPrimerApellidoAscSegundoApellidoAscNombreAsc();
+		return new Modelo<>(listado);
+	}
 	
 //	public void asignarGrupo(ProfesorEO p, GrupoEO g) {
 //		p.asignarGrupo(g);

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>School - Agregar Usuario</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="/WEB-INF/layouts/template.xhtml">
+		<ui:define name="title">School - Agregar Usuario</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<p:growl>
+					<p:autoUpdate />
+				</p:growl>
+				<p:focus />
+				<p:panel header="Agregar Usuario">
+					<p:panel header="Datos Generales">
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Usuario" />
+							<p:inputText value="${usuario.usuario}" />
+							<p:outputLabel value="Contraseña:" />
+							<p:outputLabel value="" />
+							<p:outputLabel value="${usuario.id == null ? 'Contraseña' : 'Contraseña Actual'}" />
+							<p:inputText value="" />
+							<p:outputLabel value="${usuario.id == null ? 'Repetir Contraseña' : 'Contraseña Nueva'}" />
+							<p:inputText value="" />
+							<p:outputLabel value="Rol" />
+							<p:selectOneMenu value="${usuario.rol}">
+								<f:selectItems value="${modeloRoles.listado}" var="item"
+									itemLabel="${item.nombre}" itemValue="${item}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:panel>
+					<p:separator />
+					<p:separator />
+					<p:panel header="Profesor">
+						<p:panelGrid columns="2">
+							<p:outputLabel id="labelProfesorNombre"
+								value="${usuario.profesor.id == null ? 'No especificado' : usuario.profesor.nombreCompleto}" />
+						</p:panelGrid>
+						<f:facet name="footer">
+							<p:commandButton value="Seleccionar"
+								onclick="PF('dialogoSeleccionarProfesorWV').show()"
+								icon="ui-icon-person" />
+							<p:commandButton value="Alta de profesor" icon="ui-icon-plus"
+								action="agregarProfesor" />
+						</f:facet>
+					</p:panel>
+
+					<f:facet name="footer">
+						<p:commandButton id="botonGuardar" value="Guardar"
+							action="guardar" disabled="${usuario.profesor.id == null}"
+							icon="ui-icon-disk" />
+						<p:commandButton value="Cancelar" action="cancelar"
+							immediate="true" icon="ui-icon-close" />
+					</f:facet>
+				</p:panel>
+			</h:form>
+
+			<!-- 	ESTE ES EL FORM DEL DIALOGO -->
+
+			<h:form>
+				<p:dialog widgetVar="dialogoSeleccionarProfesorWV"
+					header="Seleccionar Profesor" modal="true" closable="true"
+					closeOnEscape="true" visible="false">
+
+					<!-- 			<p:panelGrid columns="2"> -->
+					<!-- 				<p:outputLabel value="Padre" /> -->
+					<!-- 				<p:selectOneMenu value="${alumno.padre}" converter="ObjectConverter" filter="true"> -->
+					<!-- 					<f:selectItems value="${modeloPadre.listado}" var="padre" itemLabel="${padre.nombreCompleto}" itemValue="${padre}" />  -->
+					<!-- 				</p:selectOneMenu> -->
+					<!-- 			</p:panelGrid> -->
+
+					<p:dataTable value="${modeloProfesor.listado}" var="fila"
+						rowKey="${fila.id}" selection="${usuario.profesor}"
+						selectionMode="single" paginator="true" rows="5"
+						paginatorAlwaysVisible="false" paginatorPosition="bottom">
+						<p:column headerText="Id" width="50">
+							<p:outputLabel value="${fila.id}" />
+						</p:column>
+
+						<p:column headerText="Primer Apellido" width="200">
+							<p:outputLabel value="${fila.primerApellido}" />
+						</p:column>
+						<p:column headerText="Segundo Apellido" width="200">
+							<p:outputLabel value="${fila.segundoApellido}" />
+						</p:column>
+
+						<p:column headerText="Nombre" width="200">
+							<p:outputLabel value="${fila.nombre}" />
+						</p:column>
+					</p:dataTable>
+
+
+					<f:facet name="footer">
+						<p:commandButton value="Seleccionar"
+							onclick="PF('dialogoSeleccionarProfesorWV').hide()"
+							update="${p:component('botonGuardar')} ${p:component('labelProfesorNombre')}" />
+					</f:facet>
+				</p:dialog>
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+
+</html>
