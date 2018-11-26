@@ -1,11 +1,8 @@
 package com.saganet.school.database.services;
 
-import java.util.Date;
 import java.util.List;
 
-import org.primefaces.model.ScheduleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.primefaces.model.ScheduleModel;
 import org.springframework.stereotype.Service;
 
 import com.saganet.school.database.daos.mdm.EventoDao;
@@ -28,27 +25,24 @@ public class CalendarioServ {
 
 	public void guardar(ModeloCalendario modelo) {
 
-		EventoEO e;
-		String t = modelo.getEvent().getTitle();
-		Date Inicio = modelo.getEvent().getStartDate();
-		Date Fin = modelo.getEvent().getEndDate();
-		GrupoEO grupo = modelo.getGrupo();
+		EventoEO e = new EventoEO();;
+		e.setDescripcion(modelo.getEvent().getTitle());
+		e.setInicio(modelo.getEvent().getStartDate());
+		e.setFin(modelo.getEvent().getEndDate());
+		e.setGrupo(modelo.getGrupo());
 		if (!modelo.isSeleccionado()) {
-			e = new EventoEO();
-			e.setDescripcion(t);
-			e.setInicio(Inicio);
-			e.setFin(Fin);
-			e.setGrupo(grupo);
 			eventoDao.save(e);
 			modelo.agregarEvento();
 		}
 		else {
-			e = eventoDao.findByDescripcionAndGrupo(t, grupo);
-			System.out.println(t);
+			e.setId((Integer)modelo.getEvent().getData());
 			eventoDao.save(e);
 		}
 		System.out.println("Guardado");
-		
+	}
+	
+	public void eliminar(ModeloCalendario modelo) {
+		eventoDao.deleteById((Integer)modelo.getEvent().getData());
 	}
 	
 	public void mover(ModeloCalendario modelo) {
@@ -62,6 +56,7 @@ public class CalendarioServ {
 		eventoDao.save(e);
 		System.out.println("Id: "+e.getId());//+"Titulo: "+e.getDescripcion()+"Inicio: "+e.getInicio()+"Fin: "+e.getFin());
 	}
+	
 	
 
 	public List<EventoEO> eventos() {

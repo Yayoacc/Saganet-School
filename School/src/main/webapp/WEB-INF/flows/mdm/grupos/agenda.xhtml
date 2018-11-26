@@ -25,22 +25,25 @@
 						<p:ajax event="eventSelect"
 							listener="${modeloCalendario.onEventSelect}"
 							update="eventDetails" oncomplete="PF('eventDialog').show();" />
-						<p:ajax event="eventMove" 
-							listener="${modeloCalendario.onEventMove}" update="messages" oncomplete="PF('confirmDialog').show();" >
-							
+						<p:ajax event="eventMove"
+							listener="${modeloCalendario.onEventMove}" update="messages"
+							oncomplete="PF('confirmDialog').show();">
 						</p:ajax>
 						<p:ajax event="eventResize"
 							listener="${modeloCalendario.onEventResize}" update="messages" />
 
 					</p:schedule>
-
+					<p:separator />
 				</p:panel>
+				<center>
+<!-- 					<p:commandButton value="Regresar" action="reg" /> -->
+				</center>
 				<p:dialog widgetVar="eventDialog" header="Detalles del evento"
 					showEffect="clip" hideEffect="clip" closeOnEscape="true">
 					<h:panelGrid id="eventDetails" columns="2">
 						<p:outputLabel for="title" value="Nombre:" />
 						<p:inputText id="title" value="${modeloCalendario.event.title}"
-							required="true"/>
+							required="true" />
 
 						<p:outputLabel for="from" value="Desde:" />
 						<p:calendar id="from" value="${modeloCalendario.event.startDate}"
@@ -51,23 +54,28 @@
 							timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" />
 
 						<p:outputLabel for="allDay" value="Todo el día:" />
-						
 						<h:selectBooleanCheckbox id="allDay"
 							value="${modeloCalendario.event.allDay}" />
-						<center>
-							<p:commandButton id="addButton" value="Save"
-							action="agregarEvento"
+						<p:commandButton id="addButton" value="Guardar"
+							icon="ui-icon-disk" action="agregarEvento"
 							oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
-						</center>
+						<p:commandButton id="deleteButton" value="Eliminar"
+							icon="ui-icon-trash" action="eliminarEvento"
+							disabled="${modeloCalendario.seleccionado == false}"
+							oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+					
 					</h:panelGrid>
+					
 				</p:dialog>
-				
+
 				<p:dialog widgetVar="confirmDialog" closeOnEscape="true">
 					<center>
-					<p:outputLabel value="¿Estas seguro de mover el evento?"/>
-					<br/>
-					<p:commandButton value="Ok" action="mover" oncomplete="PF('myschedule').update();PF('confirmDialog').hide();"/>
-					<p:commandButton value="Cancelar" action="cancelar" oncomplete="PF('myschedule').update();PF('confirmDialog').hide();"/>
+						<p:outputLabel value="¿Estas seguro de mover el evento?" />
+						<br />
+						<p:commandButton value="Ok" action="mover"
+							oncomplete="PF('myschedule').update();PF('confirmDialog').hide();" />
+						<p:commandButton value="Cancelar" action="cancelar"
+							oncomplete="PF('myschedule').update();PF('confirmDialog').hide();" />
 					</center>
 				</p:dialog>
 
