@@ -1,9 +1,6 @@
 package com.saganet.school.database.daos.mdm;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.saganet.school.database.entities.mdm.EventoEO;

@@ -3,6 +3,7 @@ package com.saganet.school.database.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.primefaces.model.ScheduleModel;
 import org.springframework.stereotype.Service;
 
 import com.saganet.school.database.daos.mdm.EventoDao;
@@ -56,7 +57,6 @@ public class CalendarioServ {
 		eventoDao.save(e);
 		System.out.println("Id: "+e.getId());//+"Titulo: "+e.getDescripcion()+"Inicio: "+e.getInicio()+"Fin: "+e.getFin());
 	}
-	
 	
 
 	public List<EventoEO> eventos() {

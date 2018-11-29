@@ -1,7 +1,6 @@
 package com.saganet.school.utils;
 
 import java.io.Serializable;
-
 import lombok.Data;
 
 @SuppressWarnings("serial")
